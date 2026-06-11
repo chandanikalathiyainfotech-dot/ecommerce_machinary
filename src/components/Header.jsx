@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { FaSearch, FaShoppingCart, FaBars, FaTimes, FaArrowRight, FaCogs, FaUser } from "react-icons/fa";
-import logo from "../assets/Images/logo.png"
+import { useState, useEffect } from "react";
+import { FaSearch, FaShoppingCart, FaBars, FaTimes, FaCogs, FaUser } from "react-icons/fa";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,7 +28,7 @@ function Header() {
               </div>
             </div>
             <div className="flex flex-col leading-none">
-              <span className="text-2xl font-black text-white tracking-tighter">
+              <span className="text-sm sm:text-base md:text-lg lg:text-xl font-black text-white tracking-tighter">
                 MECH<span className="text-amber-500">ZONE</span>
               </span>
               <span className="text-[10px] font-bold text-gray-400 tracking-[0.2em] uppercase mt-0.5 group-hover:text-amber-500 transition-colors">Industrial Pro</span>
@@ -60,35 +59,35 @@ function Header() {
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="p-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 rounded-full transition-all"
             >
-              <FaSearch size={18} />
+              <FaSearch className="text-sm sm:text-base md:text-lg lg:text-xl" />
             </button>
 
             <button className="relative p-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 rounded-full transition-all">
-              <FaShoppingCart size={18} />
+              <FaShoppingCart className="text-sm sm:text-base md:text-lg lg:text-xl" />
               <span className="absolute -top-1 -right-1 w-5 h-5 bg-amber-500 text-black text-[10px] font-black flex items-center justify-center rounded-full border-2 border-[#0f172a]">4</span>
             </button>
 
             <div className="h-8 w-[1px] bg-gray-700 mx-2"></div>
 
             <button className="flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-black font-black text-sm rounded-lg hover:bg-amber-400 hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all uppercase tracking-tighter">
-              <FaUser size={14} />
+              <FaUser className="text-sm sm:text-base md:text-lg lg:text-xl" />
               <span>Login</span>
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center gap-3">
+          <div className="flex lg:hidden items-center gap-0 sm:gap-3">
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="p-2 text-gray-300 hover:text-amber-500"
             >
-              <FaSearch size={20} />
+              <FaSearch className="text-sm sm:text-base md:text-lg lg:text-xl" />
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 text-gray-300 hover:text-amber-500"
             >
-              {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+              {isMenuOpen ? <FaTimes className="text-sm sm:text-base md:text-lg lg:text-xl" /> : <FaBars className="text-sm sm:text-base md:text-lg lg:text-xl" />}
             </button>
           </div>
         </div>
@@ -97,14 +96,14 @@ function Header() {
       {/* Search Overlay */}
       {isSearchOpen && (
         <div className="bg-[#0f172a] border-b border-gray-800 z-40 animate-slideDown shadow-2xl">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
             <div className="flex items-center gap-4">
               <div className="relative flex-1">
-                <FaSearch size={22} className="absolute left-5 top-1/2 -translate-y-1/2 text-amber-500" />
+                <FaSearch  className="text-sm sm:text-base md:text-lg lg:text-xl absolute left-5 top-1/2 -translate-y-1/2 text-amber-500" />
                 <input
                   type="text"
-                  placeholder="SEARCH INDUSTRIAL EQUIPMENT..."
-                  className="w-full pl-14 pr-6 py-4 bg-gray-900 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all uppercase tracking-widest text-sm"
+                  placeholder="Search Equipment..."
+                  className="w-full pl-14 pr-6 py-3 sm:py-4 bg-gray-900 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all  tracking-widest text-sm"
                   autoFocus
                 />
               </div>
@@ -112,7 +111,7 @@ function Header() {
                 onClick={() => setIsSearchOpen(false)}
                 className="p-4 bg-gray-800 text-amber-500 hover:bg-amber-500 hover:text-black rounded-xl transition-all"
               >
-                <FaTimes size={22} />
+                <FaTimes className="text-sm sm:text-base md:text-lg lg:text-xl" />
               </button>
             </div>
           </div>
@@ -122,12 +121,12 @@ function Header() {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="lg:hidden bg-[#0f172a] border-t border-gray-800">
-          <div className="px-4 py-8 space-y-4">
+          <div className="px-4 py-8 space-y-0 sm:space-y-4">
             {["Home", "Parts", "Contact", "About Us"].map((item, idx) => (
               <a
                 key={idx}
                 href="#"
-                className={`block px-6 py-4 rounded-xl font-black uppercase tracking-widest transition-all ${
+                className={`text-[14px] sm:text-[16px]  block px-6 py-4 rounded-xl font-black uppercase tracking-widest transition-all ${
                   idx === 0 
                     ? "text-amber-500 bg-gray-800/50" 
                     : "text-gray-300 hover:text-amber-500 hover:bg-gray-800/30"
@@ -136,16 +135,16 @@ function Header() {
                 {item}
               </a>
             ))}
-            <div className="pt-6 mt-6 border-t border-gray-800 space-y-4">
+            <div className="pt-6 mt-3 sm:mt-6 border-t border-gray-800 space-y-4">
               <button className="w-full flex items-center justify-between px-6 py-4 text-gray-300 font-bold border border-gray-700 rounded-xl hover:bg-gray-800 transition-all">
                 <div className="flex items-center gap-3">
-                  <FaShoppingCart size={20} />
+                  <FaShoppingCart className="text-sm sm:text-base md:text-lg lg:text-xl" />
                   <span className="uppercase tracking-widest">Cart</span>
                 </div>
                 <span className="w-6 h-6 bg-amber-500 text-black text-xs font-black flex items-center justify-center rounded-full">4</span>
               </button>
               <button className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-amber-500 text-black font-black rounded-xl hover:bg-amber-400 transition-all uppercase tracking-widest">
-                <FaUser size={18} />
+                <FaUser className="text-sm sm:text-base md:text-lg lg:text-xl" />
                 Login
               </button>
             </div>
