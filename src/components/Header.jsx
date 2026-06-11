@@ -1,10 +1,16 @@
-import { useState, useEffect } from "react";
-import { FaSearch, FaShoppingCart, FaBars, FaTimes, FaCogs, FaUser } from "react-icons/fa";
+
+import React, { useState, useEffect } from "react";
+console.log(React);
+
+import { FaSearch, FaShoppingCart, FaBars, FaTimes, FaCogs, FaUser, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isPartsDropdownOpen, setIsPartsDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,8 +20,28 @@ function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const productCategories = [
+    "Heavy Machinery",
+    "Spare Parts", 
+    "Tools & Equipment",
+    "Truck Parts",
+    "Maintenance Kits",
+    "Engine Components",
+    "Hydraulic Systems",
+    "Electrical Parts",
+    "Filters & Lubricants",
+  ];
+
+  const partsCategories = [
+    "Heavy Machinery",
+    "Spare Parts", 
+    "Tools & Equipment",
+    "Truck Parts",
+    "Maintenance Kits",
+  ];
+
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0b1b3a] backdrop-blur-md border-b border-gray-800 shadow-xl" : "bg-[#0b1b3a]"}`}>
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0b1b3a]/95 backdrop-blur-md border-b border-gray-800 shadow-xl" : "bg-[#0b1b3a]"}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           {/* Unique & Good Logo */}
@@ -37,20 +63,51 @@ function Header() {
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center gap-1">
-            {["Home", "Parts", "About Us", "Contact"].map((item, idx) => (
+            {["Home", "Contact", "About Us"].map((item, idx) => (
               <a
                 key={idx}
                 href="#"
-                className={`px-4 py-2 rounded-lg font-bold text-sm uppercase tracking-wider transition-all relative group/link ${
-                  idx === 0 
-                    ? "text-amber-500" 
-                    : "text-gray-300 hover:text-white"
-                }`}
+                className={`px-4 py-2 rounded-lg font-bold text-sm uppercase tracking-wider transition-all relative group/link ${idx === 0 ? "text-amber-500" : "text-gray-300 hover:text-white"}`}
               >
                 {item}
                 <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 transition-all duration-300 ${idx === 0 ? "scale-x-100" : "scale-x-0 group-hover/link:scale-x-100"}`}></span>
               </a>
             ))}
+
+            {/* Parts with Simple Submenu */}
+            <div className="relative">
+              <button
+                onMouseEnter={() => setIsPartsDropdownOpen(true)}
+                onMouseLeave={() => setIsPartsDropdownOpen(false)}
+                onClick={() => setIsPartsDropdownOpen(!isPartsDropdownOpen)}
+                className="px-4 py-2 rounded-lg font-bold text-sm uppercase tracking-wider transition-all relative group/link text-gray-300 hover:text-white flex items-center gap-2"
+              >
+                Parts
+                {isPartsDropdownOpen ? <FaChevronUp className="text-xs" /> : <FaChevronDown className="text-xs" />}
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 transition-all duration-300 ${isPartsDropdownOpen ? "scale-x-100" : "scale-x-0 group-hover/link:scale-x-100"}`}></span>
+              </button>
+
+              {/* Simple Submenu Dropdown */}
+              {isPartsDropdownOpen && (
+                <div 
+                  onMouseEnter={() => setIsPartsDropdownOpen(true)}
+                  onMouseLeave={() => setIsPartsDropdownOpen(false)}
+                  className="absolute top-full left-0 mt-2 w-56 bg-[#0b1b3a] border border-gray-700 rounded-lg shadow-lg z-50 overflow-hidden animate-slideDown"
+                >
+                  <div className="p-2">
+                    {productCategories.map((category, idx) => (
+                      <a 
+                        key={idx}
+                        href="#"
+                        className="block px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all"
+                      >
+                        {category}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Desktop Actions */}
@@ -69,10 +126,12 @@ function Header() {
 
             <div className="h-8 w-[1px] bg-gray-700 mx-2"></div>
 
-            <button className="flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-black font-black text-sm rounded-lg hover:bg-amber-400 hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all uppercase tracking-tighter">
-              <FaUser className="text-sm sm:text-base md:text-lg lg:text-xl" />
-              <span>Login</span>
-            </button>
+            <NavLink to={'/authendication'}>
+              <button className="flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-black font-black text-sm rounded-lg hover:bg-amber-400 hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all uppercase tracking-tighter">
+                <FaUser className="text-sm sm:text-base md:text-lg lg:text-xl" />
+                <span>Login</span>
+              </button>
+            </NavLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -99,11 +158,11 @@ function Header() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
             <div className="flex items-center gap-4">
               <div className="relative flex-1">
-                <FaSearch  className="text-sm sm:text-base md:text-lg lg:text-xl absolute left-5 top-1/2 -translate-y-1/2 text-amber-500" />
+                <FaSearch className="text-sm sm:text-base md:text-lg lg:text-xl absolute left-5 top-1/2 -translate-y-1/2 text-amber-500" />
                 <input
                   type="text"
                   placeholder="Search Equipment..."
-                  className="w-full pl-14 pr-6 py-3 sm:py-4 bg-gray-900 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all  tracking-widest text-sm"
+                  className="w-full pl-14 pr-6 py-3 sm:py-4 bg-gray-900 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all tracking-widest text-sm"
                   autoFocus
                 />
               </div>
@@ -122,19 +181,30 @@ function Header() {
       {isMenuOpen && (
         <div className="lg:hidden bg-[#0f172a] border-t border-gray-800">
           <div className="px-4 py-8 space-y-0 sm:space-y-4">
-            {["Home", "Parts", "Contact", "About Us"].map((item, idx) => (
+            {["Home", "Contact", "About Us"].map((item, idx) => (
               <a
                 key={idx}
                 href="#"
-                className={`text-[14px] sm:text-[16px]  block px-6 py-4 rounded-xl font-black uppercase tracking-widest transition-all ${
-                  idx === 0 
-                    ? "text-amber-500 bg-gray-800/50" 
-                    : "text-gray-300 hover:text-amber-500 hover:bg-gray-800/30"
-                }`}
+                className={`text-[14px] sm:text-[16px] block px-6 py-4 rounded-xl font-black uppercase tracking-widest transition-all ${idx === 0 ? "text-amber-500 bg-gray-800/50" : "text-gray-300 hover:text-amber-500 hover:bg-gray-800/30"}`}
               >
                 {item}
               </a>
             ))}
+
+            {/* Parts in Mobile */}
+            <div className="border-t border-gray-800 pt-4">
+              <h3 className="px-6 py-2 text-amber-500 font-black uppercase tracking-widest text-sm">Parts Categories</h3>
+              {partsCategories.map((category, idx) => (
+                <a
+                  key={idx}
+                  href="#"
+                  className="block px-6 py-3 text-gray-300 hover:text-amber-500 hover:bg-gray-800/30 font-medium transition-all"
+                >
+                  {category}
+                </a>
+              ))}
+            </div>
+
             <div className="pt-6 mt-3 sm:mt-6 border-t border-gray-800 space-y-4">
               <button className="w-full flex items-center justify-between px-6 py-4 text-gray-300 font-bold border border-gray-700 rounded-xl hover:bg-gray-800 transition-all">
                 <div className="flex items-center gap-3">
@@ -155,14 +225,14 @@ function Header() {
       {/* Animations */}
       <style>{`
         @keyframes slideDown {
-          from { opacity: 0; transform: translateY(-20px); }
+          from { opacity: 0; transform: translateY(-10px); }
           to { opacity: 1; transform: translateY(0); }
         }
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-        .animate-slideDown { animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .animate-slideDown { animation: slideDown 0.3s ease-out; }
         .animate-spin-slow { animation: spin-slow linear infinite; }
       `}</style>
     </header>
