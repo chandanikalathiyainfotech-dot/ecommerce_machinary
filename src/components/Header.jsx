@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+
+import React, { useState, useEffect } from "react";
 import { FaSearch, FaShoppingCart, FaBars, FaTimes, FaCogs, FaUser } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +17,7 @@ function Header() {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0b1b3a]/95 backdrop-blur-md border-b border-gray-800 shadow-xl" : "bg-[#0f172a]"}`}>
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0b1b3a]/95 backdrop-blur-md border-b border-gray-800 shadow-xl" : "bg-[#0b1b3a]"}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           {/* Unique & Good Logo */}
@@ -41,11 +43,10 @@ function Header() {
               <a
                 key={idx}
                 href="#"
-                className={`px-4 py-2 rounded-lg font-bold text-sm uppercase tracking-wider transition-all relative group/link ${
-                  idx === 0 
-                    ? "text-amber-500" 
+                className={`px-4 py-2 rounded-lg font-bold text-sm uppercase tracking-wider transition-all relative group/link ${idx === 0
+                    ? "text-amber-500"
                     : "text-gray-300 hover:text-white"
-                }`}
+                  }`}
               >
                 {item}
                 <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 transition-all duration-300 ${idx === 0 ? "scale-x-100" : "scale-x-0 group-hover/link:scale-x-100"}`}></span>
@@ -69,10 +70,12 @@ function Header() {
 
             <div className="h-8 w-[1px] bg-gray-700 mx-2"></div>
 
-            <button className="flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-black font-black text-sm rounded-lg hover:bg-amber-400 hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all uppercase tracking-tighter">
-              <FaUser className="text-sm sm:text-base md:text-lg lg:text-xl" />
-              <span>Login</span>
-            </button>
+            <NavLink to={'/authendication'}>
+              <button className="flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-black font-black text-sm rounded-lg hover:bg-amber-400 hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all uppercase tracking-tighter">
+                <FaUser className="text-sm sm:text-base md:text-lg lg:text-xl" />
+                <span>Login</span>
+              </button>
+            </NavLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -99,7 +102,7 @@ function Header() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
             <div className="flex items-center gap-4">
               <div className="relative flex-1">
-                <FaSearch  className="text-sm sm:text-base md:text-lg lg:text-xl absolute left-5 top-1/2 -translate-y-1/2 text-amber-500" />
+                <FaSearch className="text-sm sm:text-base md:text-lg lg:text-xl absolute left-5 top-1/2 -translate-y-1/2 text-amber-500" />
                 <input
                   type="text"
                   placeholder="Search Equipment..."
@@ -126,11 +129,10 @@ function Header() {
               <a
                 key={idx}
                 href="#"
-                className={`text-[14px] sm:text-[16px]  block px-6 py-4 rounded-xl font-black uppercase tracking-widest transition-all ${
-                  idx === 0 
-                    ? "text-amber-500 bg-gray-800/50" 
+                className={`text-[14px] sm:text-[16px]  block px-6 py-4 rounded-xl font-black uppercase tracking-widest transition-all ${idx === 0
+                    ? "text-amber-500 bg-gray-800/50"
                     : "text-gray-300 hover:text-amber-500 hover:bg-gray-800/30"
-                }`}
+                  }`}
               >
                 {item}
               </a>
