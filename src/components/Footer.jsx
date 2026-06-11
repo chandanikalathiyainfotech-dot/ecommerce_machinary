@@ -13,20 +13,8 @@ import {
 function Footer() {
   return (
     <footer className="bg-[#0b1b3a]">
-      {/* Custom style for very small screens */}
-      <style>{`
-        @media (max-width: 320px) {
-          .social-icon-xs {
-            width: 24px !important;
-            height: 24px !important;
-          }
-          .social-icon-xs svg {
-            font-size: 12px !important;
-          }
-        }
-      `}</style>
-      {/* CTA Banner */}
-      {/* <div className="bg-gradient-to-r from-[#1a2a4a] to-[#0b1b3a] border-t-3 border-amber-500 border-b border-white/10">
+      CTA Banner
+      <div className="bg-gradient-to-r from-[#1a2a4a] to-[#0b1b3a] border-t-3 border-amber-500 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
           <h2 className="text-2xl md:text-3xl font-black text-white mb-3">Ready to Upgrade Your Machinery?</h2>
           <p className="text-[#d6e2ff] text-sm md:text-base mb-6 max-w-2xl mx-auto">
@@ -36,11 +24,11 @@ function Footer() {
             Get Quote
           </button>
         </div>
-      </div> */}
+      </div>
 
       {/* Footer Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
           {/* Logo & About Section */}
           <div className="lg:col-span-1">
@@ -79,7 +67,7 @@ function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div >
             <h4 className="text-lg font-bold text-white mb-6 relative pb-2">
               Quick Links
               <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-amber-500 -skew-x-12"></span>

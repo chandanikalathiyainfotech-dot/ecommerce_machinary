@@ -86,28 +86,28 @@ body {
   transform: translateY(-1px);
 }
 
-/* FOOTER STYLES */
-.footer-cta {
+/* FOOTER - NEW CSS ONLY */
+.footer-cta-section {
   background: linear-gradient(135deg, #1a2a4a 0%, #0b1b3a 100%);
   padding: 40px 20px;
   border-top: 3px solid #ffcc00;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.footer-cta-inner {
+.footer-cta-content {
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
 }
 
-.footer-cta-inner h2 {
+.footer-cta-content h2 {
   color: white;
   font-size: 28px;
   margin-bottom: 10px;
   margin-top: 0;
 }
 
-.footer-cta-inner p {
+.footer-cta-content p {
   color: #d6e2ff;
   font-size: 16px;
   margin-bottom: 25px;

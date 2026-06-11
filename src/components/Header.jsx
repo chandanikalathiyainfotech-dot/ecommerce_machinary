@@ -15,7 +15,7 @@ function Header() {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0b1b3a]/95 backdrop-blur-md border-b border-gray-800 shadow-xl" : "bg-[#0f172a]"}`}>
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0b1b3a] backdrop-blur-md border-b border-gray-800 shadow-xl" : "bg-[#0b1b3a]"}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           {/* Unique & Good Logo */}
@@ -37,7 +37,7 @@ function Header() {
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center gap-1">
-            {["Home", "Parts", "Contact", "About Us"].map((item, idx) => (
+            {["Home", "Parts", "About Us", "Contact"].map((item, idx) => (
               <a
                 key={idx}
                 href="#"
