@@ -158,18 +158,6 @@ body {
   }
 }
 
-.footer-logo {
-  font-size: 22px;
-  font-weight: bold;
-  color: white;
-  letter-spacing: 2px;
-  margin-bottom: 16px;
-}
-
-.footer-logo-yellow {
-  color: #ffcc00;
-}
-
 .footer-tagline {
   color: #d1d5db;
   font-size: 14px;
@@ -177,12 +165,12 @@ body {
   margin-bottom: 24px;
 }
 
-.footer-social {
+.social-links {
   display: flex;
   gap: 16px;
 }
 
-.footer-social-icon {
+.social-icon {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -196,12 +184,12 @@ body {
   transition: 0.3s;
 }
 
-.footer-social-icon:hover {
+.social-icon:hover {
   background: #ffcc00;
   color: #0b1b3a;
 }
 
-.footer-heading {
+.footer-section h4 {
   font-size: 18px;
   font-weight: 600;
   color: white;
@@ -210,7 +198,7 @@ body {
   padding-bottom: 8px;
 }
 
-.footer-heading::after {
+.footer-section h4::after {
   content: "";
   position: absolute;
   left: 0;
@@ -221,17 +209,17 @@ body {
   transform: skewX(-20deg);
 }
 
-.footer-list {
+.footer-section ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.footer-list li {
+.footer-section ul li {
   margin-bottom: 12px;
 }
 
-.footer-list li a {
+.footer-section ul li a {
   color: #d1d5db;
   font-size: 14px;
   text-decoration: none;
@@ -241,22 +229,16 @@ body {
   gap: 8px;
 }
 
-.footer-list li a:hover {
+.footer-section ul li a:hover {
   color: #ffcc00;
 }
 
-.footer-arrow {
+.footer-section ul li a span {
   color: #ffcc00;
   font-size: 12px;
 }
 
-.footer-contact {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-contact li {
+.footer-contact-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -280,7 +262,7 @@ body {
   padding-right: 24px;
 }
 
-.footer-bottom-inner {
+.footer-bottom-content {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -288,13 +270,13 @@ body {
 }
 
 @media (min-width: 768px) {
-  .footer-bottom-inner {
+  .footer-bottom-content {
     flex-direction: row;
     justify-content: space-between;
   }
 }
 
-.footer-bottom-inner p {
+.footer-bottom-content p {
   color: #9ca3af;
   font-size: 14px;
   margin: 0;

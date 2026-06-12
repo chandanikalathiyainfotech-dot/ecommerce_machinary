@@ -6,17 +6,20 @@ import Footer from './components/Footer'
 import Authendication from './container/Authendication'
 import { Route, Routes } from 'react-router-dom'
 import Contact from "./container/Contact";
+import Home from "./container/Home";
 
 function App() {
 
   return (
     <>
       <Header />
+      
       <Routes>
-        <Route path="/authendication"  element={<Authendication/>}/>
-        <Route path="/contact"  element={<Contact />}/>
+        <Route path="/" element={<Home />}  />
+        <Route path="/authendication" element={<Authendication />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </>
 
   )

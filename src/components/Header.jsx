@@ -184,7 +184,16 @@ function Header() {
             {["Home", "Contact", "About Us"].map((item, idx) => (
               <a
                 key={idx}
-                href="#"
+                href={item === "Contact" ? "#contact" : "#"}
+                onClick={(e) => {
+                  if (item === "Contact") {
+                    e.preventDefault();
+                    const contactSection = document.getElementById("contact");
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }
+                }}
                 className={`text-[14px] sm:text-[16px] block px-6 py-4 rounded-xl font-black uppercase tracking-widest transition-all ${idx === 0 ? "text-amber-500 bg-gray-800/50" : "text-gray-300 hover:text-amber-500 hover:bg-gray-800/30"}`}
               >
                 {item}
