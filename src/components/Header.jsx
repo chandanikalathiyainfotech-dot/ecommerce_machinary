@@ -1,16 +1,17 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 console.log(React);
 
 import { FaSearch, FaShoppingCart, FaBars, FaTimes, FaCogs, FaUser, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isPartsDropdownOpen, setIsPartsDropdownOpen] = useState(false);
+  const [isMobilePartsOpen, setIsMobilePartsOpen] = useState(false);
+  const dropdownTimeoutRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +20,18 @@ function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
 
   const productCategories = [
     "Heavy Machinery",
@@ -32,13 +45,24 @@ function Header() {
     "Filters & Lubricants",
   ];
 
-  const partsCategories = [
-    "Heavy Machinery",
-    "Spare Parts", 
-    "Tools & Equipment",
-    "Truck Parts",
-    "Maintenance Kits",
-  ];
+  const handleMouseEnter = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setIsPartsDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setIsPartsDropdownOpen(false);
+    }, 100);
+  };
+
+  const navItems = [
+  { name: "Home", path: "/" },
+  { name: "Contact", path: "/contact" },
+  { name: "About Us", path: "/about" },
+];
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0b1b3a]/95 backdrop-blur-md border-b border-gray-800 shadow-xl" : "bg-[#0b1b3a]"}`}>
@@ -62,24 +86,25 @@ function Header() {
           </div>
 
           {/* Desktop Menu */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {["Home", "Contact", "About Us"].map((item, idx) => (
-              <a
+          <nav className="hidden min-[992px]:flex items-center gap-1">
+            {navItems.map((item, idx) => (
+              <NavLink
                 key={idx}
-                href="#"
+                to={item.path}
                 className={`px-4 py-2 rounded-lg font-bold text-sm uppercase tracking-wider transition-all relative group/link ${idx === 0 ? "text-amber-500" : "text-gray-300 hover:text-white"}`}
               >
-                {item}
+                {item.name}
                 <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 transition-all duration-300 ${idx === 0 ? "scale-x-100" : "scale-x-0 group-hover/link:scale-x-100"}`}></span>
-              </a>
+              </NavLink>
             ))}
 
             {/* Parts with Simple Submenu */}
-            <div className="relative">
+            <div 
+              className="relative"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <button
-                onMouseEnter={() => setIsPartsDropdownOpen(true)}
-                onMouseLeave={() => setIsPartsDropdownOpen(false)}
-                onClick={() => setIsPartsDropdownOpen(!isPartsDropdownOpen)}
                 className="px-4 py-2 rounded-lg font-bold text-sm uppercase tracking-wider transition-all relative group/link text-gray-300 hover:text-white flex items-center gap-2"
               >
                 Parts
@@ -90,8 +115,6 @@ function Header() {
               {/* Simple Submenu Dropdown */}
               {isPartsDropdownOpen && (
                 <div 
-                  onMouseEnter={() => setIsPartsDropdownOpen(true)}
-                  onMouseLeave={() => setIsPartsDropdownOpen(false)}
                   className="absolute top-full left-0 mt-2 w-56 bg-[#0b1b3a] border border-gray-700 rounded-lg shadow-lg z-50 overflow-hidden animate-slideDown"
                 >
                   <div className="p-2">
@@ -111,7 +134,7 @@ function Header() {
           </nav>
 
           {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden min-[992px]:flex items-center gap-4">
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="p-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 rounded-full transition-all"
@@ -135,7 +158,7 @@ function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center gap-0 sm:gap-3">
+          <div className="flex min-[992px]:hidden items-center gap-0 sm:gap-3">
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="p-2 text-gray-300 hover:text-amber-500"
@@ -179,39 +202,40 @@ function Header() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-[#0f172a] border-t border-gray-800">
+        <div className="min-[992px]:hidden bg-[#0f172a] border-t border-gray-800 max-h-[calc(100vh-100px)] overflow-y-auto">
           <div className="px-4 py-8 space-y-0 sm:space-y-4">
-            {["Home", "Contact", "About Us"].map((item, idx) => (
-              <a
+            {navItems.map((item, idx) => (
+              <NavLink
                 key={idx}
-                href={item === "Contact" ? "#contact" : "#"}
-                onClick={(e) => {
-                  if (item === "Contact") {
-                    e.preventDefault();
-                    const contactSection = document.getElementById("contact");
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }
-                }}
+               to={item.path}
                 className={`text-[14px] sm:text-[16px] block px-6 py-4 rounded-xl font-black uppercase tracking-widest transition-all ${idx === 0 ? "text-amber-500 bg-gray-800/50" : "text-gray-300 hover:text-amber-500 hover:bg-gray-800/30"}`}
               >
-                {item}
-              </a>
+                {item.name}
+              </NavLink>
             ))}
 
-            {/* Parts in Mobile */}
-            <div className="border-t border-gray-800 pt-4">
-              <h3 className="px-6 py-2 text-amber-500 font-black uppercase tracking-widest text-sm">Parts Categories</h3>
-              {partsCategories.map((category, idx) => (
-                <a
-                  key={idx}
-                  href="#"
-                  className="block px-6 py-3 text-gray-300 hover:text-amber-500 hover:bg-gray-800/30 font-medium transition-all"
-                >
-                  {category}
-                </a>
-              ))}
+            {/* Parts in Mobile - same design as desktop */}
+            <div>
+              <button
+                onClick={() => setIsMobilePartsOpen(!isMobilePartsOpen)}
+                className="w-full flex items-center justify-between px-6 py-4 text-[14px] sm:text-[16px] font-black uppercase tracking-widest text-gray-300 hover:text-amber-500 hover:bg-gray-800/30 transition-all"
+              >
+                Parts
+                {isMobilePartsOpen ? <FaChevronUp className="text-sm" /> : <FaChevronDown className="text-sm" />}
+              </button>
+              {isMobilePartsOpen && (
+                <div className="mx-4 my-2 bg-[#0b1b3a] border border-gray-700 rounded-lg p-2 animate-slideDown">
+                  {productCategories.map((category, idx) => (
+                    <a 
+                      key={idx}
+                      href="#"
+                      className="block px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all"
+                    >
+                      {category}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="pt-6 mt-3 sm:mt-6 border-t border-gray-800 space-y-4">

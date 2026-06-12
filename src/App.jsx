@@ -13,15 +13,14 @@ function App() {
   return (
     <>
       <Header />
-      
+
       <Routes>
-        <Route path="/" element={<Home />}  />
+        <Route path="/" element={<Home />} />
         <Route path="/authendication" element={<Authendication />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </>
-
   )
 }
 
