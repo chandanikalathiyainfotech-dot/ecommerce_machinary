@@ -11,11 +11,13 @@ import {
   FaEnvelope,
   FaCogs
 } from "react-icons/fa";
+import { IoMdCall } from "react-icons/io";
+import { MdCall } from "react-icons/md";
 
 function Footer() {
   return (
     <footer className="bg-[#0b1b3a]">
-      CTA Banner
+      {/* CTA Banner
       <div className="bg-gradient-to-r from-[#1a2a4a] to-[#0b1b3a] border-t-3 border-amber-500 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
           <h2 className="text-2xl md:text-3xl font-black text-white mb-3">Ready to Upgrade Your Machinery?</h2>
@@ -26,16 +28,15 @@ function Footer() {
             Get Quote
           </button>
         </div>
-      </div>
+      </div> */}
 
       {/* Footer Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_0.5fr_0.5fr_1fr] gap-10">
 
           {/* Logo & About Section */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-
               <div className="flex items-center gap-3 cursor-pointer group">
                 <div className="relative">
                   <div className="absolute -inset-2 bg-amber-500 rounded-lg blur opacity-20 group-hover:opacity-40 transition-all duration-500"></div>
@@ -116,7 +117,7 @@ function Footer() {
                 <span className="text-gray-400 text-sm">Industrial Estate, Plot #123, Ahmedabad, Gujarat 380006</span>
               </li>
               <li className="flex items-center gap-3">
-                <FaPhone className="text-amber-500 flex-shrink-0" />
+                <MdCall className="text-amber-500 flex-shrink-0" />
                 <span className="text-gray-400 text-sm">+91 98765 43210</span>
               </li>
               <li className="flex items-center gap-3">
