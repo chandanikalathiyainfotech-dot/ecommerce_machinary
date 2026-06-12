@@ -1,17 +1,49 @@
 
+import { useFormik } from "formik";
 import React from "react";
-import { 
-  FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, 
-  FaFacebook, FaTwitter, FaInstagram, FaLinkedin 
+import {
+  FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock,
+  FaFacebook, FaTwitter, FaInstagram, FaLinkedin
 } from "react-icons/fa";
 import { MdCall } from "react-icons/md";
+import { boolean, object, string } from "yup";
 
 function Contact() {
+
+  const authschema = object({
+    fname: string().required(),
+    lname: string().required(),
+    email: string().email().required(),
+    subject: string().required(),
+    message: string().required(),
+  })
+
+
+  const formik = useFormik({
+    initialValues: {
+      fname: '',
+      lname: '',
+      email: '',
+      subject: '',
+      message: '',
+    },
+    enableReinitialize: true,
+    validationSchema: authschema,
+    onSubmit: (values, { resetForm }) => {
+      console.log("values", values);
+
+      resetForm();
+    },
+  })
+
+  const { handleSubmit, handleBlur, handleChange, values, touched, errors, setFieldValue, setFieldTouched } = formik;
+  console.log("errors:", errors);
+
   return (
     <section className="relative bg-gradient-to-br from-[#f5f5f5] to-[#e2e8f0] py-8 sm:py-12 lg:py-20">
       <div className="relative container mx-auto px-3 sm:px-4 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12 lg:mb-16">  
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-500/20 border border-amber-500/30 rounded-full mb-3">
             <span className="text-amber-600 text-xs font-semibold tracking-wide">Get In Touch</span>
           </div>
@@ -104,7 +136,7 @@ function Contact() {
           {/* Contact Form */}
           <div className="col-span-12 min-[992px]:col-span-7 col-span-6 bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-gray-100">
             <h3 className="text-lg sm:text-2xl font-bold text-[#0b1b3a] mb-4 sm:mb-6">Send Us a Message</h3>
-            <form className="space-y-3 sm:space-y-6">
+            <form className="space-y-3 sm:space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                 <div>
                   <label className="block text-[#0b1b3a] font-semibold mb-1 text-xs sm:text-sm">First Name</label>
@@ -112,7 +144,13 @@ function Contact() {
                     type="text"
                     className="w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg border-2 border-gray-200 focus:border-amber-500 focus:outline-none transition-all bg-gray-50 text-xs sm:text-sm"
                     placeholder="Your first name"
+                    name="fname"
+                    id="fname"
+                    value={values.fname}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
+                  {errors.fname && touched.fname && <span className="text-red-500 text-sm">{errors.fname}</span>}
                 </div>
                 <div>
                   <label className="block text-[#0b1b3a] font-semibold mb-1 text-xs sm:text-sm">Last Name</label>
@@ -120,7 +158,13 @@ function Contact() {
                     type="text"
                     className="w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg border-2 border-gray-200 focus:border-amber-500 focus:outline-none transition-all bg-gray-50 text-xs sm:text-sm"
                     placeholder="Your last name"
+                    name="lname"
+                    id="lname"
+                    value={values.lname}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
+                  {errors.lname && touched.lname && <span className="text-red-500 text-sm">{errors.lname}</span>}
                 </div>
               </div>
               <div>
@@ -129,7 +173,13 @@ function Contact() {
                   type="email"
                   className="w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg border-2 border-gray-200 focus:border-amber-500 focus:outline-none transition-all bg-gray-50 text-xs sm:text-sm"
                   placeholder="your@email.com"
+                  name="email"
+                  id="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
+                {errors.email && touched.email && <span className="text-red-500 text-sm">{errors.email}</span>}
               </div>
               <div>
                 <label className="block text-[#0b1b3a] font-semibold mb-1 text-xs sm:text-sm">Subject</label>
@@ -137,7 +187,13 @@ function Contact() {
                   type="text"
                   className="w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg border-2 border-gray-200 focus:border-amber-500 focus:outline-none transition-all bg-gray-50 text-xs sm:text-sm"
                   placeholder="How can we help you?"
+                  name="subject"
+                  id="subject"
+                  value={values.subject}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
+                {errors.subject && touched.subject && <span className="text-red-500 text-sm">{errors.subject}</span>}
               </div>
               <div>
                 <label className="block text-[#0b1b3a] font-semibold mb-1 text-xs sm:text-sm">Message</label>
@@ -145,7 +201,13 @@ function Contact() {
                   rows={4}
                   className="w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg border-2 border-gray-200 focus:border-amber-500 focus:outline-none transition-all bg-gray-50 resize-none text-xs sm:text-sm"
                   placeholder="Your message here..."
+                  name="message"
+                  id="message"
+                  value={values.message}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
+                {errors.message && touched.message && <span className="text-red-500 text-sm">{errors.message}</span>}
               </div>
               <button
                 type="submit"

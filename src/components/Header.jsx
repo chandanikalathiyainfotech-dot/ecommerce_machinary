@@ -56,6 +56,12 @@ function Header() {
     }, 100);
   };
 
+  const navItems = [
+  { name: "Home", path: "/" },
+  { name: "Contact", path: "/contact" },
+  { name: "About Us", path: "/about" },
+];
+
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0b1b3a]/95 backdrop-blur-md border-b border-gray-800 shadow-xl" : "bg-[#0b1b3a]"}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -79,15 +85,15 @@ function Header() {
 
           {/* Desktop Menu */}
           <nav className="hidden min-[992px]:flex items-center gap-1">
-            {["Home", "Contact", "About Us"].map((item, idx) => (
-              <a
+            {navItems.map((item, idx) => (
+              <NavLink
                 key={idx}
-                href="#"
+                to={item.path}
                 className={`px-4 py-2 rounded-lg font-bold text-sm uppercase tracking-wider transition-all relative group/link ${idx === 0 ? "text-amber-500" : "text-gray-300 hover:text-white"}`}
               >
-                {item}
+                {item.name}
                 <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 transition-all duration-300 ${idx === 0 ? "scale-x-100" : "scale-x-0 group-hover/link:scale-x-100"}`}></span>
-              </a>
+              </NavLink>
             ))}
 
             {/* Parts with Simple Submenu */}
@@ -196,14 +202,14 @@ function Header() {
       {isMenuOpen && (
         <div className="min-[992px]:hidden bg-[#0f172a] border-t border-gray-800 max-h-[calc(100vh-100px)] overflow-y-auto">
           <div className="px-4 py-8 space-y-0 sm:space-y-4">
-            {["Home", "Contact", "About Us"].map((item, idx) => (
-              <a
+            {navItems.map((item, idx) => (
+              <NavLink
                 key={idx}
-                href="#"
+               to={item.path}
                 className={`text-[14px] sm:text-[16px] block px-6 py-4 rounded-xl font-black uppercase tracking-widest transition-all ${idx === 0 ? "text-amber-500 bg-gray-800/50" : "text-gray-300 hover:text-amber-500 hover:bg-gray-800/30"}`}
               >
-                {item}
-              </a>
+                {item.name}
+              </NavLink>
             ))}
 
             {/* Parts in Mobile - same design as desktop */}
