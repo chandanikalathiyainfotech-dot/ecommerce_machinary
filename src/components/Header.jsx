@@ -1,5 +1,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
+console.log(React);
+
 import { FaSearch, FaShoppingCart, FaBars, FaTimes, FaCogs, FaUser, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
@@ -75,12 +77,14 @@ function Header() {
                 <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-amber-500 rounded-full border-2 border-[#0f172a]"></div>
               </div>
             </div>
-            <div className="flex flex-col leading-none">
+            <NavLink
+            to={"/"}
+             className="flex flex-col leading-none">
               <span className="text-sm sm:text-base md:text-lg lg:text-xl font-black text-white tracking-tighter">
                 MECH<span className="text-amber-500">ZONE</span>
               </span>
               <span className="text-[10px] font-bold text-gray-400 tracking-[0.2em] uppercase mt-0.5 group-hover:text-amber-500 transition-colors">Industrial Pro</span>
-            </div>
+            </NavLink>
           </div>
 
           {/* Desktop Menu */}

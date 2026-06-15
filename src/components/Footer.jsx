@@ -7,11 +7,9 @@ import {
   FaInstagram,
   FaLinkedin,
   FaMapMarkerAlt,
-  FaPhone,
   FaEnvelope,
   FaCogs
 } from "react-icons/fa";
-import { IoMdCall } from "react-icons/io";
 import { MdCall } from "react-icons/md";
 
 function Footer() {
