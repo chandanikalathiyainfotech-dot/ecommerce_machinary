@@ -35,7 +35,7 @@ function Header() {
 
   const productCategories = [
     "Heavy Machinery",
-    "Spare Parts", 
+    "Spare Parts",
     "Tools & Equipment",
     "Truck Parts",
     "Maintenance Kits",
@@ -59,10 +59,10 @@ function Header() {
   };
 
   const navItems = [
-  { name: "Home", path: "/" },
-  { name: "Contact", path: "/contact" },
-  { name: "About Us", path: "/about" },
-];
+    { name: "Home", path: "/" },
+    { name: "Contact", path: "/contact" },
+    { name: "About Us", path: "/about" },
+  ];
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0b1b3a]/95 backdrop-blur-md border-b border-gray-800 shadow-xl" : "bg-[#0b1b3a]"}`}>
@@ -78,9 +78,11 @@ function Header() {
               </div>
             </div>
             <div className="flex flex-col leading-none">
-              <span className="text-sm sm:text-base md:text-lg lg:text-xl font-black text-white tracking-tighter">
+              <NavLink
+                to={"/"}
+                className="text-sm sm:text-base md:text-lg lg:text-xl font-black text-white tracking-tighter">
                 MECH<span className="text-amber-500">ZONE</span>
-              </span>
+              </NavLink>
               <span className="text-[10px] font-bold text-gray-400 tracking-[0.2em] uppercase mt-0.5 group-hover:text-amber-500 transition-colors">Industrial Pro</span>
             </div>
           </div>
@@ -99,7 +101,7 @@ function Header() {
             ))}
 
             {/* Parts with Simple Submenu */}
-            <div 
+            <div
               className="relative"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -114,12 +116,12 @@ function Header() {
 
               {/* Simple Submenu Dropdown */}
               {isPartsDropdownOpen && (
-                <div 
+                <div
                   className="absolute top-full left-0 mt-2 w-56 bg-[#0b1b3a] border border-gray-700 rounded-lg shadow-lg z-50 overflow-hidden animate-slideDown"
                 >
                   <div className="p-2">
                     {productCategories.map((category, idx) => (
-                      <a 
+                      <a
                         key={idx}
                         href="#"
                         className="block px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all"
@@ -207,7 +209,7 @@ function Header() {
             {navItems.map((item, idx) => (
               <NavLink
                 key={idx}
-               to={item.path}
+                to={item.path}
                 className={`text-[14px] sm:text-[16px] block px-6 py-4 rounded-xl font-black uppercase tracking-widest transition-all ${idx === 0 ? "text-amber-500 bg-gray-800/50" : "text-gray-300 hover:text-amber-500 hover:bg-gray-800/30"}`}
               >
                 {item.name}
@@ -226,7 +228,7 @@ function Header() {
               {isMobilePartsOpen && (
                 <div className="mx-4 my-2 bg-[#0b1b3a] border border-gray-700 rounded-lg p-2 animate-slideDown">
                   {productCategories.map((category, idx) => (
-                    <a 
+                    <a
                       key={idx}
                       href="#"
                       className="block px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all"

@@ -7,6 +7,12 @@ import {
     FaUsers,
     FaTools,
 } from "react-icons/fa";
+import {
+    FaAward,
+    FaShippingFast,
+    FaHeadset,
+} from "react-icons/fa";
+
 
 const slides = [
     "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1600",
@@ -27,6 +33,61 @@ function Home() {
 
         return () => clearInterval(interval);
     }, []);
+
+    const features = [
+        {
+            icon: <FaAward />,
+            title: "Premium Quality",
+            desc: "High-performance machinery built for durability, efficiency, and long-term reliability.",
+        },
+        {
+            icon: <FaShippingFast />,
+            title: "Fast Delivery",
+            desc: "Quick and secure delivery across India with real-time shipment tracking.",
+        },
+        {
+            icon: <FaTools />,
+            title: "Expert Maintenance",
+            desc: "Professional installation, maintenance, and repair services by experts.",
+        },
+        {
+            icon: <FaHeadset />,
+            title: "24/7 Support",
+            desc: "Dedicated customer support team available whenever you need assistance.",
+        },
+    ];
+
+    const stats = [
+        {
+            number: "15+",
+            text: "Years Experience",
+        },
+        {
+            number: "500+",
+            text: "Machines Delivered",
+        },
+        {
+            number: "1000+",
+            text: "Happy Clients",
+        },
+        {
+            number: "24/7",
+            text: "Support Service",
+        },
+    ];
+
+    const brands = [
+        "CATERPILLAR",
+        "JCB",
+        "KOMATSU",
+        "HITACHI",
+        "LIEBHERR",
+        "VOLVO",
+        "DOOSAN",
+        "HYUNDAI",
+    ];
+
+
     return (
         <div>
             <section className="relative min-h-screen overflow-hidden flex items-center bg-[#0b1b3a]">
@@ -101,41 +162,7 @@ function Home() {
                                     <FaPlay />
                                     Watch Video
                                 </button>
-
                             </div>
-
-                            {/* Stats */}
-                            <div className="grid grid-cols-3 gap-6 mt-14">
-
-                                <div>
-                                    <h3 className="text-4xl font-black text-amber-500">
-                                        28+
-                                    </h3>
-                                    <p className="text-gray-400 text-sm">
-                                        Years
-                                    </p>
-                                </div>
-
-                                <div>
-                                    <h3 className="text-4xl font-black text-amber-500">
-                                        5000+
-                                    </h3>
-                                    <p className="text-gray-400 text-sm">
-                                        Products
-                                    </p>
-                                </div>
-
-                                <div>
-                                    <h3 className="text-4xl font-black text-amber-500">
-                                        1200+
-                                    </h3>
-                                    <p className="text-gray-400 text-sm">
-                                        Clients
-                                    </p>
-                                </div>
-
-                            </div>
-
                         </div>
 
                         {/* RIGHT SIDE */}
@@ -238,6 +265,157 @@ function Home() {
 
                 </div>
             </section>
+
+            <section className="py-20 bg-white overflow-hidden">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+                    {/* Heading */}
+                    <div className="text-center mb-14">
+                        <span className="inline-block px-4 py-2 bg-amber-100 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full border border-amber-200">
+                            Trusted Brands
+                        </span>
+
+                        <h2 className="mt-5 text-3xl md:text-4xl lg:text-5xl font-black text-[#0b1b3a]">
+                            Brands That Power
+                            <span className="text-amber-500"> Industries</span>
+                        </h2>
+
+                        <p className="mt-5 text-gray-600 max-w-3xl mx-auto">
+                            We work with globally trusted machinery manufacturers to deliver
+                            high-quality industrial equipment and solutions.
+                        </p>
+                    </div>
+
+                    {/* Auto Sliding Brands */}
+                    <div className="relative">
+
+                        <div className="absolute left-0 top-0 w-24 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
+
+                        <div className="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
+
+                        <div className="flex animate-marquee">
+                            {[...brands, ...brands].map((brand, index) => (
+                                <div
+                                    key={index}
+                                    className="mx-4 min-w-[220px] h-28 bg-white border border-gray-200 rounded-2xl flex items-center justify-center shadow-sm hover:border-amber-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                                >
+                                    <h3 className="text-2xl font-black text-[#0b1b3a]">
+                                        {brand}
+                                    </h3>
+                                </div>
+                            ))}
+                        </div>
+
+                    </div>
+                </div>
+
+                <style>{`
+                        @keyframes marquee {
+                        0% {
+                            transform: translateX(0);
+                        }
+
+                        100% {
+                            transform: translateX(-50%);
+                        }
+                        }
+
+                        .animate-marquee {
+                        width: max-content;
+                        display: flex;
+                        animation: marquee 20s linear infinite;
+                        }
+
+                        .animate-marquee:hover {
+                        animation-play-state: paused;
+                        }
+                 `}</style>
+            </section>
+
+
+            <section className="bg-gradient-to-b from-white via-gray-50 to-white py-20 overflow-hidden">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+                    {/* Section Heading */}
+                    <div className="text-center mb-14">
+                        <span className="inline-block px-4 py-2 bg-amber-100 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full border border-amber-200">
+                            Why Choose Us
+                        </span>
+
+                        <h2 className="mt-5 text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
+                            Trusted Industrial
+                            <span className="text-amber-500">
+                                {" "}Machinery Partner
+                            </span>
+                        </h2>
+
+                        <p className="mt-5 text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                            We provide world-class industrial machinery solutions with unmatched
+                            quality, professional support, advanced technology, and years of
+                            industry expertise.
+                        </p>
+                    </div>
+
+                    {/* Feature Cards */}
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {features.map((item, index) => (
+                            <div
+                                key={index}
+                                className="group relative bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:border-amber-500 hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
+                            >
+                                {/* Number */}
+                                <span className="absolute top-4 right-4 text-5xl font-black text-gray-100">
+                                    0{index + 1}
+                                </span>
+
+                                {/* Icon */}
+                                <div className="relative w-16 h-16 rounded-xl bg-amber-500 text-[#0b1b3a] flex items-center justify-center text-2xl mb-6 shadow-lg group-hover:scale-110 transition-all duration-300">
+                                    {item.icon}
+                                </div>
+
+                                {/* Content */}
+                                <h3 className="text-gray-900 text-xl font-bold mb-3">
+                                    {item.title}
+                                </h3>
+
+                                <p className="text-gray-600 text-sm leading-relaxed">
+                                    {item.desc}
+                                </p>
+
+                                {/* Bottom Line */}
+                                <div className="mt-6 w-10 h-1 bg-amber-500 group-hover:w-20 transition-all duration-500"></div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Statistics */}
+                    <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+                        {stats.map((item, index) => (
+                            <div
+                                key={index}
+                                className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-sm hover:border-amber-500 hover:shadow-lg transition-all duration-300"
+                            >
+                                <h3 className="text-3xl font-black text-amber-500">
+                                    {item.number}
+                                </h3>
+
+                                <p className="text-gray-600 text-sm mt-2">
+                                    {item.text}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="text-center mt-14">
+                        <button className="px-8 py-4 bg-amber-500 text-[#0b1b3a] font-black rounded-lg hover:bg-amber-400 hover:shadow-lg transition-all duration-300">
+                            Explore Machinery
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
         </div>
     );
 }
