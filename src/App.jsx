@@ -7,6 +7,7 @@ import Authendication from './container/Authendication'
 import { Route, Routes } from 'react-router-dom'
 import Contact from "./container/Contact";
 import Home from "./container/Home";
+import Aboutus from "./container/Aboutus";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
          <Route path="/" element={<Home/>} />
         <Route path="/authendication" element={<Authendication />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/about-us" element={<Aboutus />} />
       </Routes>
       <Footer />
     </>

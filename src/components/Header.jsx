@@ -59,7 +59,7 @@ function Header() {
   const navItems = [
   { name: "Home", path: "/" },
   { name: "Contact", path: "/contact" },
-  { name: "About Us", path: "/about" },
+  { name: "About Us", path: "/about-us" },
 ];
 
   return (
