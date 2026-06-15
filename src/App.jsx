@@ -8,6 +8,8 @@ import { Route, Routes } from 'react-router-dom'
 import Contact from "./container/Contact";
 import Home from "./container/Home";
 import Aboutus from "./container/Aboutus";
+import Blogdetails from "./container/Blogdetails";
+import SparParts from "./container/Parts/SparParts";
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
         <Route path="/authendication" element={<Authendication />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about-us" element={<Aboutus />} />
+        <Route path="/blog/:id" element={<Blogdetails />} />
+        <Route path="/parts/spare-parts" element={<SparParts />} />
       </Routes>
       <Footer />
     </>

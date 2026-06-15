@@ -1,6 +1,8 @@
 
 import React from "react";
-import { FaCogs, FaTools, FaShieldAlt, FaAward, FaTruck, FaUsers, FaStar } from "react-icons/fa";
+console.log(React);
+
+import { FaCogs, FaTools, FaShieldAlt, FaAward, FaTruck, FaUsers } from "react-icons/fa";
 
 function Aboutus() {
   const values = [
