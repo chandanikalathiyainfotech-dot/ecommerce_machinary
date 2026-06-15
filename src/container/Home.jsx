@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from "react";
 console.log(React);
-import {
-    FaArrowRight,
-    FaPlay,
-    FaIndustry,
-    FaUsers,
-    FaTools,
-} from "react-icons/fa";
-import {
-    FaAward,
-    FaShippingFast,
-    FaHeadset,
-} from "react-icons/fa";
+import { FaArrowRight, FaPlay, FaIndustry, FaUsers, FaTools, FaAward, FaShippingFast, FaHeadset, FaCalendarAlt, FaCogs, FaTruckMoving, FaWrench, FaStar, FaQuoteLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 
 const slides = [
@@ -86,6 +76,95 @@ function Home() {
         "DOOSAN",
         "HYUNDAI",
     ];
+
+    const blogs = [
+        {
+            id: 1,
+            image:
+                "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1000",
+            date: "15 June 2026",
+            title: "Top 5 Industrial Machinery Trends in 2026",
+            desc: "Explore the latest innovations transforming the manufacturing industry.",
+        },
+        {
+            id: 2,
+            image:
+                "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1000",
+            date: "10 June 2026",
+            title: "How to Choose the Right Heavy Equipment",
+            desc: "A complete guide to selecting machinery for your industrial projects.",
+        },
+        {
+            id: 3,
+            image:
+                "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1000",
+            date: "05 June 2026",
+            title: "Maintenance Tips for Maximum Productivity",
+            desc: "Reduce downtime and improve performance with expert maintenance tips.",
+        },
+    ];
+
+    const services = [
+        {
+            icon: <FaIndustry />,
+            title: "Industrial Machinery",
+            desc: "High-performance industrial machines for manufacturing and production facilities.",
+        },
+        {
+            icon: <FaTools />,
+            title: "Spare Parts Supply",
+            desc: "Genuine OEM spare parts and components for all major machinery brands.",
+        },
+        {
+            icon: <FaWrench />,
+            title: "Maintenance Services",
+            desc: "Preventive and corrective maintenance solutions to minimize downtime.",
+        },
+        {
+            icon: <FaTruckMoving />,
+            title: "Fast Delivery",
+            desc: "Reliable and secure nationwide delivery of machinery and equipment.",
+        },
+        {
+            icon: <FaCogs />,
+            title: "Installation Support",
+            desc: "Professional machinery installation and commissioning by experts.",
+        },
+        {
+            icon: <FaHeadset />,
+            title: "24/7 Technical Support",
+            desc: "Dedicated support team available around the clock for assistance.",
+        },
+    ];
+
+    const testimonials = [
+        {
+            name: "Rajesh Patel",
+            company: "Patel Engineering Ltd.",
+            image:
+                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300",
+            review:
+                "The machinery quality is outstanding. Their support team helped us throughout installation and setup. Highly recommended.",
+        },
+        {
+            name: "Amit Shah",
+            company: "Shah Industries",
+            image:
+                "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300",
+            review:
+                "We've purchased multiple industrial machines and the performance has exceeded our expectations. Excellent service.",
+        },
+        {
+            name: "Vikram Mehta",
+            company: "Mehta Manufacturing",
+            image:
+                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300",
+            review:
+                "Reliable products, fast delivery, and professional after-sales support. A trusted partner for our business growth.",
+        },
+    ];
+
+    const navigate = useNavigate()
 
 
     return (
@@ -271,7 +350,7 @@ function Home() {
 
                     {/* Heading */}
                     <div className="text-center mb-14">
-                        <span className="inline-block px-4 py-2 bg-amber-100 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full border border-amber-200">
+                        <span className="inline-block px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30">
                             Trusted Brands
                         </span>
 
@@ -332,13 +411,77 @@ function Home() {
                  `}</style>
             </section>
 
+            <section className="py-20 bg-[#f8fafc]">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+                    {/* Heading */}
+                    <div className="text-center mb-14">
+                        <span className="inline-block px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full  bg-amber-500/20 border border-amber-500/30">
+                            Our Services
+                        </span>
+
+                        <h2 className="mt-5 text-3xl md:text-4xl lg:text-5xl font-black text-[#0b1b3a]">
+                            Complete Industrial
+                            <span className="text-amber-500"> Solutions</span>
+                        </h2>
+
+                        <p className="mt-5 text-gray-600 max-w-3xl mx-auto">
+                            We provide end-to-end industrial machinery solutions designed
+                            to improve efficiency, productivity, and long-term business growth.
+                        </p>
+                    </div>
+
+                    {/* Services Grid */}
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        {services.map((service, index) => (
+                            <div
+                                key={index}
+                                className="group bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-2xl hover:border-amber-500 transition-all duration-500 hover:-translate-y-2"
+                            >
+                                <div className="w-16 h-16 rounded-2xl bg-[#0b1b3a] text-amber-500 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-all duration-300">
+                                    {service.icon}
+                                </div>
+
+                                <h3 className="text-xl font-black text-[#0b1b3a] mb-3">
+                                    {service.title}
+                                </h3>
+
+                                <p className="text-gray-600 leading-relaxed">
+                                    {service.desc}
+                                </p>
+
+                                <div className="mt-6 w-12 h-1 bg-amber-500 rounded-full group-hover:w-24 transition-all duration-500"></div>
+                            </div>
+                        ))}
+
+                    </div>
+
+                    {/* CTA Banner */}
+                    <div className="mt-16 bg-[#0b1b3a] rounded-3xl p-10 text-center">
+                        <h3 className="text-3xl font-black text-white mb-4">
+                            Need a Custom Machinery Solution?
+                        </h3>
+
+                        <p className="text-gray-300 max-w-2xl mx-auto mb-8">
+                            Our experts are ready to help you find the right equipment
+                            and services for your industrial requirements.
+                        </p>
+
+                        <button className="px-8 py-4 bg-amber-500 text-[#0b1b3a] font-black rounded-xl hover:bg-amber-400 transition-all">
+                            Get Free Consultation
+                        </button>
+                    </div>
+
+                </div>
+            </section>
 
             <section className="bg-gradient-to-b from-white via-gray-50 to-white py-20 overflow-hidden">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
                     {/* Section Heading */}
                     <div className="text-center mb-14">
-                        <span className="inline-block px-4 py-2 bg-amber-100 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full border border-amber-200">
+                        <span className="inline-block px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full  bg-amber-500/20 border border-amber-500/30">
                             Why Choose Us
                         </span>
 
@@ -411,6 +554,200 @@ function Home() {
                         <button className="px-8 py-4 bg-amber-500 text-[#0b1b3a] font-black rounded-lg hover:bg-amber-400 hover:shadow-lg transition-all duration-300">
                             Explore Machinery
                         </button>
+                    </div>
+
+                </div>
+            </section>
+
+            <section className="py-20 bg-white">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+                    {/* Heading */}
+                    <div className="text-center mb-14">
+                        <span className="inline-block px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full  bg-amber-500/20 border border-amber-500/30">
+                            Latest Blog & News
+                        </span>
+
+                        <h2 className="mt-5 text-3xl md:text-4xl lg:text-5xl font-black text-[#0b1b3a]">
+                            Industry Insights &
+                            <span className="text-amber-500"> Updates</span>
+                        </h2>
+
+                        <p className="mt-5 text-gray-600 max-w-3xl mx-auto">
+                            Stay informed with the latest machinery trends, maintenance guides,
+                            and industrial innovations from our experts.
+                        </p>
+                    </div>
+
+                    {/* Blog Cards */}
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        {blogs.map((blog, index) => (
+                            <a
+                                href="#"
+                                key={index}
+                                onClick={() => navigate(`/blog/${blog.id}`)}
+                                className="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-amber-500 transition-all duration-500"
+                            >
+                                {/* Image */}
+                                <div className="overflow-hidden h-60">
+                                    <img
+                                        src={blog.image}
+                                        alt={blog.title}
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
+                                    />
+                                </div>
+
+                                {/* Content */}
+                                <div className="p-6">
+
+                                    <div className="flex items-center gap-2 text-amber-500 text-sm font-semibold mb-4">
+                                        <FaCalendarAlt />
+                                        {blog.date}
+                                    </div>
+
+                                    <h3 className="text-xl font-black text-[#0b1b3a] mb-3 group-hover:text-amber-500 transition-all">
+                                        {blog.title}
+                                    </h3>
+
+                                    <p className="text-gray-600 leading-relaxed mb-6">
+                                        {blog.desc}
+                                    </p>
+
+                                    <button className="flex items-center gap-2 text-amber-500 font-bold hover:gap-3 transition-all">
+                                        Read More
+                                        <FaArrowRight />
+                                    </button>
+
+                                </div>
+                            </a>
+                        ))}
+
+                    </div>
+
+                    {/* Bottom CTA */}
+                    <div className="text-center mt-14">
+                        <button className="px-8 py-4 bg-[#0b1b3a] text-white font-black rounded-xl hover:bg-[#122754] transition-all">
+                            View All Articles
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+            <section className="py-20 bg-[#f8fafc]">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+                    {/* Heading */}
+                    <div className="text-center mb-14">
+
+                        <span className="inline-block px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30">
+                            Customer Testimonials
+                        </span>
+
+                        <h2 className="mt-5 text-3xl md:text-4xl lg:text-5xl font-black text-[#0b1b3a]">
+                            What Our
+                            <span className="text-amber-500"> Clients Say</span>
+                        </h2>
+
+                        <p className="mt-5 text-gray-600 max-w-3xl mx-auto">
+                            Trusted by industries across manufacturing, construction,
+                            and engineering sectors for quality machinery and reliable service.
+                        </p>
+
+                    </div>
+
+                    {/* Testimonials */}
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        {testimonials.map((item, index) => (
+                            <div
+                                key={index}
+                                className="group bg-white rounded-3xl border border-gray-200 p-8 hover:border-amber-500 hover:shadow-2xl transition-all duration-500"
+                            >
+
+                                {/* Quote Icon */}
+                                <div className="w-14 h-14 rounded-2xl bg-amber-500 flex items-center justify-center text-[#0b1b3a] text-xl mb-6">
+                                    <FaQuoteLeft />
+                                </div>
+
+                                {/* Review */}
+                                <p className="text-gray-600 leading-7 mb-6">
+                                    "{item.review}"
+                                </p>
+
+                                {/* Rating */}
+                                <div className="flex gap-1 text-amber-500 mb-6">
+                                    {[...Array(5)].map((_, i) => (
+                                        <FaStar key={i} />
+                                    ))}
+                                </div>
+
+                                {/* User */}
+                                <div className="flex items-center gap-4">
+
+                                    <img
+                                        src={item.image}
+                                        alt={item.name}
+                                        className="w-14 h-14 rounded-full object-cover border-2 border-amber-500"
+                                    />
+
+                                    <div>
+                                        <h4 className="font-black text-[#0b1b3a]">
+                                            {item.name}
+                                        </h4>
+
+                                        <p className="text-sm text-gray-500">
+                                            {item.company}
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        ))}
+
+                    </div>
+
+                    {/* Bottom Statistics */}
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+
+                        <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center">
+                            <h3 className="text-4xl font-black text-amber-500">
+                                1000+
+                            </h3>
+                            <p className="text-gray-600 mt-2">
+                                Happy Clients
+                            </p>
+                        </div>
+
+                        <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center">
+                            <h3 className="text-4xl font-black text-amber-500">
+                                500+
+                            </h3>
+                            <p className="text-gray-600 mt-2">
+                                Projects Completed
+                            </p>
+                        </div>
+
+                        <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center">
+                            <h3 className="text-4xl font-black text-amber-500">
+                                15+
+                            </h3>
+                            <p className="text-gray-600 mt-2">
+                                Years Experience
+                            </p>
+                        </div>
+
+                        <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center">
+                            <h3 className="text-4xl font-black text-amber-500">
+                                98%
+                            </h3>
+                            <p className="text-gray-600 mt-2">
+                                Client Satisfaction
+                            </p>
+                        </div>
+
                     </div>
 
                 </div>
