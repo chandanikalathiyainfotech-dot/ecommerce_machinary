@@ -9,7 +9,7 @@ import Contact from "./container/Contact";
 import Home from "./container/Home";
 import Aboutus from "./container/Aboutus";
 import Blogdetails from "./container/Blogdetails";
-import SparParts from "./container/Parts/SparParts";
+import Detailproduct from "./container/Detailproduct";
 
 function App() {
 
@@ -17,12 +17,13 @@ function App() {
     <>
       <Header />
       <Routes>
-         <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Home />} />
         <Route path="/authendication" element={<Authendication />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about-us" element={<Aboutus />} />
         <Route path="/blog/:id" element={<Blogdetails />} />
-        <Route path="/parts/spare-parts" element={<SparParts />} />
+        <Route path="product-detail" element={<Detailproduct />} />
+        {/* <Route path="/parts/spare-parts" element={<SparParts />} /> */}
       </Routes>
       <Footer />
     </>

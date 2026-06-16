@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 console.log(React);
-import { FaArrowRight, FaPlay, FaIndustry, FaUsers, FaTools, FaAward, FaShippingFast, FaHeadset, FaCalendarAlt, FaCogs, FaTruckMoving, FaWrench, FaStar, FaQuoteLeft } from "react-icons/fa";
+import { FaArrowRight, FaPlay, FaIndustry, FaUsers, FaTools, FaAward, FaShippingFast, FaHeadset, FaCalendarAlt, FaCogs, FaTruckMoving, FaWrench, FaStar, FaQuoteLeft, FaLongArrowAltRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
+import { FiHeart } from "react-icons/fi";
+import { LuEye } from "react-icons/lu";
+import { TiShoppingCart } from "react-icons/ti";
 
 const slides = [
     "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1600",
@@ -16,7 +19,31 @@ const slides = [
 
 function Home() {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [visibleCount, setVisibleCount] = useState(6);
 
+    useEffect(() => {
+        const updateCount = () => {
+            const w = window.innerWidth;
+
+            console.log("WIDTH:", w);
+
+            if (w <= 320) setVisibleCount(2);
+            else if (w <= 576) setVisibleCount(2);
+            else if (w <= 768) setVisibleCount(4);
+            else if (w <= 992) setVisibleCount(4);
+            else setVisibleCount(6);
+        };
+
+        updateCount(); // 👈 IMPORTANT (run once on load)
+
+        window.addEventListener("resize", updateCount);
+
+        return () => window.removeEventListener("resize", updateCount);
+    }, []);
+
+    useEffect(() => {
+        console.log("visibleCount:", visibleCount);
+    }, [visibleCount]);
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentSlide((prev) =>
@@ -270,6 +297,54 @@ function Home() {
 
     ];
 
+    const category = [
+        {
+            img: '../../src/assets/Images/machines/c1.jpg',
+            name: "Hammer Tool",
+            product: 11
+        },
+        {
+            img: '../../src/assets/Images/machines/c2.jpg',
+            name: "Drill Tool",
+            product: 13
+        },
+        {
+            img: '../../src/assets/Images/machines/c3.jpg',
+            name: "Circular Saw",
+            product: 9
+        },
+        {
+            img: '../../src/assets/Images/machines/c4.jpg',
+            name: "Wrench Tool",
+            product: 13
+        },
+        {
+            img: '../../src/assets/Images/machines/c5.jpg',
+            name: "Decker Tool",
+            product: 11
+        },
+        {
+            img: '../../src/assets/Images/machines/c6.jpg',
+            name: "Power Saw",
+            product: 17
+        },
+        {
+            img: '../../src/assets/Images/machines/c7.jpg',
+            name: "California Air",
+            product: 4
+        },
+        {
+            img: '../../src/assets/Images/machines/c8.jpg',
+            name: "Jackhammer Tooll",
+            product: 5
+        },
+        {
+            img: '../../src/assets/Images/machines/c9.jpg',
+            name: "Planet Power",
+            product: 7
+        }
+    ]
+
     const navigate = useNavigate()
 
 
@@ -455,6 +530,473 @@ function Home() {
                 </div>
             </section>
 
+            <section id="category">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <h3 className="title">Shop By Featured Categories</h3>
+                    <h5 className="subtitle">There are many variations of passages of lorem Ipsum available believable.</h5>
+
+                    <div className="category-product">
+
+                        <Swiper
+                            modules={[Navigation]}
+                            // slidesPerView={6}
+                            navigation={true}
+
+                            breakpoints={{
+                                320: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 20
+                                },
+                                576: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 25
+                                },
+                                768: {
+                                    slidesPerView: 4,
+                                    spaceBetween: 25
+                                },
+                                992: {
+                                    slidesPerView: 5,
+                                    spaceBetween: 25
+                                },
+                                1200: {
+                                    slidesPerView: 6,
+                                    spaceBetween: 25
+                                },
+                            }}
+                        >
+                            {
+                                category?.map((v) => {
+                                    return (
+                                        <SwiperSlide>
+                                            <div className="cat-card group">
+                                                {/* category image */}
+                                                <div className="border-[1.5px] border-gray-300 rounded-full sm:p-2 group-hover:border-amber-500">
+                                                    <img src={v.img} alt="" className="object-cover rounded-full" />
+                                                </div>
+
+                                                <h6 className="sm:text-[18px] font-medium text-center mt-4">{v.name}</h6>
+                                                <p className="text-[14px] sm:text-[16px] text-[#666666] text-center">{v.product} product</p>
+                                            </div>
+                                        </SwiperSlide>
+                                    )
+                                })
+                            }
+
+                        </Swiper>
+                        {/* 
+                        <div className="w-40">
+                            
+                        </div> */}
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="products">
+                {/* <span className="flex w-fit mx-auto px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30">
+                    OUR PRODUCTS
+                </span>
+
+                <h2 className="title">
+                    Explore Our Premium Machinery & Tools
+                </h2>
+
+                <h5 className="subtitle max-w-5xl mx-auto px-4">
+                    Discover a wide range of high-quality industrial machinery, power tools, and equipment carefully selected to meet the needs of professionals, workshops, construction projects, and manufacturing industries.
+                </h5> */}
+
+                <div class="container px-4 sm:px-6 lg:px-8  mx-auto bg-white  overflow-hidden  transition-all duration-300 product-container">
+                    <div className="text-center mb-8">
+                        <div className="flex justify-center">
+                            <span
+                                className="inline-block px-3 sm:px-4 md:px-5 py-2 text-[11px] sm:text-sm font-bold uppercase tracking-[2px] sm:tracking-widest text-amber-600
+                            rounded-full bg-amber-500/20 border border-amber-500/30"
+                            >
+                                Our Products
+                            </span>
+                        </div>
+
+                        <h2 className="title font-black mt-3 text-[#0b1b3a]">
+                            Explore Our Premium Machinery & Tools
+                            {/* <span className="text-amber-500">Machinery & Tools</span> */}
+                        </h2>
+
+                        <p className="mt-3 text-gray-600 subtitle max-w-5xl mx-auto px-4">
+                            Discover a wide range of high-quality industrial machinery, power tools, and equipment carefully selected to meet the needs of professionals, workshops, construction projects, and manufacturing industries.
+                        </p>
+                    </div>
+                    <div>
+                        <Swiper
+                            modules={[Grid, Navigation]}
+                            slidesPerView={4}
+                            navigation={true}
+                            grid={{
+                                rows: 2,
+                                fill: "row",
+                            }}
+                            spaceBetween={30}
+                            breakpoints={{
+                                320: {
+                                    slidesPerView: 1,
+                                    spaceBetween: 10,
+                                    grid: {
+                                        rows: 1,
+                                    },
+                                },
+                                576: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 25,
+                                    grid: {
+                                        rows: 1,
+                                    },
+                                },
+                                768: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 15,
+                                    grid: {
+                                        rows: 2,
+                                    },
+                                },
+                                992: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 20,
+                                    grid: {
+                                        rows: 2,
+                                    },
+                                },
+                                1200: {
+                                    slidesPerView: 4,
+                                    spaceBetween: 30,
+                                    grid: {
+                                        rows: 2,
+                                    },
+                                },
+                            }}
+                        >
+                            {
+                                products?.map((v) => {
+                                    return (
+                                        <SwiperSlide>
+                                            <div className=" border border-gray-200 rounded-md group">
+                                                <div className="relative">
+                                                    <div class="absolute mt-2 ml-2 z-10">
+                                                        {
+                                                            v?.oldPrice &&
+                                                            <span class="bg-[#0b1b3a] text-white text-xs font-semibold px-2 py-1 rounded">
+                                                                -10%
+                                                            </span>
+                                                        }
+                                                    </div>
+
+                                                    <div className="absolute right-3 top-4 flex flex-col gap-2 z-10">
+
+                                                        {/* Wishlist */}
+                                                        <button
+                                                            className="
+                                                            w-8 h-8 bg-white rounded-full flex items-center justify-center
+                                                            border border-gray-300
+
+                                                            opacity-100 translate-x-0
+                                                            min-[992px]:opacity-0 min-[992px]:translate-x-4
+
+                                                            group-hover:min-[992px]:opacity-100
+                                                            group-hover:min-[992px]:translate-x-0
+
+                                                            transition-all duration-300 delay-100
+                                                            hover:bg-[#0b1b3a] hover:text-white"
+                                                        >
+                                                            <FiHeart className="text-sm" />
+                                                        </button>
+
+                                                        {/* Eye */}
+                                                        <button
+                                                            className="
+                                                                w-8 h-8 bg-white rounded-full flex items-center justify-center
+                                                                border border-gray-300
+
+                                                                opacity-100 translate-x-0
+                                                                min-[992px]:opacity-0 min-[992px]:translate-x-4
+
+                                                                group-hover:min-[992px]:opacity-100
+                                                                group-hover:min-[992px]:translate-x-0
+
+                                                                transition-all duration-300 delay-300
+                                                                hover:bg-[#0b1b3a] hover:text-white"
+                                                        >
+                                                            <LuEye />
+                                                        </button>
+                                                    </div>
+
+                                                    {/* Product Image */}
+                                                    <div className="h-50 min-[576px]:h-40 sm:h-64 flex items-center justify-center overflow-hidden p-2 min-[576px]:p-5 md:p-5 lg:p-2 sm:p-4">
+                                                        <img
+
+                                                            src={v.image}
+                                                            alt="Product"
+                                                            className="product-img max-h-full object-cover w-[100px] min-[576px]:w-[150px] min-[768px]:w-full h-full"
+                                                        />
+                                                    </div>
+
+                                                    <div class="px-2 sm:px-5 pb-3 sm:pb-5 border-t border-gray-100">
+                                                        <h3 class="mt-5 text-[15px] sm:text-md md:text-[17px] lg:text-lg font-medium text-gray-800 sm:leading-7">
+                                                            {v.name}
+                                                        </h3>
+
+
+                                                        <div class="flex items-center mt-1 sm:mt-3">
+                                                            <div class="flex text-yellow-400">
+                                                                ★★★★★
+                                                            </div>
+                                                            <span class="ml-2 text-sm text-gray-500">({v.rating})</span>
+                                                        </div>
+
+                                                        <div class="flex items-center gap-2 mt-2 sm:mt-4">
+                                                            <span class="text-gray-400 line-through">
+                                                                {v.oldPrice && "$" + v.oldPrice}
+                                                            </span>
+                                                            <span class="text-md sm:text-lg md:text-xl font-bold text-[#0b1b3a]">
+                                                                ${v.price}
+                                                            </span>
+                                                        </div>
+
+
+                                                        <div
+                                                            className="
+                                                            overflow-hidden
+
+                                                            max-h-20 opacity-100
+                                                            min-[992px]:max-h-0 min-[992px]:opacity-0
+
+                                                            group-hover:min-[992px]:max-h-20
+                                                            group-hover:min-[992px]:opacity-100
+
+                                                            transition-all duration-500"
+                                                        >
+                                                            <button
+                                                                className="w-full mt-5 py-2 text-[14px] bg-gray-100 text-gray-800 font-semibold rounded
+                                                                hover:bg-amber-500 hover:text-white transition
+                                                                flex items-center justify-center gap-2"
+                                                            >
+                                                                <TiShoppingCart className="text-lg" />
+                                                                <span>ADD TO CART</span>
+                                                            </button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </SwiperSlide>
+                                    )
+                                })
+                            }
+
+                        </Swiper>
+                    </div>
+
+                    <button
+                        className="px-10  py-3 text-[14px] sm:text-[14px] md:text-[16px] bg-[var(--secondary-color)]  text-white font-semibold rounded hover:bg-[var(--primary-color)]
+                        hover:text-black transition-all duration-300 flex items-center justify-center gap-2 mx-auto mt-5 sm:mt-7 lg:mt-10" >
+                        Explore More Products
+                    </button>
+                </div>
+            </section>
+
+            <section id="feature-product" className="bg-[#F6F6F6] !mt-[60px] py-15">
+                <div class="container px-4 sm:px-6 lg:px-8  mx-auto overflow-hidden  transition-all duration-300 product-container overflow-visible">
+                    <div className="text-center mb-8">
+                        <div className="flex justify-center">
+                            <span
+                                className="inline-block px-3 sm:px-4 md:px-5 py-2 text-[11px] sm:text-sm font-bold uppercase tracking-[2px] sm:tracking-widest text-amber-600
+                            rounded-full bg-amber-500/20 border border-amber-500/30"
+                            >
+                                Featured Collection
+                            </span>
+                        </div>
+
+                        <h2 className="title font-black mt-3 text-[#0b1b3a]">
+                            Explore Our Premium Machinery & Tools
+                            {/* <span className="text-amber-500">Machinery & Tools</span> */}
+                        </h2>
+
+                        <p className="mt-3 text-gray-600 subtitle max-w-5xl mx-auto px-4">
+                            Browse our collection of featured, best-selling, and latest machinery,
+                            built to meet the demands of industrial and professional applications.
+                        </p>
+                    </div>
+
+                    <ul className="flex justify-center gap-3 sm:gap-5 md:gap-8 mt-6 flex-wrap">
+                        <li className="text-xs sm:text-sm md:text-base lg:text-xl font-semibold text-gray-500 border-b-2 border-gray-300 pb-2 cursor-pointer hover:text-black transition">
+                            Featured
+                        </li>
+
+                        <li className="text-xs sm:text-sm md:text-base lg:text-xl font-semibold text-black border-b-2 border-amber-500 pb-2 cursor-pointer">
+                            Latest
+                        </li>
+
+                        <li className="text-xs sm:text-sm md:text-base lg:text-xl font-semibold text-gray-500 border-b-2 border-gray-300 pb-2 cursor-pointer hover:text-black transition">
+                            Bestseller
+                        </li>
+                    </ul>
+
+                    <div className="grid grid-cols-12 gap-y-8 min-[768px]:gap-y-12 gap-x-5 lg:gap-x-5 xl:gap-x-8 mt-7 min-[768px]:mt-10">
+                        {
+                            products?.slice(0, visibleCount)?.map((v, i) => {
+                                return (
+                                    <div className="col-span-12 min-[576px]:col-span-6 min-[768px]:col-span-4 min-[992px]:col-span-4 lg:col-span-3">
+                                        <div className="bg-white shadow-md rounded-md">
+                                            <div className="relative">
+                                                <div class="absolute mt-2 ml-2 z-10">
+                                                    {
+                                                        v?.oldPrice &&
+                                                        <span class="bg-[#0b1b3a] text-white text-xs font-semibold px-2 py-1 rounded">
+                                                            -10%
+                                                        </span>
+                                                    }
+                                                </div>
+
+                                                <div className="absolute right-3 top-4 flex flex-col gap-2 z-10">
+
+                                                    {/* Wishlist */}
+                                                    <button
+                                                        className="
+                                                            w-8 h-8 bg-white rounded-full flex items-center justify-center
+                                                            border border-gray-300
+
+                                                            opacity-100 translate-x-0
+                                                            min-[992px]:opacity-0 min-[992px]:translate-x-4
+
+                                                            group-hover:min-[992px]:opacity-100
+                                                            group-hover:min-[992px]:translate-x-0
+
+                                                            transition-all duration-300 delay-100
+                                                            hover:bg-[#0b1b3a] hover:text-white"
+                                                    >
+                                                        <FiHeart className="text-sm" />
+                                                    </button>
+
+                                                    {/* Eye */}
+                                                    <button
+                                                        className="
+                                                                w-8 h-8 bg-white rounded-full flex items-center justify-center
+                                                                border border-gray-300
+
+                                                                opacity-100 translate-x-0
+                                                                min-[992px]:opacity-0 min-[992px]:translate-x-4
+
+                                                                group-hover:min-[992px]:opacity-100
+                                                                group-hover:min-[992px]:translate-x-0
+
+                                                                transition-all duration-300 delay-300
+                                                                hover:bg-[#0b1b3a] hover:text-white"
+                                                    >
+                                                        <LuEye />
+                                                    </button>
+                                                </div>
+
+                                                {/* Product Image */}
+                                                <div className="h-50 min-[576px]:h-40 sm:h-64 flex items-center justify-center overflow-hidden p-2 min-[576px]:p-5 md:p-5 lg:p-2 sm:p-4">
+                                                    <img
+
+                                                        src={v.image}
+                                                        alt="Product"
+                                                        className="product-img max-h-full object-cover w-[100px] min-[576px]:w-[150px] min-[768px]:w-full h-full"
+                                                    />
+                                                </div>
+
+                                                <div class="px-2 sm:px-5 pb-3 sm:pb-5 border-t border-gray-100">
+                                                    <h3 class="mt-5 text-[15px] sm:text-md md:text-[17px] lg:text-lg font-medium text-gray-800 sm:leading-7">
+                                                        {v.name}
+                                                    </h3>
+
+
+                                                    <div class="flex items-center mt-1 sm:mt-3">
+                                                        <div class="flex text-yellow-400">
+                                                            ★★★★★
+                                                        </div>
+                                                        <span class="ml-2 text-sm text-gray-500">({v.rating})</span>{/*{v.rating} */}
+                                                    </div>
+
+                                                    <div class="flex items-center gap-2 mt-2 sm:mt-4">
+                                                        <span class="text-gray-400 line-through">
+                                                            {v.oldPrice && "$" + v.oldPrice}
+                                                        </span>
+                                                        <span class="text-md sm:text-lg md:text-xl font-bold text-[#0b1b3a]">
+                                                            ${v.price}
+                                                        </span>
+                                                    </div>
+
+
+                                                    <div
+                                                        className="
+                                                        overflow-hidden
+                                                        max-h-20 opacity-100
+                                                        min-[992px]:max-h-0 min-[992px]:opacity-0
+                                                        group-hover:min-[992px]:max-h-20
+                                                        group-hover:min-[992px]:opacity-100
+                                                        transition-all duration-500"
+                                                    >
+                                                        <button
+                                                            className="w-full mt-5 py-2 text-[14px] bg-gray-100 text-gray-800 font-semibold rounded
+                                                        hover:bg-amber-500 hover:text-white transition
+                                                        flex items-center justify-center gap-2"
+                                                        >
+                                                            <TiShoppingCart className="text-lg" />
+                                                            <span>ADD TO CART</span>
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+
+                        <div className="col-span-12 min-[768px]:col-span-8 lg:col-span-6">
+                            <div className="h-full rounded-md overflow-hidden relative">
+
+                                <img
+                                    src="../../src/assets/Images/machines/featured.webp"
+                                    alt=""
+                                    className="w-full h-full object-cover"
+                                />
+
+                                <div className="uppercase absolute bottom-6 sm:bottom-10 right-4 sm:right-8 lg:right-10 text-white text-right max-w-[90%] sm:max-w-[350px]">
+
+                                    <p className="text-[11px] sm:text-[13px] md:text-[15px] font-semibold tracking-wide">
+                                        tools & accessories
+                                    </p>
+
+                                    <h4 className="text-[16px] sm:text-[22px] md:text-[28px] lg:text-[30px] font-bold leading-tight my-2 sm:my-3">
+                                        20v max premium <br />
+                                        combo kits
+                                    </h4>
+
+                                    <p className="text-[13px] sm:text-[16px] md:text-[18px] text-amber-500 font-semibold">
+                                        free batteries
+                                    </p>
+
+                                    <button className="mt-4 sm:mt-5 flex items-center justify-end gap-2 px-3 sm:px-5 py-2 sm:py-3 bg-white text-black rounded-md hover:bg-amber-500 hover:text-white transition ml-auto text-xs sm:text-sm md:text-base">
+
+                                        <span>Shop Now</span>
+                                        <FaLongArrowAltRight className="text-base sm:text-lg" />
+
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </section>
+
             <section className="py-20 bg-white overflow-hidden">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -582,85 +1124,6 @@ function Home() {
                             Get Free Consultation
                         </button>
                     </div>
-
-                </div>
-            </section>
-
-            <section id="products">
-                <h2 className="text-[28px] font-[600] mt-20 mb-10 text-center">Trending Products</h2>
-                <div class="container mx-auto bg-white  overflow-hidden  transition-all duration-300 product-container">
-                    <div>
-                        <Swiper
-                            modules={[Grid, Navigation]}
-                            slidesPerView={4}
-                            navigation={true}
-                            grid={{
-                                rows: 2,
-                                fill: "row",
-                            }}
-                            spaceBetween={40}
-                        >
-                            {
-                                products?.map((v) => {
-                                    return (
-                                        <SwiperSlide>
-                                            <div className=" border border-gray-200 rounded-md">
-                                                <div class="absolute mt-2 ml-2 z-10">
-                                                    {
-                                                        v?.oldPrice &&
-                                                        <span class="bg-[#0b1b3a] text-white text-xs font-semibold px-2 py-1 rounded">
-                                                            -10%
-                                                        </span>
-                                                    }
-                                                </div>
-
-                                                <div class="h-64 flex items-center justify-center overflow-hidden p-4">
-                                                    <img
-                                                        src={v.image}
-                                                        alt="Product"
-                                                        class="max-h-full object-cover transition-transform duration-300 hover:scale-105 w-[100%] h-full"
-                                                    />
-                                                </div>
-
-                                                <div class="px-5 pb-5 border-t border-gray-100">
-                                                    <h3 class="mt-5 text-lg font-medium text-gray-800 leading-7">
-                                                        {v.name}
-                                                    </h3>
-
-
-                                                    <div class="flex items-center mt-3">
-                                                        <div class="flex text-yellow-400">
-                                                            ★★★★★
-                                                        </div>
-                                                        <span class="ml-2 text-sm text-gray-500">({v.rating})</span>
-                                                    </div>
-
-                                                    <div class="flex items-center gap-2 mt-4">
-                                                        <span class="text-gray-400 line-through">
-                                                            {v.oldPrice && "$" + v.oldPrice}
-                                                        </span>
-                                                        <span class="text-xl font-bold text-[#0b1b3a]">
-                                                            ${v.price}
-                                                        </span>
-                                                    </div>
-
-
-                                                    <button
-                                                        class="w-full mt-5 py-3 bg-gray-100 text-gray-800 font-semibold rounded hover:bg-amber-500 hover:text-white transition"
-                                                    >
-                                                        ADD TO CART
-                                                    </button>
-
-                                                </div>
-                                            </div>
-                                        </SwiperSlide>
-                                    )
-                                })
-                            }
-
-                        </Swiper>
-                    </div>
-
 
                 </div>
             </section>
@@ -824,7 +1287,7 @@ function Home() {
                 </div>
             </section>
 
-            <section className="py-20 bg-[#f8fafc]">
+            <section className="py-20 bg-[#f8fafc] !mb-0">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
                     {/* Heading */}
