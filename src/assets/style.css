@@ -190,6 +190,15 @@ body {
   transform: translateY(-8px);
 }
 
+#allproduct span {
+  color: #666666;
+}
+
+#allproduct span:hover {
+  color: black;
+  cursor: default;
+}
+
 @media (max-width: 576px) {
   .title {
     font-size: 22px;
@@ -210,7 +219,11 @@ body {
   }
 
   section {
-    margin-top:50px;
+    margin-top: 50px;
+  }
+
+  #allproduct span {
+    font-size:14px;
   }
 }
 
@@ -225,7 +238,11 @@ body {
   }
 
   section {
-   margin-top:60px;
+    margin-top: 60px;
+  }
+
+  #allproduct span {
+    font-size:14px;
   }
 }
 
@@ -273,7 +290,7 @@ body {
   }
 
   section {
-    margin-top:40px;
+    margin-top: 40px;
   }
 }
 
@@ -290,7 +307,7 @@ body {
   }
 
   section {
-     margin-top:80px;
+    margin-top: 80px;
   }
 
 }
@@ -315,7 +332,11 @@ body {
   }
 
   section {
-    margin-top:100px;
+    margin-top: 100px;
+  }
+
+  #allproduct span {
+    font-size: 16px;
   }
 }
 

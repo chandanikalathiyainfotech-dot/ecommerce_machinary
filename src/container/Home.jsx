@@ -20,6 +20,7 @@ const slides = [
 function Home() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [visibleCount, setVisibleCount] = useState(6);
+    const [fproduct, setFproduct] = useState('Featured')
 
     useEffect(() => {
         const updateCount = () => {
@@ -194,7 +195,6 @@ function Home() {
         },
     ];
 
-
     const products = [
 
         {
@@ -347,6 +347,7 @@ function Home() {
 
     const navigate = useNavigate()
 
+    console.log(fproduct)
 
     return (
         <div>
@@ -826,16 +827,37 @@ function Home() {
                         </p>
                     </div>
 
-                    <ul className="flex justify-center gap-3 sm:gap-5 md:gap-8 mt-6 flex-wrap">
-                        <li className="text-xs sm:text-sm md:text-base lg:text-xl font-semibold text-gray-500 border-b-2 border-gray-300 pb-2 cursor-pointer hover:text-black transition">
+                    <ul
+                        className="flex justify-center gap-3 sm:gap-5 md:gap-8 mt-6 flex-wrap"
+                        onClick={(e) => setFproduct(e.target.textContent)}
+                    >
+                        <li
+                            className={`text-xs sm:text-sm md:text-base lg:text-xl font-semibold pb-2 cursor-pointer transition
+                            ${fproduct === "Featured"
+                                    ? "text-black border-b-2 border-amber-500"
+                                    : "text-gray-500 border-b-2 border-gray-300 hover:text-black"
+                                }`}
+                        >
                             Featured
                         </li>
 
-                        <li className="text-xs sm:text-sm md:text-base lg:text-xl font-semibold text-black border-b-2 border-amber-500 pb-2 cursor-pointer">
+                        <li
+                            className={`text-xs sm:text-sm md:text-base lg:text-xl font-semibold pb-2 cursor-pointer transition
+                            ${fproduct === "Latest"
+                                    ? "text-black border-b-2 border-amber-500"
+                                    : "text-gray-500 border-b-2 border-gray-300 hover:text-black"
+                                }`}
+                        >
                             Latest
                         </li>
 
-                        <li className="text-xs sm:text-sm md:text-base lg:text-xl font-semibold text-gray-500 border-b-2 border-gray-300 pb-2 cursor-pointer hover:text-black transition">
+                        <li
+                            className={`text-xs sm:text-sm md:text-base lg:text-xl font-semibold pb-2 cursor-pointer transition
+                            ${fproduct === "Bestseller"
+                                    ? "text-black border-b-2 border-amber-500"
+                                    : "text-gray-500 border-b-2 border-gray-300 hover:text-black"
+                                }`}
+                        >
                             Bestseller
                         </li>
                     </ul>
@@ -844,7 +866,7 @@ function Home() {
                         {
                             products?.slice(0, visibleCount)?.map((v, i) => {
                                 return (
-                                    <div className="col-span-12 min-[576px]:col-span-6 min-[768px]:col-span-4 min-[992px]:col-span-4 lg:col-span-3">
+                                    <div className="col-span-12 min-[576px]:col-span-6 min-[768px]:col-span-4 min-[992px]:col-span-4 lg:col-span-3 group">
                                         <div className="bg-white shadow-md rounded-md">
                                             <div className="relative">
                                                 <div class="absolute mt-2 ml-2 z-10">
@@ -946,10 +968,8 @@ function Home() {
                                                             <span>ADD TO CART</span>
                                                         </button>
                                                     </div>
-
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 )
@@ -957,7 +977,7 @@ function Home() {
                         }
 
                         <div className="col-span-12 min-[768px]:col-span-8 lg:col-span-6">
-                            <div className="h-full rounded-md overflow-hidden relative">
+                            <div className="h-full rounded-md overflow-hidden relative min-[1400px]:h-[435px]">
 
                                 <img
                                     src="../../src/assets/Images/machines/featured.webp"
@@ -992,8 +1012,6 @@ function Home() {
                         </div>
 
                     </div>
-
-
                 </div>
             </section>
 

@@ -10,6 +10,7 @@ import Home from "./container/Home";
 import Aboutus from "./container/Aboutus";
 import Blogdetails from "./container/Blogdetails";
 import Detailproduct from "./container/Detailproduct";
+import Allproductgrid from "./container/Allproductgrid";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/about-us" element={<Aboutus />} />
         <Route path="/blog/:id" element={<Blogdetails />} />
         <Route path="product-detail" element={<Detailproduct />} />
+        <Route path="allproduct" element={<Allproductgrid />} />
         {/* <Route path="/parts/spare-parts" element={<SparParts />} /> */}
       </Routes>
       <Footer />
