@@ -8,21 +8,8 @@ import {
   FaAward,
 } from "react-icons/fa";
 
-// import { FaCogs, FaTools, FaShieldAlt, FaAward, FaTruck, FaUsers } from "react-icons/fa";
 
 function Aboutus() {
-  // const values = [
-  //   { icon: FaCogs, title: "Quality First", desc: "We never compromise on quality" },
-  //   { icon: FaTools, title: "Innovation", desc: "Continuous improvement in everything we do" },
-  //   { icon: FaShieldAlt, title: "Reliability", desc: "You can always count on us" }
-  // ];
-
-  // const reasons = [
-  //   { icon: FaAward, title: "15+ Years Experience", desc: "Trusted by thousands of customers" },
-  //   { icon: FaTruck, title: "Fast Delivery", desc: "Timely delivery of all your orders" },
-  //   { icon: FaUsers, title: "Expert Team", desc: "Skilled professionals ready to help" }
-  // ];
-
 
 
   const stats = [
@@ -273,6 +260,7 @@ function Aboutus() {
           </div>
         </div>
       </section>
+  
 
       <section id="stats" className="bg-amber-500 py-12">
         <div className="container mx-auto px-5">
