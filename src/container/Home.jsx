@@ -23,6 +23,9 @@ function Home() {
     const [visibleCount, setVisibleCount] = useState(6);
     const [fproduct, setFproduct] = useState('Featured')
 
+
+    const navigate = useNavigate()
+
     useEffect(() => {
         const updateCount = () => {
             const w = window.innerWidth;
@@ -36,7 +39,7 @@ function Home() {
             else setVisibleCount(6);
         };
 
-        updateCount(); // 👈 IMPORTANT (run once on load)
+        updateCount();
 
         window.addEventListener("resize", updateCount);
 
@@ -46,6 +49,7 @@ function Home() {
     useEffect(() => {
         console.log("visibleCount:", visibleCount);
     }, [visibleCount]);
+
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentSlide((prev) =>
@@ -55,6 +59,7 @@ function Home() {
 
         return () => clearInterval(interval);
     }, []);
+
 
     const features = [
         {
@@ -76,60 +81,6 @@ function Home() {
             icon: <FaHeadset />,
             title: "24/7 Support",
             desc: "Dedicated customer support team available whenever you need assistance.",
-        },
-    ];
-
-    const blogs = [
-        {
-            id: 1,
-            image:
-                "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1000",
-            date: "15 June 2026",
-            title: "Top 5 Industrial Machinery Trends in 2026",
-            desc: "Explore the latest innovations transforming the manufacturing industry.",
-        },
-        {
-            id: 2,
-            image:
-                "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1000",
-            date: "10 June 2026",
-            title: "How to Choose the Right Heavy Equipment",
-            desc: "A complete guide to selecting machinery for your industrial projects.",
-        },
-        {
-            id: 3,
-            image:
-                "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1000",
-            date: "05 June 2026",
-            title: "Maintenance Tips for Maximum Productivity",
-            desc: "Reduce downtime and improve performance with expert maintenance tips.",
-        },
-    ];
-
-    const testimonials = [
-        {
-            name: "Rajesh Patel",
-            company: "Patel Engineering Ltd.",
-            image:
-                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300",
-            review:
-                "The machinery quality is outstanding. Their support team helped us throughout installation and setup. Highly recommended.",
-        },
-        {
-            name: "Amit Shah",
-            company: "Shah Industries",
-            image:
-                "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300",
-            review:
-                "We've purchased multiple industrial machines and the performance has exceeded our expectations. Excellent service.",
-        },
-        {
-            name: "Vikram Mehta",
-            company: "Mehta Manufacturing",
-            image:
-                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300",
-            review:
-                "Reliable products, fast delivery, and professional after-sales support. A trusted partner for our business growth.",
         },
     ];
 
@@ -281,9 +232,154 @@ function Home() {
             name: "Planet Power",
             product: 7
         }
-    ]
+    ];
 
-    const navigate = useNavigate()
+    const brands = [
+        { name: "CATERPILLAR" },
+        { name: "KOMATSU" },
+        { name: "HITACHI" },
+        { name: "JCB" },
+        { name: "VOLVO" },
+        { name: "HYUNDAI" },
+        { name: "DOOSAN" },
+        { name: "LIEBHERR" },
+    ];
+
+    const blogs = [
+        {
+            id: 1,
+            image:
+                "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1000",
+            date: "15 June 2026",
+            title: "Top 5 Industrial Machinery Trends in 2026",
+            desc: "Explore the latest innovations transforming the manufacturing industry.",
+        },
+        {
+            id: 2,
+            image:
+                "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1000",
+            date: "10 June 2026",
+            title: "How to Choose the Right Heavy Equipment",
+            desc: "A complete guide to selecting machinery for your industrial projects.",
+        },
+        {
+            id: 3,
+            image:
+                "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1000",
+            date: "05 June 2026",
+            title: "Maintenance Tips for Maximum Productivity",
+            desc: "Reduce downtime and improve performance with expert maintenance tips.",
+        },
+    ];
+
+    const testimonials = [
+        {
+            name: "Rajesh Patel",
+            company: "Patel Engineering Ltd.",
+            image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300",
+            review:
+                "The machinery quality is outstanding. Their support team helped us throughout installation and setup. Highly recommended.",
+        },
+        {
+            name: "Amit Shah",
+            company: "Shah Industries",
+            image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300",
+            review:
+                "We've purchased multiple industrial machines and the performance has exceeded our expectations. Excellent service.",
+        },
+        {
+            name: "Vikram Mehta",
+            company: "Mehta Manufacturing",
+            image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300",
+            review:
+                "Reliable products, fast delivery, and professional after-sales support. A trusted partner for our business growth.",
+        },
+        {
+            name: "Suresh Desai",
+            company: "Desai Fabrication",
+            image: "https://randomuser.me/api/portraits/men/32.jpg",
+            review:
+                "Exceptional machine performance and durability. The team ensured smooth onboarding and training.",
+        },
+        {
+            name: "Neha Joshi",
+            company: "Joshi Tech Works",
+            image: "https://randomuser.me/api/portraits/women/44.jpg",
+            review:
+                "The quality and efficiency of their equipment helped us increase productivity significantly.",
+        },
+        {
+            name: "Karan Malhotra",
+            company: "Malhotra Industries",
+            image: "https://randomuser.me/api/portraits/men/45.jpg",
+            review:
+                "Very professional service and premium-quality machinery. Highly satisfied with our investment.",
+        },
+        {
+            name: "Priya Sharma",
+            company: "Sharma Engineering",
+            image: "https://randomuser.me/api/portraits/women/55.jpg",
+            review:
+                "Outstanding customer support and quick delivery. Their machinery has transformed our operations.",
+        },
+        {
+            name: "Rohan Verma",
+            company: "Verma Industrial Solutions",
+            image: "https://randomuser.me/api/portraits/men/60.jpg",
+            review:
+                "A trustworthy supplier with excellent products and transparent communication throughout the process.",
+        },
+        {
+            name: "Anjali Kapoor",
+            company: "Kapoor Manufacturing Co.",
+            image: "https://randomuser.me/api/portraits/women/28.jpg",
+            review:
+                "The machine quality is unmatched. We experienced a noticeable improvement in production efficiency.",
+        },
+        {
+            name: "Manish Gupta",
+            company: "Gupta Metal Works",
+            image: "https://randomuser.me/api/portraits/men/22.jpg",
+            review:
+                "Reliable equipment and responsive support team. We look forward to future collaborations.",
+        },
+        {
+            name: "Pooja Agarwal",
+            company: "Agarwal Enterprises",
+            image: "https://randomuser.me/api/portraits/women/35.jpg",
+            review:
+                "Excellent machinery and seamless installation process. Highly recommended for industrial businesses.",
+        },
+        {
+            name: "Arjun Singh",
+            company: "Singh Automation",
+            image: "https://randomuser.me/api/portraits/men/52.jpg",
+            review:
+                "Top-notch products with innovative features. The team was incredibly helpful from purchase to deployment.",
+        },
+        {
+            name: "Sneha Mehta",
+            company: "Mehta Industrial Group",
+            image: "https://randomuser.me/api/portraits/women/68.jpg",
+            review:
+                "We have been using their machinery for over a year and the performance remains outstanding.",
+        },
+        {
+            name: "Deepak Chauhan",
+            company: "Chauhan Engineering Solutions",
+            image: "https://randomuser.me/api/portraits/men/71.jpg",
+            review:
+                "Fantastic experience from start to finish. Their equipment is robust, efficient, and dependable.",
+        },
+        {
+            name: "Kavita Nair",
+            company: "Nair Precision Tools",
+            image: "https://randomuser.me/api/portraits/women/75.jpg",
+            review:
+                "Great value for money and exceptional customer support. Their machinery exceeded our expectations.",
+        },
+    ];
+
 
     console.log(fproduct)
 
@@ -742,7 +838,7 @@ function Home() {
                 </div>
             </section>
 
-            <section id="feature-product" className="bg-[#F6F6F6] !mt-[60px] py-15">
+            <section id="feature-product" className="bg-[#f8fafc] !mt-[60px] py-15">
                 <div class="container px-4 sm:px-6 lg:px-8  mx-auto overflow-hidden  transition-all duration-300 product-container overflow-visible">
                     <div className="text-center mb-8">
                         <div className="flex justify-center">
@@ -948,6 +1044,50 @@ function Home() {
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="brand" className="py-8 md:py-12 lg:py-14 overflow-hidden bg-[#0b1b3a]"
+            >
+                <div className="relative">
+
+                    {/* Left Fade */}
+                    <div className="absolute left-0 top-0 h-full w-10 md:w-20 bg-gradient-to-r from-[#0b1b3a] to-transparent z-10" />
+
+                    {/* Right Fade */}
+                    <div className="absolute right-0 top-0 h-full w-10 md:w-20 bg-gradient-to-l from-[#0b1b3a] to-transparent z-10" />
+
+                    <div className="flex animate-brand-scroll items-center gap-8 md:gap-14 lg:gap-20 w-max">
+
+                        {[...brands, ...brands].map((brand, index) => (
+                            <div
+                                key={index}
+                                className="group flex-shrink-0 cursor-pointer"
+                            >
+                                <h3
+                                    className="
+                                        text-white
+                                        text-sm
+                                        sm:text-base
+                                        md:text-2xl
+                                        lg:text-3xl
+                                        font-semibold
+                                        tracking-[2px]
+                                        whitespace-nowrap
+                                        opacity-70
+                                        transition-all
+                                        duration-300
+                                        group-hover:text-amber-400
+                                        group-hover:opacity-100
+                                        group-hover:scale-105
+                                    "
+                                >
+                                    {brand.name}
+                                </h3>
+                            </div>
+                        ))}
 
                     </div>
                 </div>

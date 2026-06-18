@@ -25,7 +25,6 @@ function App() {
         <Route path="/blog/:id" element={<Blogdetails />} />
         <Route path="product-detail" element={<Detailproduct />} />
         <Route path="allproduct" element={<Allproductgrid />} />
-        {/* <Route path="/parts/spare-parts" element={<SparParts />} /> */}
       </Routes>
       <Footer />
     </>

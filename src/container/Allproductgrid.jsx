@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+console.log(React);
+
 import { FiHeart } from "react-icons/fi";
 import { LuEye } from "react-icons/lu";
 import { TiShoppingCart } from "react-icons/ti";
@@ -301,7 +303,7 @@ function Allproductgrid() {
 
                         <div className="col-span-12 min-[992px]:col-span-9 grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
                             {
-                                products?.map((v, i) => {
+                                products?.map((v) => {
                                     return (
                                         <div className="col-span-6 min-[768px]:col-span-4 min-[992px]:col-span-4 lg:col-span-4 group">
                                             <div className="bg-white border border-gray-200 rounded-md">
