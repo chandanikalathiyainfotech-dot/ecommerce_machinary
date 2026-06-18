@@ -864,7 +864,7 @@ function Home() {
 
                     <div className="grid grid-cols-12 gap-y-8 min-[768px]:gap-y-12 gap-x-5 lg:gap-x-5 xl:gap-x-8 mt-7 min-[768px]:mt-10">
                         {
-                            products?.slice(0, visibleCount)?.map((v, i) => {
+                            products?.slice(0, visibleCount)?.map((v) => {
                                 return (
                                     <div className="col-span-12 min-[576px]:col-span-6 min-[768px]:col-span-4 min-[992px]:col-span-4 lg:col-span-3 group">
                                         <div className="bg-white shadow-md rounded-md">
