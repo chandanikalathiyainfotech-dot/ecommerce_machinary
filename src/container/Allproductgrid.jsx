@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 console.log(React);
 
 import { FiHeart } from "react-icons/fi";
 import { HiArrowNarrowLeft, HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { LuEye } from "react-icons/lu";
-import { MdArrowRightAlt } from "react-icons/md";
-import { PiGridNineFill } from "react-icons/pi";
-import { RiGridFill, RiLayoutGrid2Fill } from "react-icons/ri";
-import { TfiLayoutGrid3Alt, TfiMenuAlt } from "react-icons/tfi";
+import { RiLayoutGrid2Fill } from "react-icons/ri";
+import { TfiMenuAlt } from "react-icons/tfi";
 import { TiShoppingCart } from "react-icons/ti";
 import { NavLink } from "react-router-dom";
 
@@ -460,7 +459,7 @@ function Allproductgrid() {
 
                                     <span className="hidden md:block !text-black !text-[16px]">Sort By: </span>
 
-                                    <div  ref={dropdownRef} className="w-80 min-[992px]:w-64 relative">
+                                    <div ref={dropdownRef} className="w-80 min-[992px]:w-64 relative">
 
                                         {/* Button */}
                                         <button
@@ -520,7 +519,7 @@ function Allproductgrid() {
 
                             {/* product display */}
                             {
-                                currentProducts?.map((v, i) => {
+                                currentProducts?.map((v) => {
                                     return (
                                         <div
                                             className={`group ${view === "grid" ? "col-span-6 md:col-span-4" : "col-span-12"}`}>
