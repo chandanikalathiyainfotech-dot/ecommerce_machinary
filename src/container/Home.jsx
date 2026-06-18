@@ -762,6 +762,7 @@ function Home() {
 
                                                         {/* Product Image */}
                                                         <img
+                                                            onClick={() => navigate('/product-detail')}
                                                             src={v.image}
                                                             alt={v.name}
                                                             className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
@@ -942,6 +943,7 @@ function Home() {
 
                                                     {/* Product Image */}
                                                     <img
+                                                        onClick={() => navigate('/product-detail')}
                                                         src={v.image}
                                                         alt={v.name}
                                                         className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"

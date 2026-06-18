@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 console.log(React);
 
 import { FiHeart } from "react-icons/fi";
