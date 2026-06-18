@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
-import { BsGrid3X3GapFill } from "react-icons/bs";
+import React, { useState } from "react";
+console.log(React);
+
 import { FiHeart } from "react-icons/fi";
 import { HiArrowNarrowLeft, HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";

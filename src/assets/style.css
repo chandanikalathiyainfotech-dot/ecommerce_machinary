@@ -199,6 +199,29 @@ body {
   cursor: default;
 }
 
+
+
+@keyframes brandScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-brand-scroll {
+  animation: brandScroll 20s linear infinite;
+}
+
+.animate-brand-scroll:hover {
+  animation-play-state: paused;
+}
+
+
+
+
 @media (max-width: 576px) {
   .title {
     font-size: 22px;
@@ -224,7 +247,7 @@ body {
   }
 
   #allproduct span {
-    font-size:14px;
+    font-size: 14px;
   }
 }
 
@@ -243,7 +266,7 @@ body {
   }
 
   #allproduct span {
-    font-size:14px;
+    font-size: 14px;
   }
 }
 

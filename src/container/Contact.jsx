@@ -1,12 +1,14 @@
 
 import { useFormik } from "formik";
 import React from "react";
+console.log(React);
+
 import {
-  FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock,
+  FaMapMarkerAlt, FaEnvelope, FaClock,
   FaFacebook, FaTwitter, FaInstagram, FaLinkedin
 } from "react-icons/fa";
 import { MdCall } from "react-icons/md";
-import { boolean, object, string } from "yup";
+import { object, string } from "yup";
 
 function Contact() {
 
@@ -36,7 +38,7 @@ function Contact() {
     },
   })
 
-  const { handleSubmit, handleBlur, handleChange, values, touched, errors, setFieldValue, setFieldTouched } = formik;
+  const { handleSubmit, handleBlur, handleChange, values, touched, errors } = formik;
   console.log("errors:", errors);
 
   return (

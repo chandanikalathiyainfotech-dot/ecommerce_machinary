@@ -11,6 +11,16 @@ import {
   FaCogs
 } from "react-icons/fa";
 import { MdCall } from "react-icons/md";
+import { Link } from "react-router-dom";
+
+const quickLinks = [
+  { name: "Home", path: "/" },
+  { name: "Machines", path: "/machines" },
+  { name: "Spare Parts", path: "/spare-parts" },
+  { name: "Services", path: "/services" },
+  { name: "About Us", path: "/about-us" },
+  { name: "Contact", path: "/contact" },
+];
 
 function Footer() {
   return (
@@ -65,21 +75,25 @@ function Footer() {
                 </a>
               ))}
             </div>
-          </div>
+          </div>              
 
           {/* Quick Links */}
-          <div >
+          <div>
             <h4 className="text-lg font-bold text-white mb-6 relative pb-2">
               Quick Links
               <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-amber-500 -skew-x-12"></span>
             </h4>
+
             <ul className="space-y-3">
-              {["Home", "Machines", "Spare Parts", "Services", "About Us", "Contact"].map((item, idx) => (
+              {quickLinks.map((item, idx) => (
                 <li key={idx}>
-                  <a href="#" className="text-gray-400 text-sm hover:text-amber-500 transition-colors flex items-center gap-2">
+                  <Link
+                    to={item.path}
+                    className="text-gray-400 text-sm hover:text-amber-500 transition-colors flex items-center gap-2"
+                  >
                     <span className="text-amber-500 text-xs">▸</span>
-                    {item}
-                  </a>
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
