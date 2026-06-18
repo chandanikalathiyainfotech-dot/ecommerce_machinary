@@ -190,11 +190,11 @@ body {
   transform: translateY(-8px);
 }
 
-#allproduct span {
+#allproduct .left-side span {
   color: #666666;
 }
 
-#allproduct span:hover {
+#allproduct .left-side span:hover {
   color: black;
   cursor: default;
 }
@@ -220,6 +220,7 @@ body {
 
   section {
     margin-top: 50px;
+
   }
 
   #allproduct span {

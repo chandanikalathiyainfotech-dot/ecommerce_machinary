@@ -670,7 +670,7 @@ function Detailproduct() {
                 </div>
             </section>
 
-            <section id="relatedproduct">
+            <section id="relatedproduct" className="mb-10">
                 <div className="container px-4 sm:px-6 lg:px-8  mx-auto">
                     <div className="flex items-center gap-3 w-full mb-5">
 
@@ -681,10 +681,10 @@ function Detailproduct() {
                         <div className="flex-1 border-t border-t-1 border-gray-300"></div>
 
                         <div className="flex gap-4 items-center">
-                            <button className="bg-gray-100 p-2">
+                            <button className="swiper-prev bg-gray-100 p-2">
                                 <IoIosArrowBack />
                             </button>
-                            <button className="bg-gray-100 p-2">
+                            <button className="swiper-next bg-gray-100 p-2">
                                 <IoIosArrowForward />
                             </button>
                         </div>
@@ -695,10 +695,14 @@ function Detailproduct() {
                             modules={[Grid, Navigation]}
                             slidesPerView={4}
                             navigation={true}
+                            navigation={{
+                                prevEl: ".swiper-prev",
+                                nextEl: ".swiper-next",
+                            }}
                             spaceBetween={30}
                             breakpoints={{
                                 320: {
-                                    slidesPerView: 1,
+                                    slidesPerView: 2,
                                     spaceBetween: 10
                                 },
                                 576: {
@@ -723,84 +727,81 @@ function Detailproduct() {
                                 products?.map((v) => {
                                     return (
                                         <SwiperSlide>
-                                            <div className=" border border-gray-200 rounded-md group">
+                                            <div className="bg-white shadow-md rounded-md">
                                                 <div className="relative">
-                                                    <div class="absolute mt-2 ml-2 z-10">
-                                                        {
-                                                            v?.oldPrice &&
-                                                            <span class="bg-[#0b1b3a] text-white text-xs font-semibold px-2 py-1 rounded">
-                                                                -10%
-                                                            </span>
-                                                        }
-                                                    </div>
+                                                    <div className="relative flex items-center justify-center overflow-hidden p-3 sm:p-4 h-40 sm:h-52 xl:h-64">
 
-                                                    <div className="absolute right-3 top-4 flex flex-col gap-2 z-10">
+                                                        {/* Badge */}
+                                                        {v?.oldPrice && (
+                                                            <div className="absolute top-2 left-2 z-10">
+                                                                <span className="bg-[#0b1b3a] text-white text-xs font-semibold px-2 py-1 rounded">
+                                                                    -10%
+                                                                </span>
+                                                            </div>
+                                                        )}
 
-                                                        {/* Wishlist */}
-                                                        <button
-                                                            className="
-                                                            w-8 h-8 bg-white rounded-full flex items-center justify-center
-                                                            border border-gray-300
-
-                                                            opacity-100 translate-x-0
-                                                            min-[992px]:opacity-0 min-[992px]:translate-x-4
-
-                                                            group-hover:min-[992px]:opacity-100
-                                                            group-hover:min-[992px]:translate-x-0
-
-                                                            transition-all duration-300 delay-100
-                                                            hover:bg-[#0b1b3a] hover:text-white"
-                                                        >
-                                                            <FiHeart className="text-sm" />
-                                                        </button>
-
-                                                        {/* Eye */}
-                                                        <button
-                                                            className="
-                                                                w-8 h-8 bg-white rounded-full flex items-center justify-center
+                                                        {/* Icons */}
+                                                        <div className="absolute right-2 sm:right-3 top-2 sm:top-4 flex flex-col gap-2 z-10">
+                                                            <button
+                                                                className="
+                                                                 w-7 h-7 min-[576px]:w-8 min-[576px]:h-8 bg-white rounded-full flex items-center justify-center
                                                                 border border-gray-300
-
+    
                                                                 opacity-100 translate-x-0
-                                                                min-[992px]:opacity-0 min-[992px]:translate-x-4
+                                                                lg:opacity-0 lg:translate-x-4
+    
+                                                                group-hover:lg:opacity-100
+                                                                group-hover:lg:translate-x-0
+    
+                                                                transition-all duration-300 delay-100
+                                                                hover:bg-[#0b1b3a] hover:text-white"
+                                                            >
+                                                                <FiHeart className="text-sm" />
+                                                            </button>
 
-                                                                group-hover:min-[992px]:opacity-100
-                                                                group-hover:min-[992px]:translate-x-0
-
+                                                            <button
+                                                                className="
+                                                                 w-7 h-7 min-[576px]:w-8 min-[576px]:h-8 bg-white rounded-full flex items-center justify-center
+                                                                border border-gray-300
+    
+                                                                opacity-100 translate-x-0
+                                                                lg:opacity-0 lg:translate-x-4
+    
+                                                                group-hover:lg:opacity-100
+                                                                group-hover:lg:translate-x-0
+    
                                                                 transition-all duration-300 delay-300
                                                                 hover:bg-[#0b1b3a] hover:text-white"
-                                                        >
-                                                            <LuEye />
-                                                        </button>
-                                                    </div>
+                                                            >
+                                                                <LuEye />
+                                                            </button>
+                                                        </div>
 
-                                                    {/* Product Image */}
-                                                    <div className="h-50 min-[576px]:h-40 sm:h-64 flex items-center justify-center overflow-hidden p-2 min-[576px]:p-5 md:p-5 lg:p-2 sm:p-4">
+                                                        {/* Product Image */}
                                                         <img
-
                                                             src={v.image}
-                                                            alt="Product"
-                                                            className="product-img max-h-full object-cover w-[100px] min-[576px]:w-[150px] min-[768px]:w-full h-full"
+                                                            alt={v.name}
+                                                            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                                                         />
                                                     </div>
-
                                                     <div class="px-2 sm:px-5 pb-3 sm:pb-5 border-t border-gray-100">
-                                                        <h3 class="mt-5 text-[15px] sm:text-md md:text-[17px] lg:text-lg font-medium text-gray-800 sm:leading-7">
+                                                        <h3 class="mt-5 text-sm  sm:text-md md:text-[17px] xl:text-lg font-medium text-gray-800 sm:leading-7">
                                                             {v.name}
                                                         </h3>
 
 
-                                                        <div class="flex items-center mt-1 sm:mt-3">
-                                                            <div class="flex text-yellow-400">
+                                                        <div className="flex items-center min-[576px]:mt-1">
+                                                            <div className="flex text-yellow-400">
                                                                 ★★★★★
                                                             </div>
-                                                            <span class="ml-2 text-sm text-gray-500">({v.rating})</span>
+                                                            <span className="ml-2 text-xs sm:text-sm text-gray-500">({v.rating})</span>{/*{v.rating} */}
                                                         </div>
 
                                                         <div class="flex items-center gap-2 mt-2 sm:mt-4">
                                                             <span class="text-gray-400 line-through">
                                                                 {v.oldPrice && "$" + v.oldPrice}
                                                             </span>
-                                                            <span class="text-md sm:text-lg md:text-xl font-bold text-[#0b1b3a]">
+                                                            <span class="!text-[18px] sm:!text-lg md:!text-xl font-bold text-[#0b1b3a]">
                                                                 ${v.price}
                                                             </span>
                                                         </div>
@@ -808,29 +809,24 @@ function Detailproduct() {
 
                                                         <div
                                                             className="
-                                                            overflow-hidden
-
-                                                            max-h-20 opacity-100
-                                                            min-[992px]:max-h-0 min-[992px]:opacity-0
-
-                                                            group-hover:min-[992px]:max-h-20
-                                                            group-hover:min-[992px]:opacity-100
-
-                                                            transition-all duration-500"
+                                                                                                   overflow-hidden
+                                                                                                   max-h-20 opacity-100
+                                                                                                   min-[992px]:max-h-0 min-[992px]:opacity-0
+                                                                                                   group-hover:min-[992px]:max-h-20
+                                                                                                   group-hover:min-[992px]:opacity-100
+                                                                                                   transition-all duration-500"
                                                         >
                                                             <button
                                                                 className="w-full mt-5 py-2 text-[14px] bg-gray-100 text-gray-800 font-semibold rounded
-                                                                hover:bg-amber-500 hover:text-white transition
-                                                                flex items-center justify-center gap-2"
+                                                                                                   hover:bg-amber-500 hover:text-white transition
+                                                                                                   flex items-center justify-center gap-2"
                                                             >
-                                                                <TiShoppingCart className="text-lg" />
-                                                                <span>ADD TO CART</span>
+                                                                <TiShoppingCart className="text-lg hidden min-[576px]:block" />
+                                                                <span className="text-gray-800 hover:text-white !text-[12px] md:!text-[14px]">ADD TO CART</span>
                                                             </button>
                                                         </div>
-
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </SwiperSlide>
                                     )
