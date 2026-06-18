@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 console.log(React);
-import { FaArrowRight, FaPlay, FaIndustry, FaUsers, FaTools, FaAward, FaShippingFast, FaHeadset, FaCalendarAlt, FaCogs, FaTruckMoving, FaWrench, FaStar, FaQuoteLeft, FaLongArrowAltRight } from "react-icons/fa";
+import { FaArrowRight, FaPlay, FaIndustry, FaUsers, FaTools, FaAward, FaShippingFast, FaHeadset, FaCalendarAlt, FaStar, FaQuoteLeft, FaLongArrowAltRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Grid, Navigation } from "swiper/modules";
+import { Grid, Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
 import { FiHeart } from "react-icons/fi";
 import { LuEye } from "react-icons/lu";
 import { TiShoppingCart } from "react-icons/ti";
+import { motion } from "framer-motion";
 
 const slides = [
     "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1600",
@@ -78,36 +79,6 @@ function Home() {
         },
     ];
 
-    const stats = [
-        {
-            number: "15+",
-            text: "Years Experience",
-        },
-        {
-            number: "500+",
-            text: "Machines Delivered",
-        },
-        {
-            number: "1000+",
-            text: "Happy Clients",
-        },
-        {
-            number: "24/7",
-            text: "Support Service",
-        },
-    ];
-
-    const brands = [
-        "CATERPILLAR",
-        "JCB",
-        "KOMATSU",
-        "HITACHI",
-        "LIEBHERR",
-        "VOLVO",
-        "DOOSAN",
-        "HYUNDAI",
-    ];
-
     const blogs = [
         {
             id: 1,
@@ -132,39 +103,6 @@ function Home() {
             date: "05 June 2026",
             title: "Maintenance Tips for Maximum Productivity",
             desc: "Reduce downtime and improve performance with expert maintenance tips.",
-        },
-    ];
-
-    const services = [
-        {
-            icon: <FaIndustry />,
-            title: "Industrial Machinery",
-            desc: "High-performance industrial machines for manufacturing and production facilities.",
-        },
-        {
-            icon: <FaTools />,
-            title: "Spare Parts Supply",
-            desc: "Genuine OEM spare parts and components for all major machinery brands.",
-        },
-        {
-            icon: <FaWrench />,
-            title: "Maintenance Services",
-            desc: "Preventive and corrective maintenance solutions to minimize downtime.",
-        },
-        {
-            icon: <FaTruckMoving />,
-            title: "Fast Delivery",
-            desc: "Reliable and secure nationwide delivery of machinery and equipment.",
-        },
-        {
-            icon: <FaCogs />,
-            title: "Installation Support",
-            desc: "Professional machinery installation and commissioning by experts.",
-        },
-        {
-            icon: <FaHeadset />,
-            title: "24/7 Technical Support",
-            desc: "Dedicated support team available around the clock for assistance.",
         },
     ];
 
@@ -352,7 +290,7 @@ function Home() {
     return (
         <div>
 
-            <section className="relative h-[600px] min-[992px]:h-screen overflow-hidden flex items-center bg-[#0b1b3a] !mt-0">
+            <section id="hero" className="relative h-[600px] min-[992px]:h-screen overflow-hidden flex items-center bg-[#0b1b3a] !mt-0">
 
                 {/* Background Slider */}
                 {slides.map((slide, index) => (
@@ -1015,302 +953,301 @@ function Home() {
                 </div>
             </section>
 
-            <section className="py-20 bg-white overflow-hidden">
+            <section id="why-choose" className="bg-gradient-to-b from-white via-gray-50 to-white py-20 overflow-hidden">
+
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
-                    {/* Heading */}
-                    <div className="text-center mb-14">
-                        <span className="inline-block px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30">
-                            Trusted Brands
-                        </span>
+                    <div className="grid grid-cols-1 min-[992px]:grid-cols-[0.9fr_1.1fr] gap-8 min-[992px]:gap-12 xl:gap-20 items-center">
 
-                        <h2 className="mt-5 text-3xl md:text-4xl lg:text-5xl font-black text-[#0b1b3a]">
-                            Brands That Power
-                            <span className="text-amber-500"> Industries</span>
-                        </h2>
+                        <motion.div
+                            initial={{ opacity: 0, x: -100 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            viewport={{ once: true }}
+                            className="max-w-xl min-[992px]:max-w-none"
+                        >
+                            <span className="inline-block px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30">
+                                Why Choose Us
+                            </span>
 
-                        <p className="mt-5 text-gray-600 max-w-3xl mx-auto">
-                            We work with globally trusted machinery manufacturers to deliver
-                            high-quality industrial equipment and solutions.
-                        </p>
-                    </div>
+                            <h2 className="mt-6 text-[28px] sm:text-4xl lg:text-[42px] xl:text-5xl font-black text-[#0b1b3a] leading-tight">
+                                We Don't Just Sell
+                                <span className="text-amber-500"> Machines</span>
+                            </h2>
 
-                    {/* Auto Sliding Brands */}
-                    <div className="relative">
+                            <p className="mt-6 text-gray-600 text-base lg:text-lg leading-relaxed">
+                                We provide complete industrial solutions that help businesses
+                                improve productivity, reduce downtime, and maximize efficiency.
+                            </p>
 
-                        <div className="absolute left-0 top-0 w-24 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
+                            <button className="mt-8 px-8 py-4 bg-[#0b1b3a] text-white rounded-xl font-bold hover:bg-[#132a59] transition-all">
+                                Explore More
+                            </button>
+                        </motion.div>
 
-                        <div className="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
+                        <div className="relative w-full">
 
-                        <div className="flex animate-marquee">
-                            {[...brands, ...brands].map((brand, index) => (
-                                <div
-                                    key={index}
-                                    className="mx-4 min-w-[220px] h-28 bg-white border border-gray-200 rounded-2xl flex items-center justify-center shadow-sm hover:border-amber-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-                                >
-                                    <h3 className="text-2xl font-black text-[#0b1b3a]">
-                                        {brand}
-                                    </h3>
-                                </div>
-                            ))}
+                            <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-1 bg-amber-200"></div>
+
+                            <div className="space-y-8 lg:space-y-10">
+
+                                {features.map((item, index) => (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, x: 100 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{
+                                            duration: 0.7,
+                                            delay: index * 0.15,
+                                        }}
+                                        viewport={{ once: true }}
+                                        whileHover={{ x: 8 }}
+                                        className="relative flex gap-4 sm:gap-6"
+                                    >
+
+                                        <motion.div
+                                            animate={{
+                                                y: [0, -8, 0],
+                                            }}
+                                            transition={{
+                                                duration: 3,
+                                                repeat: Infinity,
+                                            }}
+                                            className="w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 rounded-full bg-amber-500 text-[#0b1b3a] flex items-center justify-center text-xl sm:text-2xl z-10 shadow-xl"
+                                        >
+                                            {item.icon}
+                                        </motion.div>
+
+                                        <div className="w-full bg-white border border-gray-200 rounded-2xl p-4 sm:p-6 shadow-md hover:border-amber-500 hover:shadow-xl transition-all">
+
+                                            <h3 className="text-lg sm:text-xl font-black text-[#0b1b3a]">
+                                                {item.title}
+                                            </h3>
+
+                                            <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed">
+                                                {item.desc}
+                                            </p>
+
+                                        </div>
+
+                                    </motion.div>
+                                ))}
+
+                            </div>
+
                         </div>
 
                     </div>
+
                 </div>
-
-                <style>{`
-                        @keyframes marquee {
-                        0% {
-                            transform: translateX(0);
-                        }
-
-                        100% {
-                            transform: translateX(-50%);
-                        }
-                        }
-
-                        .animate-marquee {
-                        width: max-content;
-                        display: flex;
-                        animation: marquee 20s linear infinite;
-                        }
-
-                        .animate-marquee:hover {
-                        animation-play-state: paused;
-                        }
-                 `}</style>
             </section>
 
-            <section className="py-20 bg-[#f8fafc]">
+            <section id="blog" className="py-16 sm:py-20 lg:py-24 bg-white overflow-hidden">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
                     {/* Heading */}
-                    <div className="text-center mb-14">
-                        <span className="inline-block px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full  bg-amber-500/20 border border-amber-500/30">
-                            Our Services
+                    <motion.div
+                        initial={{ opacity: 0, y: 80 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-10 sm:mb-14 lg:mb-16"
+                    >
+                        <span className="inline-block px-4 py-2 text-amber-600 text-xs sm:text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30">
+                            Knowledge Hub
                         </span>
 
-                        <h2 className="mt-5 text-3xl md:text-4xl lg:text-5xl font-black text-[#0b1b3a]">
-                            Complete Industrial
-                            <span className="text-amber-500"> Solutions</span>
+                        <h2 className="mt-5 text-[28px] sm:text-4xl lg:text-5xl font-black text-[#0b1b3a] leading-tight">
+                            Latest Industry
+                            <span className="text-amber-500"> Insights</span>
                         </h2>
 
-                        <p className="mt-5 text-gray-600 max-w-3xl mx-auto">
-                            We provide end-to-end industrial machinery solutions designed
-                            to improve efficiency, productivity, and long-term business growth.
+                        <p className="mt-5 text-sm sm:text-base text-gray-600 max-w-3xl mx-auto">
+                            Stay updated with machinery trends, industrial innovations,
+                            and expert maintenance guides.
                         </p>
-                    </div>
+                    </motion.div>
 
-                    {/* Services Grid */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {/* Main Layout */}
+                    <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6 lg:gap-8">
 
-                        {services.map((service, index) => (
-                            <div
-                                key={index}
-                                className="group bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-2xl hover:border-amber-500 transition-all duration-500 hover:-translate-y-2"
-                            >
-                                <div className="w-16 h-16 rounded-2xl bg-[#0b1b3a] text-amber-500 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-all duration-300">
-                                    {service.icon}
+                        {/* Featured Blog */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -100 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            viewport={{ once: true }}
+                            onClick={() => navigate(`/blog/${blogs[0].id}`)}
+                            className="group relative overflow-hidden rounded-2xl sm:rounded-3xl cursor-pointer"
+                        >
+                            <img
+                                src={blogs[0].image}
+                                alt={blogs[0].title}
+                                className="
+                                    w-full
+                                    h-[280px]
+                                    sm:h-[400px]
+                                    md:h-[500px]
+                                    lg:h-[550px]
+                                    object-cover
+                                    group-hover:scale-110
+                                    transition-all
+                                    duration-700
+                                "
+                            />
+
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0b1b3a] via-[#0b1b3a]/50 to-transparent"></div>
+
+                            <div className="absolute bottom-0 left-0 p-4 sm:p-6 lg:p-10">
+
+                                <div className="flex items-center gap-2 text-amber-500 text-xs sm:text-sm mb-2 sm:mb-4">
+                                    <FaCalendarAlt />
+                                    <span>{blogs[0].date}</span>
                                 </div>
 
-                                <h3 className="text-xl font-black text-[#0b1b3a] mb-3">
-                                    {service.title}
+                                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight">
+                                    {blogs[0].title}
                                 </h3>
 
-                                <p className="text-gray-600 leading-relaxed">
-                                    {service.desc}
+                                <p className="text-gray-300 mt-3 text-sm sm:text-base max-w-xl line-clamp-2 sm:line-clamp-3">
+                                    {blogs[0].desc}
                                 </p>
 
-                                <div className="mt-6 w-12 h-1 bg-amber-500 rounded-full group-hover:w-24 transition-all duration-500"></div>
+                                <button className="mt-4 sm:mt-6 flex items-center gap-2 text-amber-500 font-bold text-sm sm:text-base">
+                                    Read Full Article
+                                    <FaArrowRight />
+                                </button>
+
                             </div>
-                        ))}
+                        </motion.div>
 
-                    </div>
+                        {/* Side Blogs */}
+                        <div className="flex flex-col gap-4 sm:gap-6">
 
-                    {/* CTA Banner */}
-                    <div className="mt-16 bg-[#0b1b3a] rounded-3xl p-10 text-center">
-                        <h3 className="text-3xl font-black text-white mb-4">
-                            Need a Custom Machinery Solution?
-                        </h3>
+                            {blogs.slice(1).map((blog, index) => (
+                                <motion.div
+                                    key={blog.id}
+                                    initial={{ opacity: 0, x: 100 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{
+                                        duration: 0.6,
+                                        delay: index * 0.2,
+                                    }}
+                                    viewport={{ once: true }}
+                                    whileHover={{
+                                        x: 5,
+                                    }}
+                                    onClick={() => navigate(`/blog/${blog.id}`)}
+                                    className="
+                                        group
+                                        bg-[#f8fafc]
+                                        border
+                                        border-gray-200
+                                        rounded-2xl
+                                        sm:rounded-3xl
+                                        p-3
+                                        sm:p-4
+                                        flex
+                                        flex-col
+                                        min-[375px]:flex-row
+                                        items-stretch
+                                        gap-4
+                                        hover:border-amber-500
+                                        hover:shadow-xl
+                                        transition-all
+                                        duration-500
+                                        cursor-pointer
+                                    "
+                                >
 
-                        <p className="text-gray-300 max-w-2xl mx-auto mb-8">
-                            Our experts are ready to help you find the right equipment
-                            and services for your industrial requirements.
-                        </p>
+                                    {/* Blog Image */}
+                                    <div
+                                        className="
+                                            overflow-hidden
+                                            rounded-xl
+                                            sm:rounded-2xl
+                                            flex-shrink-0
 
-                        <button className="px-8 py-4 bg-amber-500 text-[#0b1b3a] font-black rounded-xl hover:bg-amber-400 transition-all">
-                            Get Free Consultation
-                        </button>
-                    </div>
+                                            w-full
+                                            h-[200px]
 
-                </div>
-            </section>
+                                            min-[375px]:w-32
+                                            min-[375px]:h-auto
 
-            <section className="bg-gradient-to-b from-white via-gray-50 to-white py-20 overflow-hidden">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-
-                    {/* Section Heading */}
-                    <div className="text-center mb-14">
-                        <span className="inline-block px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full  bg-amber-500/20 border border-amber-500/30">
-                            Why Choose Us
-                        </span>
-
-                        <h2 className="mt-5 text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
-                            Trusted Industrial
-                            <span className="text-amber-500">
-                                {" "}Machinery Partner
-                            </span>
-                        </h2>
-
-                        <p className="mt-5 text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                            We provide world-class industrial machinery solutions with unmatched
-                            quality, professional support, advanced technology, and years of
-                            industry expertise.
-                        </p>
-                    </div>
-
-                    {/* Feature Cards */}
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {features.map((item, index) => (
-                            <div
-                                key={index}
-                                className="group relative bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:border-amber-500 hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
-                            >
-                                {/* Number */}
-                                <span className="absolute top-4 right-4 text-5xl font-black text-gray-100">
-                                    0{index + 1}
-                                </span>
-
-                                {/* Icon */}
-                                <div className="relative w-16 h-16 rounded-xl bg-amber-500 text-[#0b1b3a] flex items-center justify-center text-2xl mb-6 shadow-lg group-hover:scale-110 transition-all duration-300">
-                                    {item.icon}
-                                </div>
-
-                                {/* Content */}
-                                <h3 className="text-gray-900 text-xl font-bold mb-3">
-                                    {item.title}
-                                </h3>
-
-                                <p className="text-gray-600 text-sm leading-relaxed">
-                                    {item.desc}
-                                </p>
-
-                                {/* Bottom Line */}
-                                <div className="mt-6 w-10 h-1 bg-amber-500 group-hover:w-20 transition-all duration-500"></div>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Statistics */}
-                    <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-                        {stats.map((item, index) => (
-                            <div
-                                key={index}
-                                className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-sm hover:border-amber-500 hover:shadow-lg transition-all duration-300"
-                            >
-                                <h3 className="text-3xl font-black text-amber-500">
-                                    {item.number}
-                                </h3>
-
-                                <p className="text-gray-600 text-sm mt-2">
-                                    {item.text}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* CTA Button */}
-                    <div className="text-center mt-14">
-                        <button className="px-8 py-4 bg-amber-500 text-[#0b1b3a] font-black rounded-lg hover:bg-amber-400 hover:shadow-lg transition-all duration-300">
-                            Explore Machinery
-                        </button>
-                    </div>
-
-                </div>
-            </section>
-
-            <section className="py-20 bg-white">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-
-                    {/* Heading */}
-                    <div className="text-center mb-14">
-                        <span className="inline-block px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full  bg-amber-500/20 border border-amber-500/30">
-                            Latest Blog & News
-                        </span>
-
-                        <h2 className="mt-5 text-3xl md:text-4xl lg:text-5xl font-black text-[#0b1b3a]">
-                            Industry Insights &
-                            <span className="text-amber-500"> Updates</span>
-                        </h2>
-
-                        <p className="mt-5 text-gray-600 max-w-3xl mx-auto">
-                            Stay informed with the latest machinery trends, maintenance guides,
-                            and industrial innovations from our experts.
-                        </p>
-                    </div>
-
-                    {/* Blog Cards */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                        {blogs.map((blog, index) => (
-                            <a
-                                href="#"
-                                key={index}
-                                onClick={() => navigate(`/blog/${blog.id}`)}
-                                className="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-amber-500 transition-all duration-500"
-                            >
-                                {/* Image */}
-                                <div className="overflow-hidden h-60">
-                                    <img
-                                        src={blog.image}
-                                        alt={blog.title}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
-                                    />
-                                </div>
-
-                                {/* Content */}
-                                <div className="p-6">
-
-                                    <div className="flex items-center gap-2 text-amber-500 text-sm font-semibold mb-4">
-                                        <FaCalendarAlt />
-                                        {blog.date}
+                                            min-[425px]:w-40
+                                            "
+                                    >
+                                        <img
+                                            src={blog.image}
+                                            alt={blog.title}
+                                            className="
+                                                w-full
+                                                h-full
+                                                object-cover
+                                                group-hover:scale-110
+                                                transition-all
+                                                duration-700
+                                            "
+                                        />
                                     </div>
 
-                                    <h3 className="text-xl font-black text-[#0b1b3a] mb-3 group-hover:text-amber-500 transition-all">
-                                        {blog.title}
-                                    </h3>
+                                    {/* Content */}
+                                    <div className="flex flex-col justify-center flex-1">
 
-                                    <p className="text-gray-600 leading-relaxed mb-6">
-                                        {blog.desc}
-                                    </p>
+                                        <div className="flex items-center gap-2 text-amber-500 text-xs sm:text-sm mb-2">
+                                            <FaCalendarAlt />
+                                            <span>{blog.date}</span>
+                                        </div>
 
-                                    <button className="flex items-center gap-2 text-amber-500 font-bold hover:gap-3 transition-all">
-                                        Read More
-                                        <FaArrowRight />
-                                    </button>
+                                        <h3 className="font-black text-[#0b1b3a] text-base sm:text-lg leading-snug group-hover:text-amber-500 transition-all line-clamp-2">
+                                            {blog.title}
+                                        </h3>
 
-                                </div>
-                            </a>
-                        ))}
+                                        <p className="text-gray-600 text-sm mt-2 line-clamp-2">
+                                            {blog.desc}
+                                        </p>
+
+                                        <button className="mt-4 flex items-center gap-2 text-amber-500 font-semibold text-sm">
+                                            Read More
+                                            <FaArrowRight className="text-xs group-hover:translate-x-1 transition-all duration-300" />
+                                        </button>
+
+                                    </div>
+
+                                </motion.div>
+                            ))}
+
+                        </div>
 
                     </div>
 
                     {/* Bottom CTA */}
-                    <div className="text-center mt-14">
-                        <button className="px-8 py-4 bg-[#0b1b3a] text-white font-black rounded-xl hover:bg-[#122754] transition-all">
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                        className="text-center mt-12 sm:mt-16"
+                    >
+                        <button className="px-6 sm:px-8 py-3 sm:py-4 bg-[#0b1b3a] text-white font-black rounded-xl hover:bg-[#132a59] hover:scale-105 transition-all">
                             View All Articles
                         </button>
-                    </div>
+                    </motion.div>
 
                 </div>
             </section>
 
-            <section className="py-20 bg-[#f8fafc] !mb-0">
+            <section id="testimonials" className="py-20 bg-[#f8fafc] !mb-0">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
                     {/* Heading */}
-                    <div className="text-center mb-14">
-
+                    <motion.div
+                        initial={{ opacity: 0, y: 70 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-16"
+                    >
                         <span className="inline-block px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30">
                             Customer Testimonials
                         </span>
@@ -1324,104 +1261,151 @@ function Home() {
                             Trusted by industries across manufacturing, construction,
                             and engineering sectors for quality machinery and reliable service.
                         </p>
+                    </motion.div>
 
-                    </div>
-
-                    {/* Testimonials */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
+                    {/* Slider */}
+                    <Swiper
+                        modules={[Pagination, Autoplay]}
+                        loop={true}
+                        autoplay={{
+                            delay: 3500,
+                            disableOnInteraction: false,
+                        }}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        spaceBetween={30}
+                        breakpoints={{
+                            0: {
+                                slidesPerView: 1,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                            },
+                            1200: {
+                                slidesPerView: 3,
+                            },
+                        }}
+                        className="testimonialSwiper !pb-16"
+                    >
                         {testimonials.map((item, index) => (
-                            <div
-                                key={index}
-                                className="group bg-white rounded-3xl border border-gray-200 p-8 hover:border-amber-500 hover:shadow-2xl transition-all duration-500"
-                            >
+                            <SwiperSlide key={index}>
+                                <motion.div
+                                    initial={{
+                                        opacity: 0,
+                                        y: 50,
+                                    }}
+                                    whileInView={{
+                                        opacity: 1,
+                                        y: 0,
+                                    }}
+                                    viewport={{ once: true }}
+                                    transition={{
+                                        duration: 0.6,
+                                    }}
+                                    whileHover={{
+                                        y: -10,
+                                    }}
+                                    className="bg-white rounded-3xl border border-gray-200 p-8 h-full relative overflow-hidden group hover:border-amber-500 hover:shadow-2xl transition-all duration-500"
+                                >
+                                    {/* Background Glow */}
+                                    <div className="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
 
-                                {/* Quote Icon */}
-                                <div className="w-14 h-14 rounded-2xl bg-amber-500 flex items-center justify-center text-[#0b1b3a] text-xl mb-6">
-                                    <FaQuoteLeft />
-                                </div>
+                                    {/* Quote */}
+                                    <motion.div
+                                        animate={{
+                                            rotate: [0, 10, 0],
+                                        }}
+                                        transition={{
+                                            duration: 4,
+                                            repeat: Infinity,
+                                        }}
+                                        className="w-14 h-14 rounded-2xl bg-amber-500 text-[#0b1b3a] flex items-center justify-center text-xl mb-6"
+                                    >
+                                        <FaQuoteLeft />
+                                    </motion.div>
 
-                                {/* Review */}
-                                <p className="text-gray-600 leading-7 mb-6">
-                                    "{item.review}"
-                                </p>
+                                    {/* Review */}
+                                    <p className="text-gray-600 leading-8 mb-8 relative z-10">
+                                        "{item.review}"
+                                    </p>
 
-                                {/* Rating */}
-                                <div className="flex gap-1 text-amber-500 mb-6">
-                                    {[...Array(5)].map((_, i) => (
-                                        <FaStar key={i} />
-                                    ))}
-                                </div>
-
-                                {/* User */}
-                                <div className="flex items-center gap-4">
-
-                                    <img
-                                        src={item.image}
-                                        alt={item.name}
-                                        className="w-14 h-14 rounded-full object-cover border-2 border-amber-500"
-                                    />
-
-                                    <div>
-                                        <h4 className="font-black text-[#0b1b3a]">
-                                            {item.name}
-                                        </h4>
-
-                                        <p className="text-sm text-gray-500">
-                                            {item.company}
-                                        </p>
+                                    {/* Rating */}
+                                    <div className="flex gap-1 text-amber-500 mb-6">
+                                        {[...Array(5)].map((_, i) => (
+                                            <FaStar key={i} />
+                                        ))}
                                     </div>
 
-                                </div>
+                                    {/* User */}
+                                    <div className="flex items-center gap-4">
+                                        <motion.img
+                                            whileHover={{
+                                                scale: 1.1,
+                                                rotate: 5,
+                                            }}
+                                            src={item.image}
+                                            alt={item.name}
+                                            className="w-16 h-16 rounded-full border-4 border-amber-500 object-cover"
+                                        />
 
-                            </div>
+                                        <div>
+                                            <h4 className="font-black text-[#0b1b3a]">
+                                                {item.name}
+                                            </h4>
+
+                                            <p className="text-sm text-gray-500">
+                                                {item.company}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </SwiperSlide>
                         ))}
+                    </Swiper>
 
-                    </div>
-
-                    {/* Bottom Statistics */}
+                    {/* Stats */}
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+                        {[
+                            ["1000+", "Happy Clients"],
+                            ["500+", "Projects Completed"],
+                            ["15+", "Years Experience"],
+                            ["98%", "Client Satisfaction"],
+                        ].map((item, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{
+                                    opacity: 0,
+                                    y: 40,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    duration: 0.5,
+                                    delay: index * 0.1,
+                                }}
+                                whileHover={{
+                                    y: -8,
+                                    scale: 1.05,
+                                }}
+                                className="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-amber-500 hover:shadow-xl transition-all duration-300"
+                            >
+                                <h3 className="text-4xl font-black text-amber-500">
+                                    {item[0]}
+                                </h3>
 
-                        <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center">
-                            <h3 className="text-4xl font-black text-amber-500">
-                                1000+
-                            </h3>
-                            <p className="text-gray-600 mt-2">
-                                Happy Clients
-                            </p>
-                        </div>
-
-                        <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center">
-                            <h3 className="text-4xl font-black text-amber-500">
-                                500+
-                            </h3>
-                            <p className="text-gray-600 mt-2">
-                                Projects Completed
-                            </p>
-                        </div>
-
-                        <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center">
-                            <h3 className="text-4xl font-black text-amber-500">
-                                15+
-                            </h3>
-                            <p className="text-gray-600 mt-2">
-                                Years Experience
-                            </p>
-                        </div>
-
-                        <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center">
-                            <h3 className="text-4xl font-black text-amber-500">
-                                98%
-                            </h3>
-                            <p className="text-gray-600 mt-2">
-                                Client Satisfaction
-                            </p>
-                        </div>
-
+                                <p className="text-gray-600 mt-2">
+                                    {item[1]}
+                                </p>
+                            </motion.div>
+                        ))}
                     </div>
-
                 </div>
             </section>
+
 
         </div>
     );
