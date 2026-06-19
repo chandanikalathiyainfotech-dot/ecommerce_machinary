@@ -196,6 +196,8 @@ function Detailproduct() {
 
     return (
         <main>
+
+            {/* detail of product */}
             <section id="detailproduct" className="mb-10">
                 <div className="container px-4 sm:px-6 lg:px-8  mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
 
@@ -392,6 +394,7 @@ function Detailproduct() {
                 </div>
             </section>
 
+            {/* product detail,review */}
             <section id="detail" className="mb-10">
                 <div className="container px-4 sm:px-6 lg:px-8  mx-auto ">
                     <div className="flex justify-center flex-wrap border-b border-gray-200">
@@ -670,6 +673,7 @@ function Detailproduct() {
                 </div>
             </section>
 
+            {/* related product */}
             <section id="relatedproduct" className="mb-10">
                 <div className="container px-4 sm:px-6 lg:px-8  mx-auto">
                     <div className="flex items-center gap-3 w-full mb-5">
