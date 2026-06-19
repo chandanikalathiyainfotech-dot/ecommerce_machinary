@@ -131,7 +131,7 @@ function Blogdetails() {
                             {/* Stats */}
                             <div className="grid md:grid-cols-3 gap-6 my-14">
 
-                                <div className="bg-amber-50 rounded-2xl p-6 border border-amber-100">
+                                <div className=" bg-amber-500/10 rounded-2xl p-6 border border-amber-100">
                                     <h3 className="text-4xl font-black text-amber-500">
                                         30%
                                     </h3>
@@ -140,7 +140,7 @@ function Blogdetails() {
                                     </p>
                                 </div>
 
-                                <div className="bg-amber-50 rounded-2xl p-6 border border-amber-100">
+                                <div className=" bg-amber-500/10 rounded-2xl p-6 border border-amber-100">
                                     <h3 className="text-4xl font-black text-amber-500">
                                         45%
                                     </h3>
@@ -149,7 +149,7 @@ function Blogdetails() {
                                     </p>
                                 </div>
 
-                                <div className="bg-amber-50 rounded-2xl p-6 border border-amber-100">
+                                <div className=" bg-amber-500/10 rounded-2xl p-6 border border-amber-100">
                                     <h3 className="text-4xl font-black text-amber-500">
                                         24/7
                                     </h3>

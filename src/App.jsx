@@ -12,6 +12,8 @@ import Blogdetails from "./container/Blogdetails";
 import Detailproduct from "./container/Detailproduct";
 import Allproductgrid from "./container/Allproductgrid";
 import Cart from "./container/Cart";
+import HeavyMachinery from "./container/Parts/HeavyMachinery";
+import SpareParts from "./container/Parts/SpareParts";
 
 function App() {
 
@@ -27,7 +29,8 @@ function App() {
         <Route path="/product-detail" element={<Detailproduct />} />
         <Route path="/allproduct" element={<Allproductgrid />} />
         <Route path="/cart" element={<Cart />} />
-        {/* <Route path="/parts/spare-parts" element={<SparParts />} /> */}
+        <Route path="/heavy-machinery" element={<HeavyMachinery />} />
+        <Route path="/spare-parts" element={<SpareParts />} />
       </Routes>
       <Footer />
     </>

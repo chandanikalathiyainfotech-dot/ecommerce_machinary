@@ -49,6 +49,9 @@ function Contact() {
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-500/20 border border-amber-500/30 rounded-full mb-3">
             <span className="text-amber-600 text-xs font-semibold tracking-wide">Get In Touch</span>
           </div>
+          {/* <span className="inline-block px-4 py-2 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-600">
+                Get In Touch
+              </span> */}
           <h2 className="text-xl sm:text-2xl lg:text-5xl font-black text-[#0b1b3a] mb-3">Contact Us</h2>
           <p className="text-gray-600 text-xs sm:text-sm lg:text-lg max-w-2xl mx-auto">
             Have questions or need assistance? Reach out to us and we'll get back to you as soon as possible.

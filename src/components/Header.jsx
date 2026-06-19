@@ -35,7 +35,7 @@ function Header() {
 
   const productCategories = [
     "Heavy Machinery",
-    "Spare Parts", 
+    "Spare Parts",
     "Tools & Equipment",
     "Truck Parts",
     "Maintenance Kits",
@@ -59,16 +59,16 @@ function Header() {
   };
 
   const navItems = [
-  { name: "Home", path: "/" },
-  { name: "Contact", path: "/contact" },
-  { name: "About Us", path: "/about-us" },
-];
+    { name: "Home", path: "/" },
+    { name: "Contact", path: "/contact" },
+    { name: "About Us", path: "/about-us" },
+  ];
 
   return (
+
     <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0b1b3a]/95 backdrop-blur-md border-b border-gray-800 shadow-xl" : "bg-[#0b1b3a]"}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
-          {/* Unique & Good Logo */}
           <div className="flex items-center gap-3 cursor-pointer group">
             <div className="relative">
               <div className="absolute -inset-2 bg-amber-500 rounded-lg blur opacity-20 group-hover:opacity-40 transition-all duration-500"></div>
@@ -78,8 +78,8 @@ function Header() {
               </div>
             </div>
             <NavLink
-            to={"/"}
-             className="flex flex-col leading-none">
+              to={"/"}
+              className="flex flex-col leading-none">
               <span className="text-sm sm:text-base md:text-lg lg:text-xl font-black text-white tracking-tighter">
                 MECH<span className="text-amber-500">ZONE</span>
               </span>
@@ -87,7 +87,6 @@ function Header() {
             </NavLink>
           </div>
 
-          {/* Desktop Menu */}
           <nav className="hidden min-[992px]:flex items-center gap-1">
             {navItems.map((item, idx) => (
               <NavLink
@@ -100,8 +99,7 @@ function Header() {
               </NavLink>
             ))}
 
-            {/* Parts with Simple Submenu */}
-            <div 
+            <div
               className="relative"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -113,15 +111,13 @@ function Header() {
                 {isPartsDropdownOpen ? <FaChevronUp className="text-xs" /> : <FaChevronDown className="text-xs" />}
                 <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 transition-all duration-300 ${isPartsDropdownOpen ? "scale-x-100" : "scale-x-0 group-hover/link:scale-x-100"}`}></span>
               </button>
-
-              {/* Simple Submenu Dropdown */}
               {isPartsDropdownOpen && (
-                <div 
+                <div
                   className="absolute top-full left-0 mt-2 w-56 bg-[#0b1b3a] border border-gray-700 rounded-lg shadow-lg z-50 overflow-hidden animate-slideDown"
                 >
                   <div className="p-2">
                     {productCategories.map((category, idx) => (
-                      <a 
+                      <a
                         key={idx}
                         href="#"
                         className="block px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all"
@@ -135,7 +131,6 @@ function Header() {
             </div>
           </nav>
 
-          {/* Desktop Actions */}
           <div className="hidden min-[992px]:flex items-center gap-4">
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
@@ -159,7 +154,6 @@ function Header() {
             </NavLink>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="flex min-[992px]:hidden items-center gap-0 sm:gap-3">
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
@@ -177,7 +171,6 @@ function Header() {
         </div>
       </div>
 
-      {/* Search Overlay */}
       {isSearchOpen && (
         <div className="bg-[#0f172a] border-b border-gray-800 z-40 animate-slideDown shadow-2xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
@@ -202,21 +195,19 @@ function Header() {
         </div>
       )}
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="min-[992px]:hidden bg-[#0f172a] border-t border-gray-800 max-h-[calc(100vh-100px)] overflow-y-auto">
           <div className="px-4 py-8 space-y-0 sm:space-y-4">
             {navItems.map((item, idx) => (
               <NavLink
                 key={idx}
-               to={item.path}
+                to={item.path}
                 className={`text-[14px] sm:text-[16px] block px-6 py-4 rounded-xl font-black uppercase tracking-widest transition-all ${idx === 0 ? "text-amber-500 bg-gray-800/50" : "text-gray-300 hover:text-amber-500 hover:bg-gray-800/30"}`}
               >
                 {item.name}
               </NavLink>
             ))}
 
-            {/* Parts in Mobile - same design as desktop */}
             <div>
               <button
                 onClick={() => setIsMobilePartsOpen(!isMobilePartsOpen)}
@@ -228,7 +219,7 @@ function Header() {
               {isMobilePartsOpen && (
                 <div className="mx-4 my-2 bg-[#0b1b3a] border border-gray-700 rounded-lg p-2 animate-slideDown">
                   {productCategories.map((category, idx) => (
-                    <a 
+                    <a
                       key={idx}
                       href="#"
                       className="block px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all"
@@ -257,7 +248,6 @@ function Header() {
         </div>
       )}
 
-      {/* Animations */}
       <style>{`
         @keyframes slideDown {
           from { opacity: 0; transform: translateY(-10px); }
@@ -271,6 +261,7 @@ function Header() {
         .animate-spin-slow { animation: spin-slow linear infinite; }
       `}</style>
     </header>
+
   );
 }
 

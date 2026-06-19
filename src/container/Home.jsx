@@ -562,7 +562,7 @@ function Home() {
                 </div>
             </section>
 
-            <section id="category">
+            <section id="category" className="mt-[100px]">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <h3 className="title">Shop By Featured Categories</h3>
                     <h5 className="subtitle">There are many variations of passages of lorem Ipsum available believable.</h5>
@@ -625,7 +625,7 @@ function Home() {
                 </div>
             </section>
 
-            <section id="products">
+            <section id="products" >
                 {/* <span className="flex w-fit mx-auto px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30">
                     OUR PRODUCTS
                 </span>
@@ -1363,27 +1363,23 @@ function Home() {
                 </div>
             </section>
 
-            <section id="testimonials" className="py-20 bg-[#f8fafc] !mb-0">
+            <section id="testimonials" className="py-14 md:py-20 lg:py-24 bg-[#f8fafc] overflow-hidden">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
                     {/* Heading */}
                     <motion.div
-                        initial={{ opacity: 0, y: 70 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
+                        className="text-center mb-10 md:mb-16"
                     >
-                        <span className="inline-block px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30">
+                        <span className="inline-block px-3 md:px-4 py-2 text-xs md:text-sm text-amber-600 font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30">
                             Customer Testimonials
                         </span>
 
-                        <h2 className="mt-5 text-3xl md:text-4xl lg:text-5xl font-black text-[#0b1b3a]">
+                        <h2 className="mt-4 md:mt-5 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#0b1b3a] leading-tight">
                             What Our
                             <span className="text-amber-500"> Clients Say</span>
                         </h2>
 
-                        <p className="mt-5 text-gray-600 max-w-3xl mx-auto">
+                        <p className="mt-4 text-sm sm:text-base text-gray-600 max-w-3xl mx-auto px-2">
                             Trusted by industries across manufacturing, construction,
                             and engineering sectors for quality machinery and reliable service.
                         </p>
@@ -1392,7 +1388,7 @@ function Home() {
                     {/* Slider */}
                     <Swiper
                         modules={[Pagination, Autoplay]}
-                        loop={true}
+                        loop
                         autoplay={{
                             delay: 3500,
                             disableOnInteraction: false,
@@ -1400,22 +1396,33 @@ function Home() {
                         pagination={{
                             clickable: true,
                         }}
-                        spaceBetween={30}
+                        spaceBetween={20}
                         breakpoints={{
                             0: {
                                 slidesPerView: 1,
+                                spaceBetween: 15,
+                            },
+                            640: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
                             },
                             768: {
                                 slidesPerView: 2,
+                                spaceBetween: 20,
                             },
-                            1200: {
+                            1024: {
+                                slidesPerView: 2,
+                                spaceBetween: 25,
+                            },
+                            1280: {
                                 slidesPerView: 3,
+                                spaceBetween: 30,
                             },
                         }}
-                        className="testimonialSwiper !pb-16"
+                        className="testimonialSwiper !pb-14 md:!pb-16 !pt-4"
                     >
                         {testimonials.map((item, index) => (
-                            <SwiperSlide key={index}>
+                            <SwiperSlide key={index} className="h-auto flex">
                                 <motion.div
                                     initial={{
                                         opacity: 0,
@@ -1432,7 +1439,25 @@ function Home() {
                                     whileHover={{
                                         y: -10,
                                     }}
-                                    className="bg-white rounded-3xl border border-gray-200 p-8 h-full relative overflow-hidden group hover:border-amber-500 hover:shadow-2xl transition-all duration-500"
+                                    className="
+                                        bg-white
+                                        rounded-3xl
+                                        border
+                                        border-gray-200
+                                        p-5
+                                        sm:p-6
+                                        lg:p-8
+                                        h-full
+                                        flex
+                                        flex-col
+                                        relative
+                                        overflow-hidden
+                                        group
+                                        hover:border-amber-500
+                                        hover:shadow-2xl
+                                        transition-all
+                                        duration-500
+                                        "
                                 >
                                     {/* Background Glow */}
                                     <div className="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
@@ -1446,13 +1471,25 @@ function Home() {
                                             duration: 4,
                                             repeat: Infinity,
                                         }}
-                                        className="w-14 h-14 rounded-2xl bg-amber-500 text-[#0b1b3a] flex items-center justify-center text-xl mb-6"
+                                        className="
+                                            w-12 h-12
+                                            md:w-14 md:h-14
+                                            rounded-2xl
+                                            bg-amber-500
+                                            text-[#0b1b3a]
+                                            flex
+                                            items-center
+                                            justify-center
+                                            text-lg
+                                            md:text-xl
+                                            mb-5
+                                            "
                                     >
                                         <FaQuoteLeft />
                                     </motion.div>
 
                                     {/* Review */}
-                                    <p className="text-gray-600 leading-8 mb-8 relative z-10">
+                                    <p className="text-gray-600 text-sm md:text-base leading-7 md:leading-8 mb-8 flex-grow">
                                         "{item.review}"
                                     </p>
 
@@ -1464,23 +1501,18 @@ function Home() {
                                     </div>
 
                                     {/* User */}
-                                    <div className="flex items-center gap-4">
+                                    <div className="flex items-center gap-3 md:gap-4 mt-auto">
                                         <motion.img
-                                            whileHover={{
-                                                scale: 1.1,
-                                                rotate: 5,
-                                            }}
                                             src={item.image}
                                             alt={item.name}
-                                            className="w-16 h-16 rounded-full border-4 border-amber-500 object-cover"
+                                            className="w-14 h-14 md:w-16 md:h-16 rounded-full border-4 border-amber-500 object-cover"
                                         />
-
                                         <div>
-                                            <h4 className="font-black text-[#0b1b3a]">
+                                            <h4 className="font-black text-[#0b1b3a] text-sm md:text-base">
                                                 {item.name}
                                             </h4>
 
-                                            <p className="text-sm text-gray-500">
+                                            <p className="text-xs md:text-sm text-gray-500">
                                                 {item.company}
                                             </p>
                                         </div>
@@ -1491,7 +1523,7 @@ function Home() {
                     </Swiper>
 
                     {/* Stats */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-12 md:mt-16">
                         {[
                             ["1000+", "Happy Clients"],
                             ["500+", "Projects Completed"],
@@ -1517,13 +1549,26 @@ function Home() {
                                     y: -8,
                                     scale: 1.05,
                                 }}
-                                className="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-amber-500 hover:shadow-xl transition-all duration-300"
+                                className="
+                                    bg-white
+                                    border
+                                    border-gray-200
+                                    rounded-2xl
+                                    p-4
+                                    sm:p-5
+                                    md:p-6
+                                    text-center
+                                    hover:border-amber-500
+                                    hover:shadow-xl
+                                    transition-all
+                                    duration-300
+                                    "
                             >
-                                <h3 className="text-4xl font-black text-amber-500">
+                                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-amber-500">
                                     {item[0]}
                                 </h3>
 
-                                <p className="text-gray-600 mt-2">
+                                <p className="text-xs sm:text-sm md:text-base text-gray-600 mt-2">
                                     {item[1]}
                                 </p>
                             </motion.div>
