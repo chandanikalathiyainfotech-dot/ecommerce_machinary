@@ -131,10 +131,11 @@ function Aboutus() {
       `}</style>
       </section> */}
 
-      <section id="hero" className="relative h-[450px] flex items-center justify-center bg-cover bg-center"
+      <section id="hero" className="relative h-[450px] flex items-center  justify-center bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1552664730-d307ca884978')",}}
+            "url('https://images.unsplash.com/photo-1552664730-d307ca884978')",
+        }}
       >
         <div className="absolute inset-0 bg-[#0b1b3a]/80"></div>
 
@@ -260,7 +261,7 @@ function Aboutus() {
           </div>
         </div>
       </section>
-  
+
 
       <section id="stats" className="bg-amber-500 py-12">
         <div className="container mx-auto px-5">
