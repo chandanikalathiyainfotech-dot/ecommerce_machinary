@@ -14,6 +14,9 @@ import Allproductgrid from "./container/Allproductgrid";
 import Cart from "./container/Cart";
 import HeavyMachinery from "./container/Parts/HeavyMachinery";
 import SpareParts from "./container/Parts/SpareParts";
+import Demo from "./container/demo";
+import Mobilebottomnav from "./components/Mobilebottomnav";
+import Wishlist from "./container/Wishlist";
 
 function App() {
 
@@ -31,8 +34,13 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/heavy-machinery" element={<HeavyMachinery />} />
         <Route path="/spare-parts" element={<SpareParts />} />
+        <Route path="/demo" element={<Demo />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        {/* <Route path="/cartdrawer" element={<CaretPosition />} /> */}
+        {/* <Route path="/parts/spare-parts" element={<SparParts />} /> */}
       </Routes>
       <Footer />
+      <Mobilebottomnav/>
     </>
   )
 }

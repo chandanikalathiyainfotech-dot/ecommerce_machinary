@@ -287,6 +287,7 @@ function Detailproduct() {
                                             }`}
                                     >
                                         <img
+                                            onClick={() => navigate('/product-detail')}
                                             src={v.image}
                                             alt={v.name}
                                             className="w-full h-full object-cover"
@@ -682,9 +683,9 @@ function Detailproduct() {
                             Related Products
                         </h2>
 
-                        <div className="flex-1 border-t border-t-1 border-gray-300"></div>
+                        <div className="min-[576px]:flex-1 border-t border-t-1 border-gray-300"></div>
 
-                        <div className="flex gap-4 items-center">
+                        <div className=" gap-2 items-center hidden min-[576px]:flex">
                             <button className="swiper-prev bg-gray-100 p-2">
                                 <IoIosArrowBack />
                             </button>
@@ -692,8 +693,8 @@ function Detailproduct() {
                                 <IoIosArrowForward />
                             </button>
                         </div>
-
                     </div>
+
                     <div>
                         <Swiper
                             modules={[Grid, Navigation]}
@@ -731,7 +732,7 @@ function Detailproduct() {
                                 products?.map((v) => {
                                     return (
                                         <SwiperSlide>
-                                            <div className="bg-white shadow-md rounded-md">
+                                            <div className="bg-white border-1 border-gray-300 rounded-md group">
                                                 <div className="relative">
                                                     <div className="relative flex items-center justify-center overflow-hidden p-3 sm:p-4 h-40 sm:h-52 xl:h-64">
 
@@ -783,6 +784,7 @@ function Detailproduct() {
 
                                                         {/* Product Image */}
                                                         <img
+                                                            onClick={() => navigate('/product-detail')}
                                                             src={v.image}
                                                             alt={v.name}
                                                             className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
@@ -813,17 +815,17 @@ function Detailproduct() {
 
                                                         <div
                                                             className="
-                                                                                                   overflow-hidden
-                                                                                                   max-h-20 opacity-100
-                                                                                                   min-[992px]:max-h-0 min-[992px]:opacity-0
-                                                                                                   group-hover:min-[992px]:max-h-20
-                                                                                                   group-hover:min-[992px]:opacity-100
-                                                                                                   transition-all duration-500"
+                                                                overflow-hidden
+                                                                max-h-20 opacity-100
+                                                                min-[992px]:max-h-0 min-[992px]:opacity-0
+                                                                group-hover:min-[992px]:max-h-20
+                                                                group-hover:min-[992px]:opacity-100
+                                                                transition-all duration-500"
                                                         >
                                                             <button
                                                                 className="w-full mt-5 py-2 text-[14px] bg-gray-100 text-gray-800 font-semibold rounded
-                                                                                                   hover:bg-amber-500 hover:text-white transition
-                                                                                                   flex items-center justify-center gap-2"
+                                                                    hover:bg-amber-500 hover:text-white transition
+                                                                    flex items-center justify-center gap-2"
                                                             >
                                                                 <TiShoppingCart className="text-lg hidden min-[576px]:block" />
                                                                 <span className="text-gray-800 hover:text-white !text-[12px] md:!text-[14px]">ADD TO CART</span>
