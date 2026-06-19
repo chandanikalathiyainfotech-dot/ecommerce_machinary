@@ -11,6 +11,8 @@ import { FiHeart } from "react-icons/fi";
 import { LuEye } from "react-icons/lu";
 import { TiShoppingCart } from "react-icons/ti";
 import { motion } from "framer-motion";
+import Quickviewpro from "./Quickviewpro";
+import CartDrawer from "./CartDrawer";
 
 const slides = [
     "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1600",
@@ -23,6 +25,13 @@ function Home() {
     const [visibleCount, setVisibleCount] = useState(6);
     const [fproduct, setFproduct] = useState('Featured')
     const navigate = useNavigate()
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [showQuickView, setShowQuickView] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
+    const openQuickView = (product) => {
+        setSelectedProduct(product);
+        setShowQuickView(true);
+    };
 
     useEffect(() => {
         const updateCount = () => {
@@ -670,7 +679,7 @@ function Home() {
                             spaceBetween={30}
                             breakpoints={{
                                 320: {
-                                    slidesPerView: 1,
+                                    slidesPerView: 2,
                                     spaceBetween: 10,
                                     grid: {
                                         rows: 1,
@@ -710,7 +719,7 @@ function Home() {
                                 products?.map((v) => {
                                     return (
                                         <SwiperSlide>
-                                            <div className="border border-gray-200 rounded-md group">
+                                            <div className="bg-white border-1 border-gray-300 rounded-md group">
                                                 <div className="relative">
                                                     <div className="relative flex items-center justify-center overflow-hidden p-3 sm:p-4 h-40 sm:h-52 xl:h-64">
 
@@ -727,34 +736,36 @@ function Home() {
                                                         <div className="absolute right-2 sm:right-3 top-2 sm:top-4 flex flex-col gap-2 z-10">
                                                             <button
                                                                 className="
-                                                                 w-7 h-7 min-[576px]:w-8 min-[576px]:h-8 bg-white rounded-full flex items-center justify-center
-                                                                border border-gray-300
-    
-                                                                opacity-100 translate-x-0
-                                                                lg:opacity-0 lg:translate-x-4
-    
-                                                                group-hover:lg:opacity-100
-                                                                group-hover:lg:translate-x-0
-    
-                                                                transition-all duration-300 delay-100
-                                                                hover:bg-[#0b1b3a] hover:text-white"
+                                                                        w-7 h-7 min-[576px]:w-8 min-[576px]:h-8 bg-white rounded-full flex items-center justify-center
+                                                                    border border-gray-300
+        
+                                                                    opacity-100 translate-x-0
+                                                                    lg:opacity-0 lg:translate-x-4
+        
+                                                                    group-hover:lg:opacity-100
+                                                                    group-hover:lg:translate-x-0
+        
+                                                                    transition-all duration-300 delay-100
+                                                                    hover:bg-[#0b1b3a] hover:text-white"
                                                             >
                                                                 <FiHeart className="text-sm" />
                                                             </button>
 
                                                             <button
                                                                 className="
-                                                                 w-7 h-7 min-[576px]:w-8 min-[576px]:h-8 bg-white rounded-full flex items-center justify-center
+                                                                    w-7 h-7 min-[576px]:w-8 min-[576px]:h-8 bg-white rounded-full flex items-center justify-center
                                                                 border border-gray-300
-    
+
                                                                 opacity-100 translate-x-0
                                                                 lg:opacity-0 lg:translate-x-4
-    
+
                                                                 group-hover:lg:opacity-100
                                                                 group-hover:lg:translate-x-0
-    
+
                                                                 transition-all duration-300 delay-300
                                                                 hover:bg-[#0b1b3a] hover:text-white"
+
+                                                                onClick={() => openQuickView(v)}
                                                             >
                                                                 <LuEye />
                                                             </button>
@@ -801,6 +812,10 @@ function Home() {
                                                                 transition-all duration-500"
                                                         >
                                                             <button
+                                                                onClick={() => {
+                                                                    setCartOpen(true);
+                                                                    setSelectedProduct(v);
+                                                                }}
                                                                 className="w-full mt-5 py-2 text-[14px] bg-gray-100 text-gray-800 font-semibold rounded
                                                                 hover:bg-amber-500 hover:text-white transition
                                                                 flex items-center justify-center gap-2"
@@ -1532,6 +1547,18 @@ function Home() {
                 </div>
             </section>
 
+            {showQuickView && (
+                <Quickviewpro
+                    product={selectedProduct}
+                    onClose={() => setShowQuickView(false)}
+                />
+            )}
+
+            <CartDrawer
+                open={cartOpen}
+                onClose={() => setCartOpen(false)}
+                product={selectedProduct}
+            />
         </div>
     );
 }

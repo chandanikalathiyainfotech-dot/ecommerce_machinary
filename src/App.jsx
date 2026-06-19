@@ -12,6 +12,9 @@ import Blogdetails from "./container/Blogdetails";
 import Detailproduct from "./container/Detailproduct";
 import Allproductgrid from "./container/Allproductgrid";
 import Cart from "./container/Cart";
+import Demo from "./container/demo";
+import Mobilebottomnav from "./components/Mobilebottomnav";
+import Wishlist from "./container/Wishlist";
 
 function App() {
 
@@ -27,9 +30,13 @@ function App() {
         <Route path="/product-detail" element={<Detailproduct />} />
         <Route path="/allproduct" element={<Allproductgrid />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/demo" element={<Demo />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        {/* <Route path="/cartdrawer" element={<CaretPosition />} /> */}
         {/* <Route path="/parts/spare-parts" element={<SparParts />} /> */}
       </Routes>
       <Footer />
+      <Mobilebottomnav/>
     </>
   )
 }
