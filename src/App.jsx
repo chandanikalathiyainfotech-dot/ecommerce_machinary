@@ -17,6 +17,8 @@ import SpareParts from "./container/Parts/SpareParts";
 import Demo from "./container/demo";
 import Mobilebottomnav from "./components/Mobilebottomnav";
 import Wishlist from "./container/Wishlist";
+import WishlistDrawer from "./container/WishlistDrawer";
+import Checkout from "./container/Checkout";
 
 function App() {
 
@@ -36,6 +38,8 @@ function App() {
         <Route path="/spare-parts" element={<SpareParts />} />
         <Route path="/demo" element={<Demo />} />
         <Route path="/wishlist" element={<Wishlist />} />
+         <Route path="/wishlistdrawer" element={<WishlistDrawer />} />
+         <Route path="/checkout" element={<Checkout />} />
         {/* <Route path="/cartdrawer" element={<CaretPosition />} /> */}
         {/* <Route path="/parts/spare-parts" element={<SparParts />} /> */}
       </Routes>

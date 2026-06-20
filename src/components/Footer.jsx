@@ -24,7 +24,7 @@ const quickLinks = [
 
 function Footer() {
   return (
-    <footer className="bg-[#0b1b3a]">
+    <footer className="bg-[#0b1b3a] mb-[57px] min-[992px]:mb-0">
       {/* CTA Banner
       <div className="bg-gradient-to-r from-[#1a2a4a] to-[#0b1b3a] border-t-3 border-amber-500 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
