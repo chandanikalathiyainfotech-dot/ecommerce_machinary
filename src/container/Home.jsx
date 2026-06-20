@@ -13,6 +13,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import { motion } from "framer-motion";
 import Quickviewpro from "./Quickviewpro";
 import CartDrawer from "./CartDrawer";
+import WishlistDrawer from "./WishlistDrawer";
 
 const slides = [
     "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1600",
@@ -28,10 +29,19 @@ function Home() {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [showQuickView, setShowQuickView] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
+    const [wishlistOpen, setWishlisOpen] = useState(false);
+
     const openQuickView = (product) => {
         setSelectedProduct(product);
         setShowQuickView(true);
     };
+
+    const openWishlist = (product) => {
+        setSelectedProduct(product);
+        setWishlisOpen(true);
+    };
+
+    console.log(showQuickView,cartOpen,wishlistOpen)
 
     useEffect(() => {
         const updateCount = () => {
@@ -747,6 +757,7 @@ function Home() {
         
                                                                     transition-all duration-300 delay-100
                                                                     hover:bg-[#0b1b3a] hover:text-white"
+                                                                    onClick={() => openWishlist(v)}
                                                             >
                                                                 <FiHeart className="text-sm" />
                                                             </button>
@@ -934,8 +945,10 @@ function Home() {
 
                                                             transition-all duration-300 delay-100
                                                             hover:bg-[#0b1b3a] hover:text-white"
+                                                            onClick={() => openWishlist(v)}
                                                         >
                                                             <FiHeart className="text-sm" />
+                                                            
                                                         </button>
 
                                                         <button
@@ -951,6 +964,7 @@ function Home() {
 
                                                             transition-all duration-300 delay-300
                                                             hover:bg-[#0b1b3a] hover:text-white"
+                                                            onClick={() => openQuickView(v)}
                                                         >
                                                             <LuEye />
                                                         </button>
@@ -997,6 +1011,10 @@ function Home() {
                                                         transition-all duration-500"
                                                     >
                                                         <button
+                                                            onClick={() => {
+                                                                setCartOpen(true);
+                                                                setSelectedProduct(v);
+                                                            }}
                                                             className="w-full mt-5 py-2 text-[14px] bg-gray-100 text-gray-800 font-semibold rounded
                                                         hover:bg-amber-500 hover:text-white transition
                                                         flex items-center justify-center gap-2"
@@ -1596,6 +1614,13 @@ function Home() {
                 <Quickviewpro
                     product={selectedProduct}
                     onClose={() => setShowQuickView(false)}
+                />
+            )}
+
+             {wishlistOpen && (
+                <WishlistDrawer
+                    product={selectedProduct}
+                    onClose={() => setWishlisOpen(false)}
                 />
             )}
 
