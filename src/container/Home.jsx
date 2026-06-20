@@ -390,7 +390,7 @@ function Home() {
     console.log(fproduct)
 
     return (
-        <div>
+        <main>
 
             <section id="hero" className="relative h-[600px] min-[992px]:h-screen overflow-hidden flex items-center bg-[#0b1b3a] !mt-0">
 
@@ -1604,7 +1604,7 @@ function Home() {
                 onClose={() => setCartOpen(false)}
                 product={selectedProduct}
             />
-        </div>
+        </main>
     );
 }
 
