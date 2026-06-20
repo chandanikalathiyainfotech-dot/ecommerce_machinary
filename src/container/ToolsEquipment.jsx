@@ -64,7 +64,7 @@ function ToolsEquipment() {
               <span className="inline-block px-4 py-2 bg-amber-500/20 border border-amber-500/30 rounded-full text-amber-500 font-semibold text-sm uppercase tracking-widest mb-6">
                 Premium Tools & Equipment
               </span>
-              <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mb-6">
+              <h1 className="text-[28px] min-[357px]:text-[34px] min-[576px]:text-4xl min-[768px]:text-[48px] min-[1440px]:text-6xl font-black text-white leading-tight mb-6">
                 Build the Future with <span className="text-amber-500">Professional Tools</span>
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
