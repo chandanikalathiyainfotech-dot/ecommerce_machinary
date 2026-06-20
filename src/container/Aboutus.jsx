@@ -3,9 +3,12 @@ import React from "react";
 console.log(React);
 import { motion } from "framer-motion";
 import { FaPlay, FaUsers, FaTools, FaBullseye, FaEye, FaAward, } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 
 function Aboutus() {
+
+  const navigate = useNavigate();
 
   const stats = [
     {
@@ -150,7 +153,10 @@ function Aboutus() {
                   Learn More
                 </button>
 
-                <button className="border-2 border-[#0b1b3a] text-[#0b1b3a] px-8 py-3 rounded-xl font-bold hover:bg-[#0b1b3a] hover:text-white transition-all duration-300">
+                <button 
+                onClick={() => navigate('/contact')}
+                className="border-2 border-[#0b1b3a] text-[#0b1b3a] px-8 py-3 rounded-xl font-bold hover:bg-[#0b1b3a] hover:text-white transition-all cursor-pointer duration-300"
+                >
                   Contact Us
                 </button>
 

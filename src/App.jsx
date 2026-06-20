@@ -12,11 +12,14 @@ import Blogdetails from "./container/Blogdetails";
 import Detailproduct from "./container/Detailproduct";
 import Allproductgrid from "./container/Allproductgrid";
 import Cart from "./container/Cart";
-import HeavyMachinery from "./container/Parts/HeavyMachinery";
-import SpareParts from "./container/Parts/SpareParts";
 import Demo from "./container/demo";
 import Mobilebottomnav from "./components/Mobilebottomnav";
 import Wishlist from "./container/Wishlist";
+import Parts from "./container/Parts";
+import ToolsEquipment from "./container/ToolsEquipment";
+import TruckParts from "./container/TruckParts";
+import HydraulicSystems from "./container/HydraulicSystems";
+import ElectricalParts from "./container/ElectricalParts";
 
 function App() {
 
@@ -32,15 +35,18 @@ function App() {
         <Route path="/product-detail" element={<Detailproduct />} />
         <Route path="/allproduct" element={<Allproductgrid />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/heavy-machinery" element={<HeavyMachinery />} />
-        <Route path="/spare-parts" element={<SpareParts />} />
+        <Route path="/Parts" element={<Parts />} />
+        <Route path="/tools-equipment" element={<ToolsEquipment />} />
+        <Route path="/truck-parts" element={<TruckParts />} />
+        <Route path="/hydraulic-systems" element={<HydraulicSystems />} />
+        <Route path="/electrical-parts" element={<ElectricalParts />} />
         <Route path="/demo" element={<Demo />} />
         <Route path="/wishlist" element={<Wishlist />} />
         {/* <Route path="/cartdrawer" element={<CaretPosition />} /> */}
         {/* <Route path="/parts/spare-parts" element={<SparParts />} /> */}
       </Routes>
       <Footer />
-      <Mobilebottomnav/>
+      <Mobilebottomnav />
     </>
   )
 }

@@ -1,5 +1,7 @@
 import React from "react";
-import { FaBalanceScale, FaHeart, FaHistory, FaShoppingCart, FaUser } from "react-icons/fa";
+console.log(React);
+
+import { FaHeart, FaShoppingCart, FaUser } from "react-icons/fa";
 import { GoHomeFill } from "react-icons/go";
 
 function Mobilebottomnav() {
@@ -29,7 +31,7 @@ function Mobilebottomnav() {
                         <div className="relative">
                             <FaShoppingCart className="text-[20px] text-[#BDBDBD]" />
 
-                            <span className="absolute -top-2 -right-4 w-5 h-5 rounded-full bg-yellow-400 text-[12px] font-semibold flex items-center justify-center">
+                            <span className="absolute -top-2 -right-4 w-5 h-5 rounded-full  bg-amber-500 text-[12px] font-semibold flex items-center justify-center">
                                 2
                             </span>
                         </div>
@@ -42,7 +44,7 @@ function Mobilebottomnav() {
                         <div className="relative">
                             <FaHeart className="text-[20px] text-[#BDBDBD]" />
 
-                            <span className="absolute -top-2 -right-4 w-5 h-5 rounded-full bg-yellow-400 text-[12px] font-semibold flex items-center justify-center">
+                            <span className="absolute -top-2 -right-4 w-5 h-5 rounded-full  bg-amber-500 text-[12px] font-semibold flex items-center justify-center">
                                 2
                             </span>
                         </div>

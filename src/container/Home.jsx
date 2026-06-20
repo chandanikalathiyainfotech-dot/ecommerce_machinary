@@ -428,7 +428,7 @@ function Home() {
                                 Industrial Excellence
                             </span>
 
-                            <h1 className="mt-8 text-white font-black leading-none text-[28px] min-[576px]:text-4xl min-[768px]:text-[42px] min-[992px]:text-5xl leading-6">
+                            <h1 className="mt-8 text-white font-black leading-none text-[28px] min-[357px]:text-[34px] min-[576px]:text-4xl min-[768px]:text-[48px] min-[1440px]:text-6xl">
                                 <span className="block ">
                                     Smart
                                 </span>
