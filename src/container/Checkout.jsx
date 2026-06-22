@@ -51,8 +51,6 @@ function Checkout() {
     // });
 
     return (
-
-
         <main>
             <section>
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
@@ -82,7 +80,6 @@ function Checkout() {
                             {/* <p className="text-red-600 text-xs">Coupon "sdfr" cannot be applied because it does not exist.</p> */}
                         </div>
                     </div>
-
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
                         {/* Left Column: Billing Details */}
