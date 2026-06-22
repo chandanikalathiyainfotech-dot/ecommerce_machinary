@@ -41,7 +41,7 @@ function Home() {
         setWishlisOpen(true);
     };
 
-    console.log(showQuickView,cartOpen,wishlistOpen)
+    console.log(showQuickView, cartOpen, wishlistOpen)
 
     useEffect(() => {
         const updateCount = () => {
@@ -477,45 +477,13 @@ function Home() {
 
                             </div>
 
-                            {/* Stats */}
-                            {/* <div className="grid grid-cols-3 gap-6 mt-14">
- 
-                                <div>
-                                    <h3 className="text-4xl font-black text-amber-500">
-                                        28+
-                                    </h3>
-                                    <p className="text-gray-400 text-sm">
-                                        Years
-                                    </p>
-                                </div>
- 
-                                <div>
-                                    <h3 className="text-4xl font-black text-amber-500">
-                                        5000+
-                                    </h3>
-                                    <p className="text-gray-400 text-sm">
-                                        Products
-                                    </p>
-                                </div>
- 
-                                <div>
-                                    <h3 className="text-4xl font-black text-amber-500">
-                                        1200+
-                                    </h3>
-                                    <p className="text-gray-400 text-sm">
-                                        Clients
-                                    </p>
-                                </div>
- 
-                            </div> */}
-
                         </div>
 
                         {/* RIGHT SIDE */}
                         <div className="relative hidden lg:flex ml-8 xl:ml-18 2xl:ml-0 2xl:justify-end">
 
                             {/* Main Machinery Image */}
-                            <div className="relative w-[520px] h-[650px] overflow-hidden rounded-[40px] border border-white/10 backdrop-blur-lg">
+                            <div className="relative w-[520px] h-[650px] overflow-hidden rounded-[40px] border border-white/10 backdrop-blur-lg shopallzoom">
 
                                 <img
                                     src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1000"
@@ -526,7 +494,7 @@ function Home() {
                             </div>
 
                             {/* Floating Card 1 */}
-                            <div className="absolute top-24 right-[270px] min-[1200px]:right-[360px] xl:right-[350px] xl:right-[420px] backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 xl:w-48 2xl:w-52">
+                            <div className="herocard absolute top-24 right-[270px] min-[1200px]:right-[360px] xl:right-[350px] xl:right-[420px] backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 xl:w-48 2xl:w-52">
                                 <FaIndustry className="text-amber-500 text-2xl mb-3" />
                                 <h4 className="text-white font-bold">
                                     Heavy Machinery
@@ -537,7 +505,7 @@ function Home() {
                             </div>
 
                             {/* Floating Card 2 */}
-                            <div className="absolute bottom-32 right-[270px] min-[1200px]:right-[360px] xl:right-[350px] xl:right-[420px] backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 xl:w-48 2xl:w-52">
+                            <div className="herocard absolute bottom-32 right-[270px] min-[1200px]:right-[360px] xl:right-[350px] xl:right-[420px] backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 xl:w-48 2xl:w-52">
                                 <FaTools className="text-amber-500 text-2xl mb-3" />
                                 <h4 className="text-white font-bold">
                                     Spare Parts
@@ -548,7 +516,7 @@ function Home() {
                             </div>
 
                             {/* Floating Card 3 */}
-                            <div className="absolute top-1/2 -right-12 xl:-right-15 2xl:-right-25 backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 2xl:w-52">
+                            <div className="herocard absolute top-1/2 -right-12 xl:-right-15 2xl:-right-25 backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 2xl:w-52">
                                 <FaUsers className="text-amber-500 text-2xl mb-3" />
                                 <h4 className="text-white font-bold">
                                     Global Clients
@@ -757,7 +725,7 @@ function Home() {
         
                                                                     transition-all duration-300 delay-100
                                                                     hover:bg-[#0b1b3a] hover:text-white"
-                                                                    onClick={() => openWishlist(v)}
+                                                                onClick={() => openWishlist(v)}
                                                             >
                                                                 <FiHeart className="text-sm" />
                                                             </button>
@@ -936,32 +904,25 @@ function Home() {
                                                             className="
                                                             w-8 h-8 bg-white rounded-full flex items-center justify-center
                                                             border border-gray-300
-
                                                             opacity-100 translate-x-0
                                                             lg:opacity-0 lg:translate-x-4
-
                                                             group-hover:lg:opacity-100
                                                             group-hover:lg:translate-x-0
-
                                                             transition-all duration-300 delay-100
                                                             hover:bg-[#0b1b3a] hover:text-white"
                                                             onClick={() => openWishlist(v)}
                                                         >
                                                             <FiHeart className="text-sm" />
-                                                            
                                                         </button>
 
                                                         <button
                                                             className="
                                                             w-8 h-8 bg-white rounded-full flex items-center justify-center
                                                             border border-gray-300
-
                                                             opacity-100 translate-x-0
                                                             lg:opacity-0 lg:translate-x-4
-
                                                             group-hover:lg:opacity-100
                                                             group-hover:lg:translate-x-0
-
                                                             transition-all duration-300 delay-300
                                                             hover:bg-[#0b1b3a] hover:text-white"
                                                             onClick={() => openQuickView(v)}
@@ -1032,7 +993,7 @@ function Home() {
                         }
 
                         <div className="col-span-12 min-[768px]:col-span-8 lg:col-span-6">
-                            <div className="h-full rounded-md overflow-hidden relative min-[1400px]:h-[435px]">
+                            <div className="h-full rounded-md overflow-hidden relative min-[1400px]:h-[428px] shopallzoom">
 
                                 <img
                                     src="../../src/assets/Images/machines/featured.webp"
@@ -1613,22 +1574,34 @@ function Home() {
             {showQuickView && (
                 <Quickviewpro
                     product={selectedProduct}
-                    onClose={() => setShowQuickView(false)}
+                    onqClose={() => setShowQuickView(false)}
+                    onAddToCart={(productWithQty) => {
+                        setSelectedProduct(productWithQty);
+                        setCartOpen(true);
+                        setShowQuickView(false);
+                    }}
                 />
             )}
 
-             {wishlistOpen && (
+            {wishlistOpen && (
                 <WishlistDrawer
                     product={selectedProduct}
                     onClose={() => setWishlisOpen(false)}
+                    onAddToCart={(productWithQty) => {
+                        setSelectedProduct(productWithQty);
+                        setWishlisOpen(false);
+                        setCartOpen(true);
+                    }}
                 />
             )}
 
-            <CartDrawer
-                open={cartOpen}
-                onClose={() => setCartOpen(false)}
-                product={selectedProduct}
-            />
+            {cartOpen && (
+                <CartDrawer
+                    open={cartOpen} // Changed from product={selectedProduct} placeholder/missing block
+                    product={selectedProduct}
+                    onClose={() => setCartOpen(false)}
+                />
+            )}
         </main>
     );
 }

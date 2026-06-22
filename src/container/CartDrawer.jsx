@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 function CartDrawer({ open, onClose, product }) {
 
-    console.log(product, open)
+    console.log(open, onClose, product)
+    const [quantity, setQuantity] = useState(product?.qty || 1);
 
     useEffect(() => {
         if (!open) return;
@@ -21,6 +23,23 @@ function CartDrawer({ open, onClose, product }) {
             if (timer) clearTimeout(timer);
         };
     }, [open, onClose, product]);
+
+    useEffect(() => {
+        setQuantity(product?.qty || 1);
+    }, [product]);
+
+    const handleIncrement = () => {
+        setQuantity(prev => prev + 1);
+    };
+
+    const handleDecrement = () => {
+        setQuantity(prev => {
+            if (prev > 1) {
+                return prev - 1;
+            }
+            return prev;
+        });
+    };
 
     return (
         <div className={`fixed inset-0 z-50 transition-all duration-300 ${open ? "pointer-events-auto visible opacity-100" : "pointer-events-none invisible opacity-0"}`}>
@@ -62,9 +81,9 @@ function CartDrawer({ open, onClose, product }) {
 
                                 <div className="flex items-center justify-between min-[992px]:gap-5 mt-3">
                                     <div className="hidden min-[992px]:flex items-center border rounded py-1">
-                                        <button className="px-3">-</button>
-                                        <span className="px-3">{product.qty || 1}</span>
-                                        <button className="px-3">+</button>
+                                        <button className="px-3" onClick={handleDecrement}>-</button>
+                                        <span className="px-3">{quantity}</span>
+                                        <button className="px-3" onClick={handleIncrement}>+</button>
                                     </div>
 
                                     <span className="text-md font-semibold">
@@ -94,19 +113,27 @@ function CartDrawer({ open, onClose, product }) {
                         <span>$400.00</span>
                     </div>
 
+
                     <div className="p-4 space-y-3">
-                        <button className="group relative px-6 py-3 font-semibold text-[14px] w-full border border-gray-400 
-                         rounded-md overflow-hidden transition-colors duration-300 ease-in-out hover:text-white hover:border-amber-400">
+                        <NavLink
+                            to="/cart"
+                            className="group relative block w-full px-6 py-3 font-semibold text-[14px] text-center border border-gray-400 
+                            rounded-md overflow-hidden transition-colors duration-300 ease-in-out hover:text-white hover:border-amber-400"
+                        >
                             <span className="absolute bottom-0 left-0 w-full h-full bg-amber-400 scale-y-0 origin-bottom transition-transform duration-300 ease-out group-hover:scale-y-100" />
                             <span className="relative z-10">VIEW CART</span>
-                        </button>
+                        </NavLink>
 
-                        <button className="group relative px-6 py-3 font-semibold text-[14px] w-full bg-[var(--secondary-color)] border border-[var(--secondary-color)]
-                        rounded overflow-hidden transition-colors duration-300 ease-in-out text-white hover:border-amber-400">
+                        <NavLink
+                            to="/checkout"
+                            className="group relative block w-full px-6 py-3 font-semibold text-[14px] text-center bg-[var(--secondary-color)] border border-[var(--secondary-color)]
+                            rounded overflow-hidden transition-colors duration-300 ease-in-out text-white hover:border-amber-400"
+                        >
                             <span className="absolute bottom-0 left-0 w-full h-full bg-amber-400 scale-y-0 origin-bottom transition-transform duration-300 ease-out group-hover:scale-y-100" />
                             <span className="relative z-10">CHECK OUT</span>
-                        </button>
+                        </NavLink>
                     </div>
+
                 </div>
             </div>
         </div>

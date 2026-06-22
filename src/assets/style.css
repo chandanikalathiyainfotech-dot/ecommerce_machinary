@@ -235,6 +235,63 @@ body {
   bottom: 0 !important;
 }
 
+.shopallzoom::before {
+  background: #fff3 none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  left: 50%;
+  opacity: 1;
+  position: absolute;
+  right: 51%;
+  top: 0;
+  -webkit-transition: all .7s ease-in 0s;
+  transition: all .7s ease-in 0s;
+  pointer-events: none;
+}
+
+.shopallzoom:hover::before {
+  left: 0;
+  right: 0;
+  opacity: 0;
+}
+
+.shopallzoom::after {
+  background: #fff3 none repeat scroll 0 0;
+  bottom: 50%;
+  content: "";
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  pointer-events: none;
+  -webkit-transition: all .7s ease-in 0s;
+  transition: all .7s ease-in 0s
+}
+
+.shopallzoom:hover::after {
+  bottom: 0;
+  top: 0;
+  opacity: 0;
+}
+
+/* Base card interaction setup */
+.herocard {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effects applied simultaneously */
+.herocard:hover {
+  border-color: #f59e0b !important; /* Forces amber accent color */
+  box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.3); /* Smooth amber glow */
+  transform: translateY(-4px); /* Subtle lift effect */
+}
+
+/* Auto-highlights the title text on hover */
+.herocard:hover h4 {
+  color: #f59e0b !important;
+  transition: color 0.3s ease;
+}
 
 
 @media (max-width: 576px) {

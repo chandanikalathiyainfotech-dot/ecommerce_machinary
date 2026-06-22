@@ -248,10 +248,12 @@ function Cart() {
                                 </div>
 
                                 {/* CTA */}
-                                <button className="w-full mt-8  bg-amber-500 hover:bg-[var(--secondary-color)] 
+                                <NavLink to={'/checkout'}>
+                                    <button className="w-full mt-8  bg-amber-500 hover:bg-[var(--secondary-color)] 
                                     text-white py-2 rounded-sm font-semibold shadow-sm transition-all duration-200 active:scale-[0.98]">
-                                    Proceed to checkout
-                                </button>
+                                        Proceed to checkout
+                                    </button>
+                                </NavLink>
 
                                 <button className="w-full mt-2 bg-gradient-to-r bg-[#e0e0e0] hover:bg-[var(--secondary-color)] hover:text-white
                                     py-2 rounded-sm font-semibold shadow-sm transition-all duration-200 active:scale-[0.98]">

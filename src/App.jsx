@@ -22,6 +22,7 @@ import HydraulicSystems from "./container/HydraulicSystems";
 import ElectricalParts from "./container/ElectricalParts";
 import WishlistDrawer from "./container/WishlistDrawer";
 import Checkout from "./container/Checkout";
+import UserProfile from "./container/UserProfile";
 
 function App() {
 
@@ -44,8 +45,9 @@ function App() {
         <Route path="/electrical-parts" element={<ElectricalParts />} />
         <Route path="/demo" element={<Demo />} />
         <Route path="/wishlist" element={<Wishlist />} />
-         <Route path="/wishlistdrawer" element={<WishlistDrawer />} />
-         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/wishlistdrawer" element={<WishlistDrawer />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/profile/*" element={<UserProfile />} />
         {/* <Route path="/cartdrawer" element={<CaretPosition />} /> */}
         {/* <Route path="/parts/spare-parts" element={<SparParts />} /> */}
       </Routes>
@@ -55,4 +57,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
