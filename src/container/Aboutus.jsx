@@ -80,7 +80,7 @@ function Aboutus() {
                 <div className="absolute -top-4 -left-4 md:-top-6 md:-left-6 w-full h-full border-4 border-amber-500 rounded-3xl"></div>
 
                 <img
-                  src="../../src/assets/Images/about/a1.jpg"
+                  src="../../src/assets/Images/about/a2.jpg"
                   alt="About Company"
                   className="relative z-10 w-full h-[280px] sm:h-[400px] lg:h-[500px] object-cover rounded-3xl shadow-2xl"
                 />
@@ -276,7 +276,7 @@ function Aboutus() {
               <div className="relative overflow-hidden rounded-3xl shadow-2xl group">
 
                 <img
-                  src="../../src/assets/Images/about/a2.jpg"
+                  src="../../src/assets/Images/about/a3.jpg"
                   alt="Factory Video"
                   className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition duration-700"
                 />
