@@ -20,6 +20,9 @@ import ToolsEquipment from "./container/ToolsEquipment";
 import TruckParts from "./container/TruckParts";
 import HydraulicSystems from "./container/HydraulicSystems";
 import ElectricalParts from "./container/ElectricalParts";
+import MaintenanceKits from "./container/MaintenanceKits";
+import EngineComponents from "./container/EngineComponents";
+import FiltersLubricants from "./container/FiltersLubricants";
 import WishlistDrawer from "./container/WishlistDrawer";
 import Checkout from "./container/Checkout";
 
@@ -42,6 +45,9 @@ function App() {
         <Route path="/truck-parts" element={<TruckParts />} />
         <Route path="/hydraulic-systems" element={<HydraulicSystems />} />
         <Route path="/electrical-parts" element={<ElectricalParts />} />
+        <Route path="/maintenance-kits" element={<MaintenanceKits />} />
+        <Route path="/engine-components" element={<EngineComponents />} />
+        <Route path="/filters-lubricants" element={<FiltersLubricants />} />
         <Route path="/demo" element={<Demo />} />
         <Route path="/wishlist" element={<Wishlist />} />
          <Route path="/wishlistdrawer" element={<WishlistDrawer />} />

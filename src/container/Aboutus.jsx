@@ -1,14 +1,18 @@
 
-import React from "react";
+import React, { useState } from "react";
 console.log(React);
-import { motion } from "framer-motion";
-import { FaPlay, FaUsers, FaTools, FaBullseye, FaEye, FaAward, } from "react-icons/fa";
+
 import { useNavigate } from "react-router-dom";
+import { FaPlay, FaUsers, FaTools, FaBullseye, FaEye, FaAward, FaTwitter, FaFacebook, FaInstagram, FaTimes } from "react-icons/fa";
+import { motion } from "framer-motion";
+import aboutH from '../../src/assets/Images/about/a1.jpg'
+import aboutCTA from '../../src/assets/Images/about/a4.jpg'
 
 
 function Aboutus() {
 
   const navigate = useNavigate();
+  const [showVideo, setShowVideo] = useState(false);
 
   const stats = [
     {
@@ -36,7 +40,7 @@ function Aboutus() {
       <section id="hero" className="relative min-h-[350px] md:min-h-[500px] flex items-center justify-center bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1552664730-d307ca884978')",
+            `url(${aboutH})`,
         }}
       >
         <div className="absolute inset-0 bg-[#0b1b3a]/80"></div>
@@ -77,7 +81,7 @@ function Aboutus() {
                 <div className="absolute -top-4 -left-4 md:-top-6 md:-left-6 w-full h-full border-4 border-amber-500 rounded-3xl"></div>
 
                 <img
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+                  src="../../src/assets/Images/about/a1.jpg"
                   alt="About Company"
                   className="relative z-10 w-full h-[280px] sm:h-[400px] lg:h-[500px] object-cover rounded-3xl shadow-2xl"
                 />
@@ -153,9 +157,9 @@ function Aboutus() {
                   Learn More
                 </button>
 
-                <button 
-                onClick={() => navigate('/contact')}
-                className="border-2 border-[#0b1b3a] text-[#0b1b3a] px-8 py-3 rounded-xl font-bold hover:bg-[#0b1b3a] hover:text-white transition-all cursor-pointer duration-300"
+                <button
+                  onClick={() => navigate('/contact')}
+                  className="border-2 border-[#0b1b3a] text-[#0b1b3a] px-8 py-3 rounded-xl font-bold hover:bg-[#0b1b3a] hover:text-white transition-all cursor-pointer duration-300"
                 >
                   Contact Us
                 </button>
@@ -273,7 +277,7 @@ function Aboutus() {
               <div className="relative overflow-hidden rounded-3xl shadow-2xl group">
 
                 <img
-                  src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1200"
+                  src="../../src/assets/Images/about/a2.jpg"
                   alt="Factory Video"
                   className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition duration-700"
                 />
@@ -281,17 +285,18 @@ function Aboutus() {
                 <div className="absolute inset-0 bg-[#0b1b3a]/50"></div>
 
                 {/* Play Button */}
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center ">
 
                   <motion.button
+                    onClick={() => setShowVideo(true)}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     className="relative w-24 h-24 rounded-full bg-amber-500 text-[#0b1b3a] flex items-center justify-center shadow-2xl"
                   >
-                    <FaPlay className="text-2xl ml-1" />
+                    <FaPlay className="text-2xl ml-1 " />
 
                     {/* Ripple */}
-                    <span className="absolute w-full h-full rounded-full border-4 border-amber-400 animate-ping"></span>
+                    <span className="absolute w-full h-full rounded-full border-4 border-amber-400 animate-ping cursor-pointer"></span>
                   </motion.button>
 
                 </div>
@@ -350,44 +355,102 @@ function Aboutus() {
         </div>
       </section>
 
-      <section id="team" className="py-14 md:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="team" className="py-14 md:py-20 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
           <div className="text-center mb-12">
-            {/* <span className="text-amber-500 uppercase font-semibold">
-              Team Members
-            </span> */}
-            <span className="inline-block px-4 py-2 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-600">
-              Team Members
-            </span>
-
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0b1b3a] mt-5">
-              Meet Our Experts
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0b1b3a]">
+              Meet the Team
             </h2>
+            <p className="text-gray-600 mt-3 max-w-xl mx-auto text-sm sm:text-base">
+              By working on many makes, our technicians can be trusted to properly diagnose different repairs
+            </p>
+            <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-amber-400 mx-auto mt-4 rounded-full"></div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* <div className="absolute -z-10 inset-0 flex items-center justify-center pointer-events-none">
+            <span className="text-[150px] md:text-[200px] lg:text-[150px] font-black text-gray-100 select-none">
+              Meet the Team
+            </span>
+          </div> */}
 
-            {[1, 2, 3].map((item) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            {[
+              {
+                name: 'Robert Kennelly',
+                role: 'Certified Technician',
+                image: '../../src/assets/Images/about/a5.jpg',
+
+              },
+              {
+                name: 'Robert Piedra',
+                role: 'Service Advisor',
+                image: '../../src/assets/Images/about/a6.jpg',
+
+              },
+              {
+                name: 'Charles Weaver',
+                role: 'First Mechanic',
+                image: '../../src/assets/Images/about/a7.jpg',
+
+              }
+            ].map((member, index) => (
               <motion.div
-                key={item}
-                whileHover={{ y: -10 }}
-                className="group rounded-2xl overflow-hidden shadow-lg bg-white"
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+                whileHover={{ y: -12 }}
+                className="group relative"
               >
-                <img
-                  src={`https://picsum.photos/500/400?random=${item}`}
-                  alt=""
-                  className="w-full h-56 sm:h-64 lg:h-72 object-cover group-hover:scale-110 transition duration-500"
-                />
+                <div className="relative flex justify-center mb-0">
+                  <div className="relative">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-60 h-80 sm:w-64 sm:h-84 lg:w-72 lg:h-96 object-cover rounded-full group-hover:scale-105 transition duration-500"
+                    />
 
-                <div className="p-5">
-                  <h3 className="font-bold text-xl">
-                    Expert Engineer
+                    {/* Social icons */}
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
+                      <motion.a
+                        whileHover={{ scale: 1.2, y: -3 }}
+                        className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-700 shadow-lg hover:bg-amber-500 hover:text-white transition-all"
+                        href="#"
+                      >
+                        <FaFacebook />
+                      </motion.a>
+                      <motion.a
+                        whileHover={{ scale: 1.2, y: -3 }}
+                        className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-700 shadow-lg hover:bg-amber-500 hover:text-white transition-all"
+                        href="#"
+                      >
+                        <FaTwitter />
+                      </motion.a>
+                      <motion.a
+                        whileHover={{ scale: 1.2, y: -3 }}
+                        className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-700 shadow-lg hover:bg-amber-500 hover:text-white transition-all"
+                        href="#"
+                      >
+                        <FaInstagram />
+                      </motion.a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-6 bg-gray-50 rounded-2xl shadow-lg text-center mt-0">
+                  <h3 className="font-black text-xl sm:text-2xl text-[#0b1b3a] mb-1">
+                    {member.name}
                   </h3>
-
-                  <p className="text-gray-500">
-                    Technical Specialist
+                  <p className="text-gray-600 font-medium text-sm sm:text-base">
+                    {member.role}
                   </p>
+
+                  {member.isActive && (
+                    <div className="h-1 w-full bg-gradient-to-r from-amber-500 to-amber-400 rounded-full mt-4"></div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -399,7 +462,7 @@ function Aboutus() {
       <section id="cta" className="relative py-16 md:py-24 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1556155092-490a1ba16284')",
+           `url(${aboutCTA})`,
         }}
       >
         <div className="absolute inset-0 bg-[#0b1b3a]/85"></div>
@@ -420,6 +483,45 @@ function Aboutus() {
 
         </div>
       </section>
+
+      {/* Video Modal */}
+      {showVideo && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={() => setShowVideo(false)}
+        >
+          <motion.div
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.9 }}
+            className="relative w-full max-w-4xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowVideo(false)}
+              className="absolute -top-12 right-0 text-white text-2xl hover:text-amber-500 transition-colors"
+            >
+              <FaTimes className="text-3xl" />
+            </button>
+
+            <div className="rounded-2xl overflow-hidden shadow-2xl">
+              <iframe
+                width="100%"
+                height="500"
+                src="https://www.youtube.com/embed/rJDHm6ZXusQ"
+                title="Industrial Gear Drive Rebuild"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-[300px] sm:h-[400px] lg:h-[500px]"
+              ></iframe>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
 
 
     </div>

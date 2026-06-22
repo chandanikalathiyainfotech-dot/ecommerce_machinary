@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+console.log(React);
+
 
 function CartDrawer({ open, onClose, product }) {
 

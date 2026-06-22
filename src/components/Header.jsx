@@ -49,10 +49,10 @@ function Header() {
         { name: "Truck Parts", path: "/truck-parts" },
         { name: "Hydraulic Systems", path: "/hydraulic-systems" },
         { name: "Electrical Parts", path: "/electrical-parts" },
-        { name: "Maintenance Kits" },
-        { name: "Engine Components" },
-        { name: "Filters & Lubricants" },
-    ];
+        { name: "Maintenance Kits", path: "/maintenance-kits" },
+        { name: "Engine Components", path: "/engine-components" },
+        { name: "Filters & Lubricants", path: "/filters-lubricants" },
+      ];
 
   const handleMouseEnter = () => {
     if (dropdownTimeoutRef.current) {

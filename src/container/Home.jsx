@@ -41,7 +41,7 @@ function Home() {
         setWishlisOpen(true);
     };
 
-    console.log(showQuickView,cartOpen,wishlistOpen)
+    console.log(showQuickView, cartOpen, wishlistOpen)
 
     useEffect(() => {
         const updateCount = () => {
@@ -266,7 +266,7 @@ function Home() {
         {
             id: 1,
             image:
-                "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1000",
+                "../../src/assets/Images/blog/b1.jpg",
             date: "15 June 2026",
             title: "Top 5 Industrial Machinery Trends in 2026",
             desc: "Explore the latest innovations transforming the manufacturing industry.",
@@ -274,7 +274,7 @@ function Home() {
         {
             id: 2,
             image:
-                "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1000",
+                "../../src/assets/Images/blog/b2.jpg",
             date: "10 June 2026",
             title: "How to Choose the Right Heavy Equipment",
             desc: "A complete guide to selecting machinery for your industrial projects.",
@@ -282,7 +282,7 @@ function Home() {
         {
             id: 3,
             image:
-                "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1000",
+                "../../src/assets/Images/blog/b3.jpg",
             date: "05 June 2026",
             title: "Maintenance Tips for Maximum Productivity",
             desc: "Reduce downtime and improve performance with expert maintenance tips.",
@@ -293,105 +293,105 @@ function Home() {
         {
             name: "Rajesh Patel",
             company: "Patel Engineering Ltd.",
-            image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300",
+            image: "../../src/assets/Images/client/c1.jpg",
             review:
                 "The machinery quality is outstanding. Their support team helped us throughout installation and setup. Highly recommended.",
         },
         {
             name: "Amit Shah",
             company: "Shah Industries",
-            image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300",
+            image: "../../src/assets/Images/client/c2.jpg",
             review:
                 "We've purchased multiple industrial machines and the performance has exceeded our expectations. Excellent service.",
         },
         {
             name: "Vikram Mehta",
             company: "Mehta Manufacturing",
-            image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300",
+            image: "../../src/assets/Images/client/c3.jpg",
             review:
                 "Reliable products, fast delivery, and professional after-sales support. A trusted partner for our business growth.",
         },
         {
             name: "Suresh Desai",
             company: "Desai Fabrication",
-            image: "https://randomuser.me/api/portraits/men/32.jpg",
+            image: "../../src/assets/Images/client/c4.jpg",
             review:
                 "Exceptional machine performance and durability. The team ensured smooth onboarding and training.",
         },
         {
             name: "Neha Joshi",
             company: "Joshi Tech Works",
-            image: "https://randomuser.me/api/portraits/women/44.jpg",
+            image: "../../src/assets/Images/client/c5.jpg",
             review:
                 "The quality and efficiency of their equipment helped us increase productivity significantly.",
         },
         {
             name: "Karan Malhotra",
             company: "Malhotra Industries",
-            image: "https://randomuser.me/api/portraits/men/45.jpg",
+            image: "../../src/assets/Images/client/c6.jpg",
             review:
                 "Very professional service and premium-quality machinery. Highly satisfied with our investment.",
         },
         {
             name: "Priya Sharma",
             company: "Sharma Engineering",
-            image: "https://randomuser.me/api/portraits/women/55.jpg",
+            image: "../../src/assets/Images/client/c7.jpg",
             review:
                 "Outstanding customer support and quick delivery. Their machinery has transformed our operations.",
         },
         {
             name: "Rohan Verma",
             company: "Verma Industrial Solutions",
-            image: "https://randomuser.me/api/portraits/men/60.jpg",
+            image: "../../src/assets/Images/client/c8.jpg",
             review:
                 "A trustworthy supplier with excellent products and transparent communication throughout the process.",
         },
         {
             name: "Anjali Kapoor",
             company: "Kapoor Manufacturing Co.",
-            image: "https://randomuser.me/api/portraits/women/28.jpg",
+            image: "../../src/assets/Images/client/c9.jpg",
             review:
                 "The machine quality is unmatched. We experienced a noticeable improvement in production efficiency.",
         },
         {
             name: "Manish Gupta",
             company: "Gupta Metal Works",
-            image: "https://randomuser.me/api/portraits/men/22.jpg",
+            image: "../../src/assets/Images/client/c10.jpg",
             review:
                 "Reliable equipment and responsive support team. We look forward to future collaborations.",
         },
         {
             name: "Pooja Agarwal",
             company: "Agarwal Enterprises",
-            image: "https://randomuser.me/api/portraits/women/35.jpg",
+            image: "../../src/assets/Images/client/c11.jpg",
             review:
                 "Excellent machinery and seamless installation process. Highly recommended for industrial businesses.",
         },
         {
             name: "Arjun Singh",
             company: "Singh Automation",
-            image: "https://randomuser.me/api/portraits/men/52.jpg",
+            image: "../../src/assets/Images/client/c12.jpg",
             review:
                 "Top-notch products with innovative features. The team was incredibly helpful from purchase to deployment.",
         },
         {
             name: "Sneha Mehta",
             company: "Mehta Industrial Group",
-            image: "https://randomuser.me/api/portraits/women/68.jpg",
+            image: "../../src/assets/Images/client/c13.jpg",
             review:
                 "We have been using their machinery for over a year and the performance remains outstanding.",
         },
         {
             name: "Deepak Chauhan",
             company: "Chauhan Engineering Solutions",
-            image: "https://randomuser.me/api/portraits/men/71.jpg",
+            image: "../../src/assets/Images/client/c14.jpg",
             review:
                 "Fantastic experience from start to finish. Their equipment is robust, efficient, and dependable.",
         },
         {
             name: "Kavita Nair",
             company: "Nair Precision Tools",
-            image: "https://randomuser.me/api/portraits/women/75.jpg",
+            image: "../../src/assets/Images/client/c15.jpg",
             review:
                 "Great value for money and exceptional customer support. Their machinery exceeded our expectations.",
         },
@@ -406,12 +406,15 @@ function Home() {
 
                 {/* Background Slider */}
                 {slides.map((slide, index) => (
-                    <div
+                    <motion.div
                         key={index}
-                        className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ${currentSlide === index
-                            ? "opacity-100 scale-100"
-                            : "opacity-0 scale-110"
-                            }`}
+                        initial={{ opacity: 0, scale: 1.1 }}
+                        animate={{
+                            opacity: currentSlide === index ? 1 : 0,
+                            scale: currentSlide === index ? 1 : 1.1,
+                        }}
+                        transition={{ duration: 1 }}
+                        className="absolute inset-0 bg-cover bg-center"
                         style={{
                             backgroundImage: `url(${slide})`,
                         }}
@@ -424,109 +427,168 @@ function Home() {
                 {/* Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-r from-[#071327] via-[#071327]/70 to-transparent"></div>
 
-                {/* Animated Blur Circle */}
-                <div className="absolute top-20 left-20 w-72 h-72 bg-amber-500/20 rounded-full blur-[120px] animate-pulse"></div>
+                {/* Animated Blur Circles */}
+                <motion.div
+                    animate={{
+                        x: [0, 20, 0],
+                        y: [0, -10, 0],
+                        scale: [1, 1.1, 1],
+                    }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute top-20 left-20 w-72 h-72 bg-amber-500/20 rounded-full blur-[120px]"
+                />
+                <motion.div
+                    animate={{
+                        x: [0, -15, 0],
+                        y: [0, 15, 0],
+                        scale: [1, 1.15, 1],
+                    }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    className="absolute bottom-20 right-20 w-96 h-96 bg-amber-500/15 rounded-full blur-[120px]"
+                />
 
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
                     <div className="grid lg:grid-cols-2 gap-12 items-center ">
 
                         {/* LEFT CONTENT */}
-                        <div className="text-center min-[425px]:text-start">
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="text-center min-[425px]:text-start"
+                        >
 
-                            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-500 font-semibold text-sm uppercase tracking-widest">
+                            <motion.span
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.4 }}
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-500 font-semibold text-sm uppercase tracking-widest"
+                            >
                                 Industrial Excellence
-                            </span>
+                            </motion.span>
 
-                            <h1 className="mt-8 text-white font-black leading-none text-[28px] min-[357px]:text-[34px] min-[576px]:text-4xl min-[768px]:text-[48px] min-[1440px]:text-6xl">
-                                <span className="block ">
+                            <motion.h1
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.6 }}
+                                className="mt-8 text-white font-black leading-none text-[28px] min-[357px]:text-[34px] min-[576px]:text-4xl min-[768px]:text-[48px] min-[1440px]:text-6xl"
+                            >
+                                <motion.span
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.7 }}
+                                    className="block "
+                                >
                                     Smart
-                                </span>
+                                </motion.span>
 
-                                <span className="block ">
+                                <motion.span
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.85 }}
+                                    className="block "
+                                >
                                     Machinery.
-                                </span>
+                                </motion.span>
 
-                                <span className="block text-amber-500">
+                                <motion.span
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 1 }}
+                                    className="block text-amber-500"
+                                >
                                     Maximum
-                                </span>
+                                </motion.span>
 
-                                <span className="block">
+                                <motion.span
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 1.15 }}
+                                    className="block"
+                                >
                                     Productivity.
-                                </span>
-                            </h1>
+                                </motion.span>
+                            </motion.h1>
 
-                            <p className="mt-8 text-sm min-[576px]:text-base xl:text-lg text-gray-300 max-w-xl leading-relaxed">
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 1.3 }}
+                                className="mt-8 text-sm min-[576px]:text-base xl:text-lg text-gray-300 max-w-xl leading-relaxed"
+                            >
                                 Delivering world-class industrial machinery and equipment
                                 solutions for manufacturing, construction and automation
                                 industries.
-                            </p>
+                            </motion.p>
 
                             {/* CTA */}
-                            <div className="flex flex-wrap min-[425px]:flex-nowrap gap-4 mt-10 justify-center min-[425px]:justify-start">
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 1.5 }}
+                                className="flex flex-wrap min-[425px]:flex-nowrap gap-4 mt-10 justify-center min-[425px]:justify-start"
+                            >
 
-                                <NavLink to={'/allproduct'} className="group px-5 min-[425px]:px-4 min-[576px]:px-5 py-4 bg-amber-500 text-[#0b1b3a] font-black rounded-xl flex items-center justify-center gap-3 hover:bg-amber-400 transition-all">
-                                    Explore Products
-                                    <FaArrowRight className="group-hover:translate-x-1 transition-all" />
-                                </NavLink>
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <NavLink to={'/allproduct'} className="group px-5 min-[425px]:px-4 min-[576px]:px-5 py-4 bg-amber-500 text-[#0b1b3a] font-black rounded-xl flex items-center justify-center gap-3 hover:bg-amber-400 transition-all">
+                                        Explore Products
+                                        <FaArrowRight className="group-hover:translate-x-1 transition-all" />
+                                    </NavLink>
+                                </motion.div>
 
-                                <button className=" px-12 min-[425px]:px-5 min-[576px]:px-8 py-4 border border-white/20 backdrop-blur-md bg-white/5 text-white rounded-xl flex items-center justify-center gap-3 hover:border-amber-500">
+                                <motion.button
+                                    whileHover={{ scale: 1.05, borderColor: "#f59e0b" }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className=" px-12 min-[425px]:px-5 min-[576px]:px-8 py-4 border border-white/20 backdrop-blur-md bg-white/5 text-white rounded-xl flex items-center justify-center gap-3"
+                                >
                                     <FaPlay />
                                     Watch Video
-                                </button>
+                                </motion.button>
 
-                            </div>
+                            </motion.div>
 
-                            {/* Stats */}
-                            {/* <div className="grid grid-cols-3 gap-6 mt-14">
- 
-                                <div>
-                                    <h3 className="text-4xl font-black text-amber-500">
-                                        28+
-                                    </h3>
-                                    <p className="text-gray-400 text-sm">
-                                        Years
-                                    </p>
-                                </div>
- 
-                                <div>
-                                    <h3 className="text-4xl font-black text-amber-500">
-                                        5000+
-                                    </h3>
-                                    <p className="text-gray-400 text-sm">
-                                        Products
-                                    </p>
-                                </div>
- 
-                                <div>
-                                    <h3 className="text-4xl font-black text-amber-500">
-                                        1200+
-                                    </h3>
-                                    <p className="text-gray-400 text-sm">
-                                        Clients
-                                    </p>
-                                </div>
- 
-                            </div> */}
-
-                        </div>
+                        </motion.div>
 
                         {/* RIGHT SIDE */}
-                        <div className="relative hidden lg:flex ml-8 xl:ml-18 2xl:ml-0 2xl:justify-end">
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.8 }}
+                            className="relative hidden lg:flex ml-8 xl:ml-18 2xl:ml-0 2xl:justify-end"
+                        >
 
                             {/* Main Machinery Image */}
-                            <div className="relative w-[520px] h-[650px] overflow-hidden rounded-[40px] border border-white/10 backdrop-blur-lg">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+                                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                                transition={{ duration: 0.8, delay: 1 }}
+                                whileHover={{ scale: 1.02, rotate: 1 }}
+                                className="relative w-[520px] h-[650px] overflow-hidden rounded-[40px] border border-white/10 backdrop-blur-lg"
+                            >
 
-                                <img
-                                    src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1000"
+                                <motion.img
+                                    initial={{ scale: 1.2 }}
+                                    animate={{ scale: 1 }}
+                                    transition={{ duration: 1.5, delay: 1.2 }}
+                                    src="../../src/assets/Images/hero/h1.jpg"
                                     alt=""
                                     className="w-full h-full object-cover"
                                 />
 
-                            </div>
+                            </motion.div>
 
                             {/* Floating Card 1 */}
-                            <div className="absolute top-24 right-[270px] min-[1200px]:right-[360px] xl:right-[350px] xl:right-[420px] backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 xl:w-48 2xl:w-52">
+                            <motion.div
+                                initial={{ opacity: 0, x: 30, y: -30 }}
+                                animate={{ opacity: 1, x: 0, y: 0 }}
+                                transition={{ duration: 0.6, delay: 1.4 }}
+                                whileHover={{ y: -5, scale: 1.05 }}
+                                className="absolute top-24 right-[270px] min-[1200px]:right-[360px] xl:right-[350px] xl:right-[420px] backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 xl:w-48 2xl:w-52"
+                            >
                                 <FaIndustry className="text-amber-500 text-2xl mb-3" />
                                 <h4 className="text-white font-bold">
                                     Heavy Machinery
@@ -534,10 +596,16 @@ function Home() {
                                 <p className="text-gray-300 text-sm mt-1">
                                     Industrial Equipment Solutions
                                 </p>
-                            </div>
+                            </motion.div>
 
                             {/* Floating Card 2 */}
-                            <div className="absolute bottom-32 right-[270px] min-[1200px]:right-[360px] xl:right-[350px] xl:right-[420px] backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 xl:w-48 2xl:w-52">
+                            <motion.div
+                                initial={{ opacity: 0, x: 30, y: 30 }}
+                                animate={{ opacity: 1, x: 0, y: 0 }}
+                                transition={{ duration: 0.6, delay: 1.6 }}
+                                whileHover={{ y: 5, scale: 1.05 }}
+                                className="absolute bottom-32 right-[270px] min-[1200px]:right-[360px] xl:right-[350px] xl:right-[420px] backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 xl:w-48 2xl:w-52"
+                            >
                                 <FaTools className="text-amber-500 text-2xl mb-3" />
                                 <h4 className="text-white font-bold">
                                     Spare Parts
@@ -545,10 +613,16 @@ function Home() {
                                 <p className="text-gray-300 text-sm mt-1">
                                     Genuine OEM Components
                                 </p>
-                            </div>
+                            </motion.div>
 
                             {/* Floating Card 3 */}
-                            <div className="absolute top-1/2 -right-12 xl:-right-15 2xl:-right-25 backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 2xl:w-52">
+                            <motion.div
+                                initial={{ opacity: 0, x: 50, y: 0 }}
+                                animate={{ opacity: 1, x: 0, y: 0 }}
+                                transition={{ duration: 0.6, delay: 1.8 }}
+                                whileHover={{ x: 5, scale: 1.05 }}
+                                className="absolute top-1/2 -right-12 xl:-right-15 2xl:-right-25 backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 2xl:w-52"
+                            >
                                 <FaUsers className="text-amber-500 text-2xl mb-3" />
                                 <h4 className="text-white font-bold">
                                     Global Clients
@@ -556,18 +630,25 @@ function Home() {
                                 <p className="text-gray-300 text-sm mt-1">
                                     Trusted Worldwide
                                 </p>
-                            </div>
+                            </motion.div>
 
-                        </div>
+                        </motion.div>
 
                     </div>
 
                     {/* Slider Indicators */}
-                    <div className="flex justify-center gap-3 mt-12">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 2 }}
+                        className="flex justify-center gap-3 mt-12"
+                    >
 
                         {slides.map((_, index) => (
-                            <button
+                            <motion.button
                                 key={index}
+                                whileHover={{ scale: 1.2 }}
+                                whileTap={{ scale: 0.9 }}
                                 onClick={() => setCurrentSlide(index)}
                                 className={`h-3 rounded-full transition-all ${currentSlide === index
                                     ? "w-7 sm:w-10 bg-amber-500"
@@ -576,17 +657,44 @@ function Home() {
                             />
                         ))}
 
-                    </div>
+                    </motion.div>
 
                 </div>
             </section>
 
             <section id="category" className="mt-[100px]">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <h3 className="title">Shop By Featured Categories</h3>
-                    <h5 className="subtitle">There are many variations of passages of lorem Ipsum available believable.</h5>
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        // className="text-center mb-10 sm:mb-14 lg:mb-16"
+                    >
+                        <h3 className="title">Shop By Featured Categories</h3>
 
-                    <div className="category-product">
+                        {/* <h2 className="mt-5 text-[28px] sm:text-4xl lg:text-5xl font-black text-[#0b1b3a] leading-tight">
+                            Shop By Featured
+                            <span className="text-amber-500"> Categories</span>
+                        </h2> */}
+
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                    >
+                        <h5 className="subtitle">There are many variations of passages of lorem Ipsum available believable.</h5>
+                    </motion.div>
+
+                    <motion.div
+                        className="category-product"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                    >
 
                         <Swiper
                             modules={[Navigation]}
@@ -617,18 +725,29 @@ function Home() {
                             }}
                         >
                             {
-                                category?.map((v) => {
+                                category?.map((v, index) => {
                                     return (
-                                        <SwiperSlide>
-                                            <div className="cat-card group">
+                                        <SwiperSlide key={index}>
+                                            <motion.div
+                                                className="cat-card group"
+                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                whileInView={{ opacity: 1, scale: 1 }}
+                                                viewport={{ once: true }}
+                                                transition={{ duration: 0.4, delay: index * 0.05 }}
+                                                whileHover={{ scale: 1.05, y: -5 }}
+                                            >
                                                 {/* category image */}
-                                                <div className="border-[1.5px] border-gray-300 rounded-full sm:p-2 group-hover:border-amber-500">
+                                                <motion.div
+                                                    className="border-[1.5px] border-gray-300 rounded-full sm:p-2 group-hover:border-amber-500"
+                                                    whileHover={{ borderColor: "#f59e0b" }}
+                                                    transition={{ duration: 0.3 }}
+                                                >
                                                     <img src={v.img} alt="" className="object-cover rounded-full" />
-                                                </div>
+                                                </motion.div>
 
                                                 <h6 className="sm:text-[18px] font-medium text-center mt-4">{v.name}</h6>
                                                 <p className="text-[14px] sm:text-[16px] text-[#666666] text-center">{v.product} product</p>
-                                            </div>
+                                            </motion.div>
                                         </SwiperSlide>
                                     )
                                 })
@@ -639,45 +758,61 @@ function Home() {
                         <div className="w-40">
                             
                         </div> */}
-                    </div>
+                    </motion.div>
 
                 </div>
             </section>
 
             <section id="products" >
-                {/* <span className="flex w-fit mx-auto px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30">
-                    OUR PRODUCTS
-                </span>
-
-                <h2 className="title">
-                    Explore Our Premium Machinery & Tools
-                </h2>
-
-                <h5 className="subtitle max-w-5xl mx-auto px-4">
-                    Discover a wide range of high-quality industrial machinery, power tools, and equipment carefully selected to meet the needs of professionals, workshops, construction projects, and manufacturing industries.
-                </h5> */}
-
-                <div class="container px-4 sm:px-6 lg:px-8  mx-auto bg-white  overflow-hidden  transition-all duration-300 product-container">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="container px-4 sm:px-6 lg:px-8 mx-auto !mt-[100px] bg-white overflow-hidden transition-all duration-300 product-container"
+                >
                     <div className="text-center mb-8">
-                        <div className="flex justify-center">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4 }}
+                            className="flex justify-center"
+                        >
                             <span
                                 className="inline-block px-3 sm:px-4 md:px-5 py-2 text-[11px] sm:text-sm font-bold uppercase tracking-[2px] sm:tracking-widest text-amber-600
                             rounded-full bg-amber-500/20 border border-amber-500/30"
                             >
                                 Our Products
                             </span>
-                        </div>
+                        </motion.div>
 
-                        <h2 className="title font-black mt-3 text-[#0b1b3a]">
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="title font-black mt-3 text-[#0b1b3a]"
+                        >
                             Explore Our Premium Machinery & Tools
-                            {/* <span className="text-amber-500">Machinery & Tools</span> */}
-                        </h2>
+                        </motion.h2>
 
-                        <p className="mt-3 text-gray-600 subtitle max-w-5xl mx-auto px-4">
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className="mt-3 text-gray-600 subtitle max-w-5xl mx-auto px-4"
+                        >
                             Discover a wide range of high-quality industrial machinery, power tools, and equipment carefully selected to meet the needs of professionals, workshops, construction projects, and manufacturing industries.
-                        </p>
+                        </motion.p>
                     </div>
-                    <div>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                    >
                         <Swiper
                             modules={[Grid, Navigation]}
                             slidesPerView={4}
@@ -726,10 +861,17 @@ function Home() {
                             }}
                         >
                             {
-                                products?.map((v) => {
+                                products?.map((v, index) => {
                                     return (
-                                        <SwiperSlide>
-                                            <div className="bg-white border-1 border-gray-300 rounded-md group">
+                                        <SwiperSlide key={index}>
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                                                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                                viewport={{ once: true }}
+                                                transition={{ duration: 0.4, delay: index * 0.03 }}
+                                                whileHover={{ y: -8, scale: 1.02 }}
+                                                className="bg-white border-1 border-gray-300 rounded-md group"
+                                            >
                                                 <div className="relative">
                                                     <div className="relative flex items-center justify-center overflow-hidden p-3 sm:p-4 h-40 sm:h-52 xl:h-64">
 
@@ -757,7 +899,7 @@ function Home() {
         
                                                                     transition-all duration-300 delay-100
                                                                     hover:bg-[#0b1b3a] hover:text-white"
-                                                                    onClick={() => openWishlist(v)}
+                                                                onClick={() => openWishlist(v)}
                                                             >
                                                                 <FiHeart className="text-sm" />
                                                             </button>
@@ -837,86 +979,116 @@ function Home() {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </motion.div>
                                         </SwiperSlide>
                                     )
                                 })
                             }
 
                         </Swiper>
-                    </div>
+                    </motion.div>
 
-                    <button
-                        className="px-10  py-3 text-[14px] sm:text-[14px] md:text-[16px] bg-[var(--secondary-color)]  text-white font-semibold rounded hover:bg-[var(--primary-color)]
-                        hover:text-black transition-all duration-300 flex items-center justify-center gap-2 mx-auto mt-5 sm:mt-7 lg:mt-10" >
+                    <motion.button
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-10 py-3 text-[14px] sm:text-[14px] md:text-[16px] bg-[var(--secondary-color)] text-white font-semibold rounded hover:bg-[var(--primary-color)]
+                        hover:text-black transition-all duration-300 flex items-center justify-center gap-2 mx-auto mt-5 sm:mt-7 lg:mt-10"
+                    >
                         Explore More Products
-                    </button>
-                </div>
+                    </motion.button>
+                </motion.div>
             </section>
 
             <section id="feature-product" className="bg-[#f8fafc] !mt-[60px] py-15">
-                <div class="container px-4 sm:px-6 lg:px-8  mx-auto overflow-hidden  transition-all duration-300 product-container overflow-visible">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="container px-4 sm:px-6 lg:px-8 mx-auto overflow-hidden transition-all duration-300 product-container overflow-visible"
+                >
                     <div className="text-center mb-8">
-                        <div className="flex justify-center">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4 }}
+                            className="flex justify-center"
+                        >
                             <span
                                 className="inline-block px-3 sm:px-4 md:px-5 py-2 text-[11px] sm:text-sm font-bold uppercase tracking-[2px] sm:tracking-widest text-amber-600
                             rounded-full bg-amber-500/20 border border-amber-500/30"
                             >
                                 Featured Collection
                             </span>
-                        </div>
+                        </motion.div>
 
-                        <h2 className="title font-black mt-3 text-[#0b1b3a]">
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="title font-black mt-3 text-[#0b1b3a]"
+                        >
                             Explore Our Premium Machinery & Tools
-                            {/* <span className="text-amber-500">Machinery & Tools</span> */}
-                        </h2>
+                        </motion.h2>
 
-                        <p className="mt-3 text-gray-600 subtitle max-w-5xl mx-auto px-4">
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className="mt-3 text-gray-600 subtitle max-w-5xl mx-auto px-4"
+                        >
                             Browse our collection of featured, best-selling, and latest machinery,
                             built to meet the demands of industrial and professional applications.
-                        </p>
+                        </motion.p>
                     </div>
 
-                    <ul
+                    <motion.ul
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
                         className="flex justify-center gap-3 sm:gap-5 md:gap-8 mt-6 flex-wrap"
                         onClick={(e) => setFproduct(e.target.textContent)}
                     >
-                        <li
-                            className={`text-xs sm:text-sm md:text-base lg:text-xl font-semibold pb-2 cursor-pointer transition
-                            ${fproduct === "Featured"
-                                    ? "text-black border-b-2 border-amber-500"
-                                    : "text-gray-500 border-b-2 border-gray-300 hover:text-black"
-                                }`}
-                        >
-                            Featured
-                        </li>
-
-                        <li
-                            className={`text-xs sm:text-sm md:text-base lg:text-xl font-semibold pb-2 cursor-pointer transition
-                            ${fproduct === "Latest"
-                                    ? "text-black border-b-2 border-amber-500"
-                                    : "text-gray-500 border-b-2 border-gray-300 hover:text-black"
-                                }`}
-                        >
-                            Latest
-                        </li>
-
-                        <li
-                            className={`text-xs sm:text-sm md:text-base lg:text-xl font-semibold pb-2 cursor-pointer transition
-                            ${fproduct === "Bestseller"
-                                    ? "text-black border-b-2 border-amber-500"
-                                    : "text-gray-500 border-b-2 border-gray-300 hover:text-black"
-                                }`}
-                        >
-                            Bestseller
-                        </li>
-                    </ul>
+                        {["Featured", "Latest", "Bestseller"].map((item, index) => (
+                            <motion.li
+                                key={item}
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
+                                whileHover={{ scale: 1.05 }}
+                                className={`text-xs sm:text-sm md:text-base lg:text-xl font-semibold pb-2 cursor-pointer transition
+                                ${fproduct === item
+                                        ? "text-black border-b-2 border-amber-500"
+                                        : "text-gray-500 border-b-2 border-gray-300 hover:text-black"
+                                    }`}
+                            >
+                                {item}
+                            </motion.li>
+                        ))}
+                    </motion.ul>
 
                     <div className="grid grid-cols-12 gap-y-8 min-[768px]:gap-y-12 gap-x-2 lg:gap-x-5 xl:gap-x-8 mt-7 min-[768px]:mt-10">
                         {
-                            products?.slice(0, visibleCount)?.map((v) => {
+                            products?.slice(0, visibleCount)?.map((v, index) => {
                                 return (
-                                    <div className="col-span-6 min-[576px]:col-span-6 min-[768px]:col-span-4 min-[992px]:col-span-4 lg:col-span-3 group">
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.4, delay: 0.6 + index * 0.05 }}
+                                        whileHover={{ y: -8, scale: 1.02 }}
+                                        className="col-span-6 min-[576px]:col-span-6 min-[768px]:col-span-4 min-[992px]:col-span-4 lg:col-span-3 group"
+                                    >
                                         <div className="bg-white shadow-md rounded-md">
                                             <div className="relative">
                                                 <div className="relative flex items-center justify-center overflow-hidden p-3 sm:p-4 h-40 sm:h-52 xl:h-64">
@@ -948,7 +1120,7 @@ function Home() {
                                                             onClick={() => openWishlist(v)}
                                                         >
                                                             <FiHeart className="text-sm" />
-                                                            
+
                                                         </button>
 
                                                         <button
@@ -1026,12 +1198,19 @@ function Home() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 )
                             })
                         }
 
-                        <div className="col-span-12 min-[768px]:col-span-8 lg:col-span-6">
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.8 }}
+                            whileHover={{ scale: 1.02 }}
+                            className="col-span-12 min-[768px]:col-span-8 lg:col-span-6"
+                        >
                             <div className="h-full rounded-md overflow-hidden relative min-[1400px]:h-[435px]">
 
                                 <img
@@ -1062,10 +1241,10 @@ function Home() {
 
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
 
                     </div>
-                </div>
+                </motion.div>
             </section>
 
             <section id="brand" className="py-8 md:py-12 lg:py-14 overflow-hidden bg-[#0b1b3a]"
@@ -1617,7 +1796,7 @@ function Home() {
                 />
             )}
 
-             {wishlistOpen && (
+            {wishlistOpen && (
                 <WishlistDrawer
                     product={selectedProduct}
                     onClose={() => setWishlisOpen(false)}
