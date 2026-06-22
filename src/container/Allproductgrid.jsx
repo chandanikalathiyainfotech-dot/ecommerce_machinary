@@ -9,6 +9,9 @@ import { RiLayoutGrid2Fill } from "react-icons/ri";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { TiShoppingCart } from "react-icons/ti";
 import { NavLink } from "react-router-dom";
+import Quickviewpro from "./Quickviewpro";
+import CartDrawer from "./CartDrawer";
+import WishlistDrawer from "./WishlistDrawer";
 
 function Allproductgrid() {
 
@@ -21,6 +24,20 @@ function Allproductgrid() {
     const dropdownRef = useRef(null);
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 9;
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [showQuickView, setShowQuickView] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
+    const [wishlistOpen, setWishlisOpen] = useState(false);
+
+    const openQuickView = (product) => {
+        setSelectedProduct(product);
+        setShowQuickView(true);
+    };
+
+    const openWishlist = (product) => {
+        setSelectedProduct(product);
+        setWishlisOpen(true);
+    };
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -556,6 +573,7 @@ function Allproductgrid() {
     
                                                                 transition-all duration-300 delay-100
                                                                 hover:bg-[#0b1b3a] hover:text-white"
+                                                                onClick={() => openWishlist(v)}
                                                             >
                                                                 <FiHeart className="text-sm" />
                                                             </button>
@@ -574,6 +592,7 @@ function Allproductgrid() {
 
                                                                 transition-all duration-300 delay-300
                                                                 hover:bg-[#0b1b3a] hover:text-white"
+                                                                onClick={() => openQuickView(v)}
                                                             >
                                                                 <LuEye />
                                                             </button>
@@ -656,6 +675,10 @@ function Allproductgrid() {
                                                                 mt-5 py-2 text-gray-800 font-semibold rounded
                                                                 bg-gray-100 hover:bg-amber-500 hover:text-white
                                                                 transition flex items-center justify-center gap-2`}
+                                                                onClick={() => {
+                                                                    setCartOpen(true);
+                                                                    setSelectedProduct(v);
+                                                                }}
                                                             >
                                                                 <TiShoppingCart className="text-lg hidden min-[576px]:block" />
                                                                 <span className="text-gray-800 hover:text-white !text-[12px] md:!text-[14px]">
@@ -710,6 +733,36 @@ function Allproductgrid() {
                     </div>
                 </div>
             </section>
+
+            {showQuickView && (
+                <Quickviewpro
+                    product={selectedProduct}
+                    onqClose={() => setShowQuickView(false)}
+                    onAddToCart={(productWithQty) => {
+                        setSelectedProduct(productWithQty);
+                        setCartOpen(true);
+                        setShowQuickView(false);
+                    }}
+                />
+            )}
+
+            {wishlistOpen && (
+                <WishlistDrawer
+                    product={selectedProduct}
+                    onClose={() => setWishlisOpen(false)} 
+                    onAddToCart={(productWithQty) => {
+                        setSelectedProduct(productWithQty);
+                        setWishlisOpen(false);
+                        setCartOpen(true);
+                    }}
+                />
+            )}
+
+            <CartDrawer
+                open={cartOpen}
+                onClose={() => setCartOpen(false)}
+                product={selectedProduct}
+            />
         </main>
     )
 }

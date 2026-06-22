@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
-import * as Yup from "yup";
+import { object, string } from "yup";
+import { NavLink } from "react-router-dom";
 
 function Checkout() {
 
@@ -8,60 +9,106 @@ function Checkout() {
     const [paymentMethod, setPaymentMethod] = useState("bank");
     const [showDetails, setShowDetails] = useState(true);
 
-    // const validationSchema = Yup.object({
-    //     firstName: Yup.string().required("First name is required"),
-    //     lastName: Yup.string().required("Last name is required"),
-    //     country: Yup.string().required("Country is required"),
-    //     streetAddress: Yup.string().required("Street address is required"),
-    //     apartment: Yup.string().optional(),
-    //     city: Yup.string().required("Town/City is required"),
-    //     state: Yup.string().optional(),
-    //     pincode: Yup.string()
-    //         .matches(/^[0-9]+$/, "Must be only digits")
-    //         .min(5, "Too short")
-    //         .max(10, "Too long")
-    //         .required("Pincode/Zip code is required"),
-    //     phone: Yup.string()
-    //         .matches(/^[0-9+-\s]+$/, "Invalid phone number")
-    //         .optional(),
-    //     email: Yup.string().email("Invalid email address").required("Email is required"),
-    //     businessName: Yup.string().optional(),
+    //  const validationSchema = object({
+    //     coupon:string().required("enter coupon code enter")
     // });
 
-    // // 2. Initialize Formik hooks
-    // const formik = useFormik({
-    //     initialValues: {
-    //         firstName: "",
-    //         lastName: "",
-    //         country: "United Kingdom (UK)",
-    //         streetAddress: "",
-    //         apartment: "",
-    //         city: "",
-    //         state: "",
-    //         pincode: "",
-    //         phone: "",
-    //         email: "",
-    //         businessName: "",
-    //     },
-    //     validationSchema: validationSchema,
-    //     onSubmit: (values) => {
-    //         console.log("Form Submitted Successfully:", values);
-    //         alert("Order placed successfully!");
-    //     },
-    // });
+
+    let validationSchema;
+    let initialValues;
+
+    if (couponopen) {
+        validationSchema = { coupon: string().required("enter coupon code enter") }
+
+        initialValues = { coupon: "" }
+    } else {
+        validationSchema = {
+            firstName: string().required("First name is required"),
+            lastName: string().required("Last name is required"),
+            country: string().required("Country is required"),
+            streetAddress: string().required("Street address is required"),
+            apartment: string().optional(),
+            city: string().required("Town/City is required"),
+            state: string().optional(),
+            pincode: string()
+                .matches(/^[0-9]+$/, "Must be only digits")
+                .min(5, "Too short")
+                .max(10, "Too long")
+                .required("Pincode/Zip code is required"),
+            phone: string()
+                .matches(/^[0-9+-\s]+$/, "Invalid phone number")
+                .optional(),
+            email: string().email("Invalid email address").required("Email is required"),
+            businessName: string().optional(),
+        }
+
+        initialValues = {
+            firstName: "",
+            lastName: "",
+            country: "United Kingdom (UK)",
+            streetAddress: "",
+            apartment: "",
+            city: "",
+            state: "",
+            pincode: "",
+            phone: "",
+            email: "",
+            businessName: "",
+        }
+    }
+
+    // 2. Initialize Formik hooks
+    const formik = useFormik({
+        initialValues: {
+            firstName: "",
+            lastName: "",
+            country: "United Kingdom (UK)",
+            streetAddress: "",
+            apartment: "",
+            city: "",
+            state: "",
+            pincode: "",
+            phone: "",
+            email: "",
+            businessName: "",
+            coupon: ""
+        },
+        validationSchema: object(validationSchema),
+        onSubmit: (values) => {
+            console.log("Form Submitted Successfully:", values);
+            alert("Order placed successfully!");
+        },
+    });
+
+    const { handleSubmit, handleBlur, handleChange, values, touched, errors, setFieldValue, setFieldTouched } = formik;
+    console.log(errors)
 
     return (
         <main>
+            <section id="top" className="!mt-4 md:!mt-0 md:bg-[#F7F7F7] md:py-10">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
+                    <div className="text text-center py-5 md:py-0 bg-[#F7F7F7] md:bg-transparent">
+                        <h2 className="text-[28px] uppercase font-bold hidden md:block">Checkout</h2>
+                        <div className="breadcrumps pl-4 md:pl-0">
+                            <ol className="flex gap-1 md:justify-center">
+                                <NavLink to={'/'}><li>Home /</li></NavLink>
+                                <li className="text-amber-500"> Checkout</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
             <section>
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+
                     {/* Coupon Alert Toggle */}
                     <div className="bg-white border border-gray-200 p-4 rounded text-sm">
                         <span className="text-gray-600">Have a coupon?</span>
                         <button className="text-blue-600 hover:underline ml-1" onClick={() => SetCouponopen(!couponopen)}>Click here to enter your code</button>
                     </div>
-                    {/* Coupon Input Area */}
 
-                    {/* Coupon Input Area */}
                     <div className={`bg-white border rounded overflow-hidden transition-all duration-300 ease-in-out ${couponopen
                         ? "max-h-[250px] opacity-100 p-6 border-gray-200 mt-4 mb-4"
                         : "max-h-0 opacity-0 p-0 border-transparent pointer-events-none"
@@ -70,91 +117,185 @@ function Checkout() {
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <input
                                     type="text"
+                                    name='coupon'
+                                    id='coupon'
                                     defaultValue="sdfr"
                                     className="w-full sm:max-w-xs p-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                                    value={values.coupon}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
                                 />
-                                <button className="bg-[#4ab324] hover:bg-[#3f9a1e] text-white font-medium px-6 py-2 rounded text-sm transition-colors self-start sm:self-auto">
+                                <button type="submit" onClick={handleSubmit} className="bg-[#4ab324] hover:bg-[#3f9a1e] text-white font-medium px-6 py-2 rounded text-sm transition-colors self-start sm:self-auto">
                                     Apply Coupon
                                 </button>
                             </div>
-                            {/* <p className="text-red-600 text-xs">Coupon "sdfr" cannot be applied because it does not exist.</p> */}
+                            {errors.coupon && touched.coupon && <span className="text-red-500 text-sm">{errors.coupon}</span>}
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
                         {/* Left Column: Billing Details */}
-                        <form className="lg:col-span-2 bg-white border border-gray-200 p-6 rounded space-y-5">
+                        <form className="lg:col-span-2 bg-white border border-gray-200 p-6 rounded space-y-5" onSubmit={handleSubmit}>
                             <h2 className="text-xl font-bold border-b border-gray-100 pb-3">Billing details</h2>
 
                             {/* Name Fields Group */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="space-y-1">
                                     <label className="block text-sm font-semibold text-gray-700">First name <span className="text-red-500">*</span></label>
-                                    <input type="text" placeholder="First Name" className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                                    <input type="text"
+                                        name="firstName" id="firstName"
+                                        placeholder="First Name"
+                                        className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                        value={values.firstName}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                    />
+                                    {errors.firstName && touched.firstName && <span className="text-red-500 text-sm">{errors.firstName}</span>}
                                 </div>
+
                                 <div className="space-y-1">
                                     <label className="block text-sm font-semibold text-gray-700">Last name <span className="text-red-500">*</span></label>
-                                    <input type="text" placeholder="Last Name" className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                                    <input type="text"
+                                        placeholder="Last Name"
+                                        name="lastName" id="lastName"
+                                        className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                        value={values.lastName}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                    />
+                                    {errors.lastName && touched.lastName && <span className="text-red-500 text-sm">{errors.lastName}</span>}
                                 </div>
                             </div>
 
                             {/* Country / Region */}
                             <div className="space-y-1">
                                 <label className="block text-sm font-semibold text-gray-700">Country / Region <span className="text-red-500">*</span></label>
-                                <select className="w-full p-3 border border-gray-300 rounded text-sm bg-white focus:outline-none focus:ring-1 focus:ring-blue-500">
+                                <select
+                                    className="w-full p-3 border border-gray-300 rounded text-sm bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                    name="country" id="country"
+                                    value={values.country}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                >
                                     <option>United Kingdom (UK)</option>
                                     <option>United States (US)</option>
                                     <option>Canada</option>
                                 </select>
+                                {errors.country && touched.country && <span className="text-red-500 text-sm">{errors.country}</span>}
                             </div>
 
                             {/* Street Address */}
-                            <div className="space-y-2">
+                            <div className="">
                                 <label className="block text-sm font-semibold text-gray-700">Street address <span className="text-red-500">*</span></label>
-                                <input type="text" placeholder="House number and street name" className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
-                                <input type="text" placeholder="Apartment, suite, unit, etc. (optional)" className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                                <input type="text"
+                                    placeholder="House number and street name"
+                                    className="w-full p-3 mt-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                    name="streetAddress" id="streetAddress"
+                                    value={values.streetAddress}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.streetAddress && touched.streetAddress && <span className="text-red-500 text-sm">{errors.streetAddress}</span>}
+
+                                <input type="text"
+                                    placeholder="Apartment, suite, unit, etc. (optional)"
+                                    className="w-full p-3 mt-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                    name="apartment" id="apartment"
+                                    value={values.apartment}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.apartment && touched.apartment && <span className="text-red-500 text-sm">{errors.apartment}</span>}
                             </div>
 
                             {/* Town / City */}
                             <div className="space-y-1">
                                 <label className="block text-sm font-semibold text-gray-700">Town / City <span className="text-red-500">*</span></label>
-                                <input type="text" placeholder="City" className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                                <input type="text"
+                                    placeholder="City"
+                                    className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                    name="city" id="city"
+                                    value={values.city}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.city && touched.city && <span className="text-red-500 text-sm">{errors.city}</span>}
                             </div>
 
                             {/* County */}
                             <div className="space-y-1">
-                                <label className="block text-sm font-semibold text-gray-700">County (optional)</label>
-                                <input type="text" placeholder="State" className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                                <label className="block text-sm font-semibold text-gray-700">State (optional)</label>
+                                <input type="text"
+                                    placeholder="State"
+                                    className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                    name="state" id="state"
+                                    value={values.state}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.state && touched.state && <span className="text-red-500 text-sm">{errors.state}</span>}
                             </div>
 
                             {/* Postcode */}
                             <div className="space-y-1">
                                 <label className="block text-sm font-semibold text-gray-700">Pincode <span className="text-red-500">*</span></label>
-                                <input type="text" placeholder="Pin Code" className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                                <input type="text"
+                                    placeholder="Pin Code"
+                                    className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                    name="pincode" id="pincode"
+                                    value={values.pincode}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.pincode && touched.pincode && <span className="text-red-500 text-sm">{errors.pincode}</span>}
                             </div>
 
                             {/* phone */}
                             <div className="space-y-1">
                                 <label className="block text-sm font-semibold text-gray-700">Phone (optional)</label>
-                                <input type="text" placeholder="Phone" className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                                <input type="text"
+                                    placeholder="Phone"
+                                    className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                    name="phone" id="phone"
+                                    value={values.phone}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.phone && touched.phone && <span className="text-red-500 text-sm">{errors.phone}</span>}
                             </div>
 
                             {/* Email */}
                             <div className="space-y-1">
                                 <label className="block text-sm font-semibold text-gray-700">Email Adress<span className="text-red-500">*</span></label>
-                                <input type="email" placeholder="Email Adress" className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                                <input type="email"
+                                    placeholder="Email Adress"
+                                    className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                    name="email" id="email"
+                                    value={values.email}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.email && touched.email && <span className="text-red-500 text-sm">{errors.email}</span>}
                             </div>
 
                             {/* Business Name */}
                             <div className="space-y-1">
                                 <label className="block text-sm font-semibold text-gray-700">Business Name (optional) <span className="text-red-500">*</span></label>
-                                <input type="text" placeholder="Business Name" className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                                <input type="text"
+                                    placeholder="Business Name"
+                                    className="w-full p-3 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                    name="businessName" id="businessName"
+                                    value={values.businessName}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.businessName && touched.businessName && <span className="text-red-500 text-sm">{errors.businessName}</span>}
                             </div>
                         </form>
 
 
                         {/* Right Column: Order Summary */}
-                        <div className="bg-white border border-gray-200 p-6 rounded space-y-6">
+                        <div className="bg-white border border-gray-200 p-4 rounded space-y-6">
                             <h2 className="text-xl font-bold border-b border-gray-100 pb-3">Your order</h2>
                             {/* Table Header Labels */}
                             <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-0 space-y-1">
@@ -176,7 +317,6 @@ function Checkout() {
                                         <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
                                     </svg>
                                 </button>
-
                             </div>
 
                             {/* Product Item Row / Collapsible Container */}
@@ -311,7 +451,7 @@ function Checkout() {
                                     Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.
                                 </p>
                                 {/* Place Order CTA Button */}
-                                <button type="submit" className="w-full bg-gray-900 hover:bg-black text-white font-bold py-3 px-4 rounded text-xs tracking-wider uppercase transition-colors">
+                                <button type="submit" onClick={handleSubmit} className="w-full bg-gray-900 hover:bg-black text-white font-bold py-3 px-4 rounded text-xs tracking-wider uppercase transition-colors">
                                     Place Order
                                 </button>
 

@@ -11,11 +11,28 @@ import "swiper/css/navigation";
 import { LuEye } from "react-icons/lu";
 import { TiShoppingCart } from "react-icons/ti";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Quickviewpro from "./Quickviewpro";
+import WishlistDrawer from "./WishlistDrawer";
+import CartDrawer from "./CartDrawer";
 
 function Detailproduct() {
 
     const [qty, setQty] = useState(1);
     const [activeTab, setActiveTab] = useState("description");
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [showQuickView, setShowQuickView] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
+    const [wishlistOpen, setWishlisOpen] = useState(false);
+
+    const openQuickView = (product) => {
+        setSelectedProduct(product);
+        setShowQuickView(true);
+    };
+
+    const openWishlist = (product) => {
+        setSelectedProduct(product);
+        setWishlisOpen(true);
+    };
 
     const variants = [
         {
@@ -760,6 +777,7 @@ function Detailproduct() {
     
                                                                 transition-all duration-300 delay-100
                                                                 hover:bg-[#0b1b3a] hover:text-white"
+                                                                onClick={() => openWishlist(v)}
                                                             >
                                                                 <FiHeart className="text-sm" />
                                                             </button>
@@ -777,6 +795,7 @@ function Detailproduct() {
     
                                                                 transition-all duration-300 delay-300
                                                                 hover:bg-[#0b1b3a] hover:text-white"
+                                                                onClick={() => openQuickView(v)}
                                                             >
                                                                 <LuEye />
                                                             </button>
@@ -823,6 +842,10 @@ function Detailproduct() {
                                                                 transition-all duration-500"
                                                         >
                                                             <button
+                                                                onClick={() => {
+                                                                    setCartOpen(true);
+                                                                    setSelectedProduct(v);
+                                                                }}
                                                                 className="w-full mt-5 py-2 text-[14px] bg-gray-100 text-gray-800 font-semibold rounded
                                                                     hover:bg-amber-500 hover:text-white transition
                                                                     flex items-center justify-center gap-2"
@@ -844,6 +867,38 @@ function Detailproduct() {
                 </div>
 
             </section>
+
+            {showQuickView && (
+                <Quickviewpro
+                    product={selectedProduct}
+                    onqClose={() => setShowQuickView(false)}
+                    onAddToCart={(productWithQty) => {
+                        setSelectedProduct(productWithQty);
+                        setCartOpen(true);
+                        setShowQuickView(false);
+                    }}
+                />
+            )}
+
+            {wishlistOpen && (
+                <WishlistDrawer
+                    product={selectedProduct}
+                    onClose={() => setWishlisOpen(false)}
+                    onAddToCart={(productWithQty) => {
+                        setSelectedProduct(productWithQty);
+                        setWishlisOpen(false);
+                        setCartOpen(true);
+                    }}
+                />
+            )}
+
+            {cartOpen && (
+                <CartDrawer
+                    open={cartOpen} 
+                    product={selectedProduct}
+                    onClose={() => setCartOpen(false)}
+                />
+            )}
         </main>
     );
 }

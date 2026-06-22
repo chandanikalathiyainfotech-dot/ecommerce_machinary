@@ -35,9 +35,8 @@ function Aboutus() {
 
   return (
 
-    <div>
-
-      <section id="hero" className="relative min-h-[350px] md:min-h-[500px] flex items-center justify-center bg-cover bg-center"
+    <main>
+      <section id="hero" className="relative min-h-[350px] md:min-h-[500px] flex items-center justify-center bg-cover bg-center !mt-0"
         style={{
           backgroundImage:
             `url(${aboutH})`,
@@ -459,7 +458,7 @@ function Aboutus() {
         </div>
       </section>
 
-      <section id="cta" className="relative py-16 md:py-24 bg-cover bg-center"
+      <section id="cta" className="relative py-16 md:py-24 bg-cover bg-center  !mb-0"
         style={{
           backgroundImage:
            `url(${aboutCTA})`,
@@ -524,7 +523,7 @@ function Aboutus() {
       )}
 
 
-    </div>
+    </main>
 
   );
 }

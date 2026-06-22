@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { FiHeart } from "react-icons/fi";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { MdCompareArrows } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
-function WishlistDrawer({ product, onClose }) {
+function WishlistDrawer({ product, onClose, onAddToCart }) {
     const navigate = useNavigate()
 
     if (!product) return null;
+
+    console.log(onAddToCart)
 
     const wishlistItems = [
         {
@@ -123,10 +125,16 @@ function WishlistDrawer({ product, onClose }) {
                                 </div>
                             </div>
 
-                            {/* Bottom Row Layout (Mobile Only) / Appended Right Section (Desktop) */}
                             <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center pl-[34px] sm:pl-0 gap-2 shrink-0">
 
-                                <button className="border border-gray-300 sm:border-[#0F172A] text-[#0F172A] hover:bg-[#0F172A] hover:text-white text-xs font-black px-6 py-2.5 rounded transition-all tracking-wider uppercase">
+                                <button
+                                    className="border border-gray-300 sm:border-[#0F172A] text-[#0F172A] hover:bg-[#0F172A] hover:text-white text-xs font-black px-6 py-2.5 rounded transition-all tracking-wider uppercase"
+                                    onClick={() => {
+                                        if (typeof onAddToCart === "function") {
+                                            onAddToCart(product);
+                                        }
+                                    }}
+                                >
                                     Add to Cart
                                 </button>
                             </div>
@@ -138,21 +146,20 @@ function WishlistDrawer({ product, onClose }) {
 
                 {/* Footer Navigation Section: Stacks buttons into rows on mobile */}
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between p-4 sm:p-6 gap-3 sm:gap-0 border-t border-gray-100 bg-white shrink-0">
-                    <button className="group relative px-6 py-3 font-semibold text-[14px] bg-[var(--secondary-color)] border border-[var(--secondary-color)]
-                rounded overflow-hidden transition-colors duration-300 ease-in-out text-white hover:border-amber-400 w-full sm:w-auto order-1 sm:order-none">
+                    <NavLink to={'/wishlist'} className="group relative px-6 py-3 font-semibold text-[14px] bg-[var(--secondary-color)] border border-[var(--secondary-color)]
+                                        rounded overflow-hidden transition-colors duration-300 ease-in-out text-white hover:border-amber-400 w-full sm:w-auto order-1 sm:order-none">
                         <span className="absolute bottom-0 left-0 w-full h-full bg-amber-400 scale-y-0 origin-bottom transition-transform duration-300 ease-out group-hover:scale-y-100" />
                         <span className="relative z-10 block text-center">View Wishlist</span>
-                    </button>
+                    </NavLink>
 
                     <button className="group relative px-6 py-3 font-semibold text-[14px] border border-gray-400 
-                    rounded-md overflow-hidden transition-colors duration-300 ease-in-out hover:text-white hover:border-amber-400 w-full sm:w-auto order-2 sm:order-none" onClick={onClose}>
+                                        rounded-md overflow-hidden transition-colors duration-300 ease-in-out hover:text-white hover:border-amber-400 w-full sm:w-auto order-2 sm:order-none" onClick={onClose}>
                         <span className="absolute bottom-0 left-0 w-full h-full bg-amber-400 scale-y-0 origin-bottom transition-transform duration-300 ease-out group-hover:scale-y-100" />
                         <span className="relative z-10 block text-center">
                             Continue shopping
                         </span>
                     </button>
                 </div>
-
             </div>
         </div>
 

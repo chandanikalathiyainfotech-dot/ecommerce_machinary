@@ -664,37 +664,10 @@ function Home() {
 
             <section id="category" className="mt-[100px]">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        // className="text-center mb-10 sm:mb-14 lg:mb-16"
-                    >
-                        <h3 className="title">Shop By Featured Categories</h3>
+                    <h3 className="title">Shop By Featured Categories</h3>
+                    <h5 className="subtitle">There are many variations of passages of lorem Ipsum available believable.</h5>
 
-                        {/* <h2 className="mt-5 text-[28px] sm:text-4xl lg:text-5xl font-black text-[#0b1b3a] leading-tight">
-                            Shop By Featured
-                            <span className="text-amber-500"> Categories</span>
-                        </h2> */}
-
-                    </motion.div>
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                    >
-                        <h5 className="subtitle">There are many variations of passages of lorem Ipsum available believable.</h5>
-                    </motion.div>
-
-                    <motion.div
-                        className="category-product"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                    >
+                    <div className="category-product">
 
                         <Swiper
                             modules={[Navigation]}
@@ -725,94 +698,67 @@ function Home() {
                             }}
                         >
                             {
-                                category?.map((v, index) => {
+                                category?.map((v) => {
                                     return (
-                                        <SwiperSlide key={index}>
-                                            <motion.div
-                                                className="cat-card group"
-                                                initial={{ opacity: 0, scale: 0.8 }}
-                                                whileInView={{ opacity: 1, scale: 1 }}
-                                                viewport={{ once: true }}
-                                                transition={{ duration: 0.4, delay: index * 0.05 }}
-                                                whileHover={{ scale: 1.05, y: -5 }}
-                                            >
+                                        <SwiperSlide>
+                                            <div className="cat-card group">
                                                 {/* category image */}
-                                                <motion.div
-                                                    className="border-[1.5px] border-gray-300 rounded-full sm:p-2 group-hover:border-amber-500"
-                                                    whileHover={{ borderColor: "#f59e0b" }}
-                                                    transition={{ duration: 0.3 }}
-                                                >
+                                                <div className="border-[1.5px] border-gray-300 rounded-full sm:p-2 group-hover:border-amber-500">
                                                     <img src={v.img} alt="" className="object-cover rounded-full" />
-                                                </motion.div>
+                                                </div>
 
                                                 <h6 className="sm:text-[18px] font-medium text-center mt-4">{v.name}</h6>
                                                 <p className="text-[14px] sm:text-[16px] text-[#666666] text-center">{v.product} product</p>
-                                            </motion.div>
+                                            </div>
                                         </SwiperSlide>
                                     )
                                 })
                             }
 
                         </Swiper>
-                        {/* 
+                        {/*
                         <div className="w-40">
-                            
+                           
                         </div> */}
-                    </motion.div>
+                    </div>
 
                 </div>
             </section>
 
             <section id="products" >
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="container px-4 sm:px-6 lg:px-8 mx-auto !mt-[100px] bg-white overflow-hidden transition-all duration-300 product-container"
-                >
+                {/* <span className="flex w-fit mx-auto px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30">
+                    OUR PRODUCTS
+                </span>
+ 
+                <h2 className="title">
+                    Explore Our Premium Machinery & Tools
+                </h2>
+ 
+                <h5 className="subtitle max-w-5xl mx-auto px-4">
+                    Discover a wide range of high-quality industrial machinery, power tools, and equipment carefully selected to meet the needs of professionals, workshops, construction projects, and manufacturing industries.
+                </h5> */}
+
+                <div class="container px-4 sm:px-6 lg:px-8  mx-auto bg-white  overflow-hidden  transition-all duration-300 product-container">
                     <div className="text-center mb-8">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4 }}
-                            className="flex justify-center"
-                        >
+                        <div className="flex justify-center">
                             <span
                                 className="inline-block px-3 sm:px-4 md:px-5 py-2 text-[11px] sm:text-sm font-bold uppercase tracking-[2px] sm:tracking-widest text-amber-600
                             rounded-full bg-amber-500/20 border border-amber-500/30"
                             >
                                 Our Products
                             </span>
-                        </motion.div>
+                        </div>
 
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                            className="title font-black mt-3 text-[#0b1b3a]"
-                        >
+                        <h2 className="title font-black mt-3 text-[#0b1b3a]">
                             Explore Our Premium Machinery & Tools
-                        </motion.h2>
+                            {/* <span className="text-amber-500">Machinery & Tools</span> */}
+                        </h2>
 
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
-                            className="mt-3 text-gray-600 subtitle max-w-5xl mx-auto px-4"
-                        >
+                        <p className="mt-3 text-gray-600 subtitle max-w-5xl mx-auto px-4">
                             Discover a wide range of high-quality industrial machinery, power tools, and equipment carefully selected to meet the needs of professionals, workshops, construction projects, and manufacturing industries.
-                        </motion.p>
+                        </p>
                     </div>
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                    >
+                    <div>
                         <Swiper
                             modules={[Grid, Navigation]}
                             slidesPerView={4}
@@ -861,17 +807,10 @@ function Home() {
                             }}
                         >
                             {
-                                products?.map((v, index) => {
+                                products?.map((v) => {
                                     return (
-                                        <SwiperSlide key={index}>
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                                                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                                                viewport={{ once: true }}
-                                                transition={{ duration: 0.4, delay: index * 0.03 }}
-                                                whileHover={{ y: -8, scale: 1.02 }}
-                                                className="bg-white border-1 border-gray-300 rounded-md group"
-                                            >
+                                        <SwiperSlide>
+                                            <div className="bg-white border-1 border-gray-300 rounded-md group">
                                                 <div className="relative">
                                                     <div className="relative flex items-center justify-center overflow-hidden p-3 sm:p-4 h-40 sm:h-52 xl:h-64">
 
@@ -890,13 +829,13 @@ function Home() {
                                                                 className="
                                                                         w-7 h-7 min-[576px]:w-8 min-[576px]:h-8 bg-white rounded-full flex items-center justify-center
                                                                     border border-gray-300
-        
+       
                                                                     opacity-100 translate-x-0
                                                                     lg:opacity-0 lg:translate-x-4
-        
+       
                                                                     group-hover:lg:opacity-100
                                                                     group-hover:lg:translate-x-0
-        
+       
                                                                     transition-all duration-300 delay-100
                                                                     hover:bg-[#0b1b3a] hover:text-white"
                                                                 onClick={() => openWishlist(v)}
@@ -908,13 +847,13 @@ function Home() {
                                                                 className="
                                                                     w-7 h-7 min-[576px]:w-8 min-[576px]:h-8 bg-white rounded-full flex items-center justify-center
                                                                 border border-gray-300
-
+ 
                                                                 opacity-100 translate-x-0
                                                                 lg:opacity-0 lg:translate-x-4
-
+ 
                                                                 group-hover:lg:opacity-100
                                                                 group-hover:lg:translate-x-0
-
+ 
                                                                 transition-all duration-300 delay-300
                                                                 hover:bg-[#0b1b3a] hover:text-white"
 
@@ -979,116 +918,86 @@ function Home() {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </motion.div>
+                                            </div>
                                         </SwiperSlide>
                                     )
                                 })
                             }
 
                         </Swiper>
-                    </motion.div>
+                    </div>
 
-                    <motion.button
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.6 }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-10 py-3 text-[14px] sm:text-[14px] md:text-[16px] bg-[var(--secondary-color)] text-white font-semibold rounded hover:bg-[var(--primary-color)]
-                        hover:text-black transition-all duration-300 flex items-center justify-center gap-2 mx-auto mt-5 sm:mt-7 lg:mt-10"
-                    >
+                    <button
+                        className="px-10  py-3 text-[14px] sm:text-[14px] md:text-[16px] bg-[var(--secondary-color)]  text-white font-semibold rounded hover:bg-[var(--primary-color)]
+                        hover:text-black transition-all duration-300 flex items-center justify-center gap-2 mx-auto mt-5 sm:mt-7 lg:mt-10" >
                         Explore More Products
-                    </motion.button>
-                </motion.div>
+                    </button>
+                </div>
             </section>
 
             <section id="feature-product" className="bg-[#f8fafc] !mt-[60px] py-15">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="container px-4 sm:px-6 lg:px-8 mx-auto overflow-hidden transition-all duration-300 product-container overflow-visible"
-                >
+                <div class="container px-4 sm:px-6 lg:px-8  mx-auto overflow-hidden  transition-all duration-300 product-container overflow-visible">
                     <div className="text-center mb-8">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4 }}
-                            className="flex justify-center"
-                        >
+                        <div className="flex justify-center">
                             <span
                                 className="inline-block px-3 sm:px-4 md:px-5 py-2 text-[11px] sm:text-sm font-bold uppercase tracking-[2px] sm:tracking-widest text-amber-600
                             rounded-full bg-amber-500/20 border border-amber-500/30"
                             >
                                 Featured Collection
                             </span>
-                        </motion.div>
+                        </div>
 
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                            className="title font-black mt-3 text-[#0b1b3a]"
-                        >
+                        <h2 className="title font-black mt-3 text-[#0b1b3a]">
                             Explore Our Premium Machinery & Tools
-                        </motion.h2>
+                            {/* <span className="text-amber-500">Machinery & Tools</span> */}
+                        </h2>
 
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
-                            className="mt-3 text-gray-600 subtitle max-w-5xl mx-auto px-4"
-                        >
+                        <p className="mt-3 text-gray-600 subtitle max-w-5xl mx-auto px-4">
                             Browse our collection of featured, best-selling, and latest machinery,
                             built to meet the demands of industrial and professional applications.
-                        </motion.p>
+                        </p>
                     </div>
 
-                    <motion.ul
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
+                    <ul
                         className="flex justify-center gap-3 sm:gap-5 md:gap-8 mt-6 flex-wrap"
                         onClick={(e) => setFproduct(e.target.textContent)}
                     >
-                        {["Featured", "Latest", "Bestseller"].map((item, index) => (
-                            <motion.li
-                                key={item}
-                                initial={{ opacity: 0, y: 10 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
-                                whileHover={{ scale: 1.05 }}
-                                className={`text-xs sm:text-sm md:text-base lg:text-xl font-semibold pb-2 cursor-pointer transition
-                                ${fproduct === item
-                                        ? "text-black border-b-2 border-amber-500"
-                                        : "text-gray-500 border-b-2 border-gray-300 hover:text-black"
-                                    }`}
-                            >
-                                {item}
-                            </motion.li>
-                        ))}
-                    </motion.ul>
+                        <li
+                            className={`text-xs sm:text-sm md:text-base lg:text-xl font-semibold pb-2 cursor-pointer transition
+                            ${fproduct === "Featured"
+                                    ? "text-black border-b-2 border-amber-500"
+                                    : "text-gray-500 border-b-2 border-gray-300 hover:text-black"
+                                }`}
+                        >
+                            Featured
+                        </li>
+
+                        <li
+                            className={`text-xs sm:text-sm md:text-base lg:text-xl font-semibold pb-2 cursor-pointer transition
+                            ${fproduct === "Latest"
+                                    ? "text-black border-b-2 border-amber-500"
+                                    : "text-gray-500 border-b-2 border-gray-300 hover:text-black"
+                                }`}
+                        >
+                            Latest
+                        </li>
+
+                        <li
+                            className={`text-xs sm:text-sm md:text-base lg:text-xl font-semibold pb-2 cursor-pointer transition
+                            ${fproduct === "Bestseller"
+                                    ? "text-black border-b-2 border-amber-500"
+                                    : "text-gray-500 border-b-2 border-gray-300 hover:text-black"
+                                }`}
+                        >
+                            Bestseller
+                        </li>
+                    </ul>
 
                     <div className="grid grid-cols-12 gap-y-8 min-[768px]:gap-y-12 gap-x-2 lg:gap-x-5 xl:gap-x-8 mt-7 min-[768px]:mt-10">
                         {
-                            products?.slice(0, visibleCount)?.map((v, index) => {
+                            products?.slice(0, visibleCount)?.map((v) => {
                                 return (
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.4, delay: 0.6 + index * 0.05 }}
-                                        whileHover={{ y: -8, scale: 1.02 }}
-                                        className="col-span-6 min-[576px]:col-span-6 min-[768px]:col-span-4 min-[992px]:col-span-4 lg:col-span-3 group"
-                                    >
+                                    <div className="col-span-6 min-[576px]:col-span-6 min-[768px]:col-span-4 min-[992px]:col-span-4 lg:col-span-3 group">
                                         <div className="bg-white shadow-md rounded-md">
                                             <div className="relative">
                                                 <div className="relative flex items-center justify-center overflow-hidden p-3 sm:p-4 h-40 sm:h-52 xl:h-64">
@@ -1108,32 +1017,25 @@ function Home() {
                                                             className="
                                                             w-8 h-8 bg-white rounded-full flex items-center justify-center
                                                             border border-gray-300
-
                                                             opacity-100 translate-x-0
                                                             lg:opacity-0 lg:translate-x-4
-
                                                             group-hover:lg:opacity-100
                                                             group-hover:lg:translate-x-0
-
                                                             transition-all duration-300 delay-100
                                                             hover:bg-[#0b1b3a] hover:text-white"
                                                             onClick={() => openWishlist(v)}
                                                         >
                                                             <FiHeart className="text-sm" />
-
                                                         </button>
 
                                                         <button
                                                             className="
                                                             w-8 h-8 bg-white rounded-full flex items-center justify-center
                                                             border border-gray-300
-
                                                             opacity-100 translate-x-0
                                                             lg:opacity-0 lg:translate-x-4
-
                                                             group-hover:lg:opacity-100
                                                             group-hover:lg:translate-x-0
-
                                                             transition-all duration-300 delay-300
                                                             hover:bg-[#0b1b3a] hover:text-white"
                                                             onClick={() => openQuickView(v)}
@@ -1198,20 +1100,13 @@ function Home() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </motion.div>
+                                    </div>
                                 )
                             })
                         }
 
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.8 }}
-                            whileHover={{ scale: 1.02 }}
-                            className="col-span-12 min-[768px]:col-span-8 lg:col-span-6"
-                        >
-                            <div className="h-full rounded-md overflow-hidden relative min-[1400px]:h-[435px]">
+                        <div className="col-span-12 min-[768px]:col-span-8 lg:col-span-6">
+                            <div className="h-full rounded-md overflow-hidden relative min-[1400px]:h-[428px] shopallzoom">
 
                                 <img
                                     src="../../src/assets/Images/machines/featured.webp"
@@ -1241,12 +1136,11 @@ function Home() {
 
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
 
                     </div>
-                </motion.div>
+                </div>
             </section>
-
             <section id="brand" className="py-8 md:py-12 lg:py-14 overflow-hidden bg-[#0b1b3a]"
             >
                 <div className="relative">
@@ -1792,7 +1686,12 @@ function Home() {
             {showQuickView && (
                 <Quickviewpro
                     product={selectedProduct}
-                    onClose={() => setShowQuickView(false)}
+                    onqClose={() => setShowQuickView(false)}
+                    onAddToCart={(productWithQty) => {
+                        setSelectedProduct(productWithQty);
+                        setCartOpen(true);
+                        setShowQuickView(false);
+                    }}
                 />
             )}
 
@@ -1800,14 +1699,21 @@ function Home() {
                 <WishlistDrawer
                     product={selectedProduct}
                     onClose={() => setWishlisOpen(false)}
+                    onAddToCart={(productWithQty) => {
+                        setSelectedProduct(productWithQty);
+                        setWishlisOpen(false);
+                        setCartOpen(true);
+                    }}
                 />
             )}
 
-            <CartDrawer
-                open={cartOpen}
-                onClose={() => setCartOpen(false)}
-                product={selectedProduct}
-            />
+            {cartOpen && (
+                <CartDrawer
+                    open={cartOpen} // Changed from product={selectedProduct} placeholder/missing block
+                    product={selectedProduct}
+                    onClose={() => setCartOpen(false)}
+                />
+            )}
         </main>
     );
 }

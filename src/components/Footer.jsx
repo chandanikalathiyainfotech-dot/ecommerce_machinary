@@ -147,8 +147,8 @@ function Footer() {
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">© 2024 MECHZONE. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#" className="text-gray-500 text-sm hover:text-amber-500 transition-colors">Privacy Policy</a>
+            <div className="flex min-[576px]:gap-6 gap-4">
+              <a href="#" className=" text-gray-500 text-sm hover:text-amber-500 transition-colors">Privacy Policy</a>
               <a href="#" className="text-gray-500 text-sm hover:text-amber-500 transition-colors">Terms of Service</a>
               <a href="#" className="text-gray-500 text-sm hover:text-amber-500 transition-colors">Sitemap</a>
             </div>
