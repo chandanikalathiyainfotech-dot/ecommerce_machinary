@@ -26,6 +26,7 @@ import FiltersLubricants from "./container/FiltersLubricants";
 import WishlistDrawer from "./container/WishlistDrawer";
 import Checkout from "./container/Checkout";
 import UserProfile from "./container/UserProfile";
+import ForgotPassword from "./container/ForgotPassword";
 
 function App() {
 
@@ -54,6 +55,7 @@ function App() {
         <Route path="/wishlistdrawer" element={<WishlistDrawer />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/profile/*" element={<UserProfile />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         {/* <Route path="/cartdrawer" element={<CaretPosition />} /> */}
         {/* <Route path="/parts/spare-parts" element={<SparParts />} /> */}
       </Routes>

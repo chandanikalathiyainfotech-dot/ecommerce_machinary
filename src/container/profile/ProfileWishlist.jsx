@@ -55,9 +55,30 @@ export default function ProfileWishlist() {
       </div>
 
       {wishlist.length === 0 ? (
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm py-20 flex flex-col items-center gap-4">
-          <FaHeart className="text-5xl text-gray-200" />
-          <p className="text-gray-400 font-semibold">Your wishlist is empty</p>
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm py-4 flex flex-col items-center gap-4">
+          {/* Reuse the same animated SVG inline */}
+          <svg width="180" height="160" viewBox="0 0 220 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="110" cy="188" rx="65" ry="7" fill="#f59e0b" fillOpacity="0.15" style={{animation:"shadowPulse2 2.8s ease-in-out infinite",transformOrigin:"110px 188px"}} />
+            <g style={{animation:"heartFloat 2.8s ease-in-out infinite",transformOrigin:"110px 100px"}}>
+              <path d="M110 160 C60 125 30 95 30 65 C30 42 48 25 70 25 C85 25 98 34 110 48 C122 34 135 25 150 25 C172 25 190 42 190 65 C190 95 160 125 110 160 Z" fill="#fee2e2" stroke="#fca5a5" strokeWidth="2"/>
+              <path d="M110 145 C72 118 52 96 52 73 C52 57 63 45 78 45 C89 45 99 52 110 63 C121 52 131 45 142 45 C157 45 168 57 168 73 C168 96 148 118 110 145 Z" fill="#fca5a5" fillOpacity="0.5"/>
+              <circle cx="93" cy="82" r="4.5" fill="#f87171" fillOpacity="0.8"/>
+              <circle cx="127" cy="82" r="4.5" fill="#f87171" fillOpacity="0.8"/>
+              <path d="M97 103 Q110 95 123 103" stroke="#f87171" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
+            </g>
+            <g style={{animation:"floatUp1 3.5s ease-in-out infinite",transformOrigin:"170px 43px"}}>
+              <path d="M170 40 C168 35 162 35 162 40 C162 45 170 50 170 50 C170 50 178 45 178 40 C178 35 172 35 170 40Z" fill="#f59e0b" fillOpacity="0.7"/>
+            </g>
+            <g style={{animation:"floatUp1 3.5s ease-in-out infinite 0.7s",transformOrigin:"40px 62px"}}>
+              <path d="M40 60 C38.5 56 33 56 33 60 C33 64 40 68 40 68 C40 68 47 64 47 60 C47 56 41.5 56 40 60Z" fill="#f59e0b" fillOpacity="0.5"/>
+            </g>
+            <style>{`
+              @keyframes heartFloat{0%,100%{transform:translateY(0) scale(1)}30%{transform:translateY(-8px) scale(1.03)}60%{transform:translateY(-5px) scale(1.01)}}
+              @keyframes shadowPulse2{0%,100%{transform:scaleX(1);opacity:.15}50%{transform:scaleX(.8);opacity:.08}}
+              @keyframes floatUp1{0%,100%{transform:translateY(0) rotate(0deg);opacity:.7}50%{transform:translateY(-12px) rotate(8deg);opacity:1}}
+            `}</style>
+          </svg>
+          <p className="text-gray-500 font-semibold text-sm">Your wishlist is empty</p>
           <NavLink
             to="/allproduct"
             className="px-6 py-2.5 bg-amber-500 text-black font-black text-sm rounded-xl hover:bg-amber-400 transition-all"

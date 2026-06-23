@@ -197,17 +197,18 @@ function Header() {
 
               <div className="h-8 w-[1px] bg-gray-700 mx-2"></div>
 
-              {/* <NavLink to={'/profile'}>
-              <button className="flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-black font-black text-sm rounded-lg hover:bg-amber-400 hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all uppercase tracking-tighter">
-                <FaUser className="text-sm sm:text-base md:text-lg lg:text-xl" />
-                <span>Login</span>
-              </button>
-            </NavLink> */}
+              <NavLink to={'/authendication'}>
+                <button className="flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-black font-black text-sm rounded-lg hover:bg-amber-400 hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all uppercase tracking-tighter">
+                  <FaUser className="text-sm sm:text-base md:text-lg lg:text-xl" />
+                  <span>Login</span>
+                </button>
+              </NavLink>
 
-              <button className="flex items-center gap-2 p-2 bg-amber-500 text-black font-black text-sm rounded-full hover:bg-amber-400 
+              {/* afeter user login */}
+              {/* <button className="flex items-center gap-2 p-2 bg-amber-500 text-black font-black text-sm rounded-full hover:bg-amber-400 
                      hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all uppercase tracking-tighter">
                 <FaUser className="text-sm sm:text-base md:text-lg lg:text-lg" />
-              </button>
+              </button> */}
 
             </div>
 

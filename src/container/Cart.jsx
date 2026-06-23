@@ -2,6 +2,127 @@ import React, { useEffect, useState } from "react";
 import { RxCross2, RxCrossCircled } from "react-icons/rx";
 import { NavLink } from "react-router-dom";
 
+// ─── Animated Empty Cart SVG ────────────────────────────────────────────────
+function EmptyCart() {
+  return (
+    <div className="flex flex-col items-center justify-center py-16 px-4">
+
+      {/* SVG Illustration */}
+      <div className="relative">
+        <svg
+          width="220" height="200"
+          viewBox="0 0 220 200"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="empty-cart-svg"
+        >
+          {/* Shadow ellipse */}
+          <ellipse cx="110" cy="190" rx="70" ry="8" fill="#f59e0b" fillOpacity="0.15" className="shadow-pulse" />
+
+          {/* Cart body */}
+          <g className="cart-body">
+            {/* Cart basket */}
+            <rect x="55" y="70" width="110" height="80" rx="10" fill="#fff" stroke="#e5e7eb" strokeWidth="2.5" />
+            {/* Inner lines */}
+            <line x1="80" y1="70" x2="80" y2="150" stroke="#f3f4f6" strokeWidth="1.5" />
+            <line x1="110" y1="70" x2="110" y2="150" stroke="#f3f4f6" strokeWidth="1.5" />
+            <line x1="140" y1="70" x2="140" y2="150" stroke="#f3f4f6" strokeWidth="1.5" />
+            <line x1="55" y1="100" x2="165" y2="100" stroke="#f3f4f6" strokeWidth="1.5" />
+            <line x1="55" y1="125" x2="165" y2="125" stroke="#f3f4f6" strokeWidth="1.5" />
+
+            {/* Cart handle */}
+            <path d="M30 40 L45 40 L65 68 L55 72 Z" fill="#0b1b3a" rx="4" />
+            <path d="M45 40 Q70 20 110 18 Q150 16 165 40 L155 42 Q142 22 110 24 Q78 26 56 44 Z" fill="#0b1b3a" />
+
+            {/* Wheels */}
+            <circle cx="80" cy="162" r="10" fill="#0b1b3a" />
+            <circle cx="80" cy="162" r="5" fill="#f59e0b" />
+            <circle cx="140" cy="162" r="10" fill="#0b1b3a" />
+            <circle cx="140" cy="162" r="5" fill="#f59e0b" />
+
+            {/* Cart front panel amber accent */}
+            <rect x="55" y="70" width="110" height="8" rx="4" fill="#f59e0b" fillOpacity="0.3" />
+          </g>
+
+          {/* Sad face on cart */}
+          <g className="sad-face">
+            <circle cx="93" cy="108" r="4" fill="#d1d5db" />
+            <circle cx="127" cy="108" r="4" fill="#d1d5db" />
+            <path d="M97 128 Q110 120 123 128" stroke="#d1d5db" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          </g>
+
+          {/* Floating sparkles */}
+          <g className="sparkle-1">
+            <path d="M185 50 L187 44 L189 50 L195 52 L189 54 L187 60 L185 54 L179 52 Z" fill="#f59e0b" fillOpacity="0.7" />
+          </g>
+          <g className="sparkle-2">
+            <path d="M25 80 L26.5 75 L28 80 L33 81.5 L28 83 L26.5 88 L25 83 L20 81.5 Z" fill="#f59e0b" fillOpacity="0.5" />
+          </g>
+          <g className="sparkle-3">
+            <circle cx="170" cy="90" r="3" fill="#f59e0b" fillOpacity="0.4" />
+          </g>
+          <g className="sparkle-4">
+            <circle cx="42" cy="55" r="2.5" fill="#0b1b3a" fillOpacity="0.3" />
+          </g>
+        </svg>
+      </div>
+
+      {/* Text */}
+      <div className="text-center mt-4 empty-text">
+        <h3 className="text-2xl font-black text-[#0b1b3a] mt-2">Your Cart is Empty!</h3>
+        <p className="text-gray-400 text-sm mt-2 max-w-xs leading-relaxed">
+          Looks like you haven't added anything yet. Explore our industrial machinery and tools.
+        </p>
+      </div>
+
+      {/* CTA */}
+      <NavLink to="/allproduct"
+        className="mt-6 inline-flex items-center gap-2 px-8 py-3 bg-amber-500 hover:bg-amber-400
+          text-[#0b1b3a] font-black text-sm rounded-xl transition-all hover:-translate-y-0.5
+          hover:shadow-xl hover:shadow-amber-500/30 uppercase tracking-widest empty-cta">
+        Shop Now →
+      </NavLink>
+
+      <style>{`
+        /* Cart float */
+        .cart-body { animation: cartFloat 3s ease-in-out infinite; transform-origin: center; }
+        @keyframes cartFloat {
+          0%,100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        /* Shadow pulse synced */
+        .shadow-pulse { animation: shadowPulse 3s ease-in-out infinite; transform-origin: center; }
+        @keyframes shadowPulse {
+          0%,100% { rx: 70; opacity: 0.15; }
+          50% { rx: 55; opacity: 0.08; }
+        }
+        /* Sad face bob */
+        .sad-face { animation: cartFloat 3s ease-in-out infinite; transform-origin: center; }
+        /* Sparkles */
+        .sparkle-1 { animation: sparkleSpin 2s ease-in-out infinite; transform-origin: 187px 52px; }
+        .sparkle-2 { animation: sparkleSpin 2.5s ease-in-out infinite 0.4s; transform-origin: 26.5px 81.5px; }
+        .sparkle-3 { animation: sparkleScale 2s ease-in-out infinite 0.8s; transform-origin: 170px 90px; }
+        .sparkle-4 { animation: sparkleScale 2.8s ease-in-out infinite 0.2s; transform-origin: 42px 55px; }
+        @keyframes sparkleSpin {
+          0%,100% { transform: scale(1) rotate(0deg); opacity:0.7; }
+          50% { transform: scale(1.4) rotate(20deg); opacity:1; }
+        }
+        @keyframes sparkleScale {
+          0%,100% { transform: scale(1); opacity:0.5; }
+          50% { transform: scale(1.8); opacity:1; }
+        }
+        /* Text fade in */
+        .empty-text { animation: fadeUp 0.6s ease-out both 0.2s; }
+        .empty-cta  { animation: fadeUp 0.6s ease-out both 0.4s; }
+        @keyframes fadeUp {
+          from { opacity:0; transform:translateY(16px); }
+          to   { opacity:1; transform:translateY(0); }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 const initialCart = [
     {
         id: 1,
@@ -80,6 +201,10 @@ function Cart() {
             <section id="cart" className="!mt-[20px] md:!mt-[50px] mb-10 sm:mb-20">
                 <div className="container px-4 sm:px-6 lg:px-8  mx-auto  ">
 
+                    {/* ── EMPTY STATE ── */}
+                    {cart.length === 0 ? (
+                        <EmptyCart />
+                    ) : (
                     <div className="grid grid-cols-12 gap-6 sm:pt-10">
 
                         {/* LEFT CART ITEMS */}
@@ -117,7 +242,7 @@ function Cart() {
                                                     <div className="relative w-25 h-25">
 
                                                         {/* X button on top-left of image */}
-                                                        <button className="absolute top-0 left-0 w-4 h-4 flex items-center justify-center bg-red-500 text-white rounded-full hover:bg-red-600 shadow">
+                                                        <button onClick={() => remove(item.id)} className="absolute top-0 left-0 w-4 h-4 flex items-center justify-center bg-red-500 text-white rounded-full hover:bg-red-600 shadow">
                                                             <RxCross2 className="text-white text-[12px]" />
                                                         </button>
                                                         <img
@@ -262,6 +387,7 @@ function Cart() {
                             </div>
                         </div>
                     </div>
+                    )} {/* end cart.length > 0 */}
 
                 </div>
             </section>

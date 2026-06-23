@@ -567,7 +567,7 @@ function Home() {
                                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
                                 transition={{ duration: 0.8, delay: 1 }}
                                 whileHover={{ scale: 1.02, rotate: 1 }}
-                                className="relative w-[520px] h-[650px] overflow-hidden rounded-[40px] border border-white/10 backdrop-blur-lg"
+                                className="relative w-[520px] h-[650px] overflow-hidden rounded-[40px] border border-white/10 backdrop-blur-lg shopallzoom"
                             >
 
                                 <motion.img
@@ -587,7 +587,8 @@ function Home() {
                                 animate={{ opacity: 1, x: 0, y: 0 }}
                                 transition={{ duration: 0.6, delay: 1.4 }}
                                 whileHover={{ y: -5, scale: 1.05 }}
-                                className="absolute top-24 right-[270px] min-[1200px]:right-[360px] xl:right-[350px] xl:right-[420px] backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 xl:w-48 2xl:w-52"
+                                className="absolute top-24 right-[270px] min-[1200px]:right-[360px] xl:right-[350px] xl:right-[420px] 
+                                backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 xl:w-48 2xl:w-52 herocard"
                             >
                                 <FaIndustry className="text-amber-500 text-2xl mb-3" />
                                 <h4 className="text-white font-bold">
@@ -604,7 +605,8 @@ function Home() {
                                 animate={{ opacity: 1, x: 0, y: 0 }}
                                 transition={{ duration: 0.6, delay: 1.6 }}
                                 whileHover={{ y: 5, scale: 1.05 }}
-                                className="absolute bottom-32 right-[270px] min-[1200px]:right-[360px] xl:right-[350px] xl:right-[420px] backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 xl:w-48 2xl:w-52"
+                                className="absolute bottom-32 right-[270px] min-[1200px]:right-[360px] xl:right-[350px] xl:right-[420px] 
+                                backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 xl:w-48 2xl:w-52 herocard"
                             >
                                 <FaTools className="text-amber-500 text-2xl mb-3" />
                                 <h4 className="text-white font-bold">
@@ -621,7 +623,7 @@ function Home() {
                                 animate={{ opacity: 1, x: 0, y: 0 }}
                                 transition={{ duration: 0.6, delay: 1.8 }}
                                 whileHover={{ x: 5, scale: 1.05 }}
-                                className="absolute top-1/2 -right-12 xl:-right-15 2xl:-right-25 backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 2xl:w-52"
+                                className="absolute top-1/2 -right-12 xl:-right-15 2xl:-right-25 backdrop-blur-lg bg-white/10 border border-white/20 p-5 rounded-2xl w-45 2xl:w-52 herocard"
                             >
                                 <FaUsers className="text-amber-500 text-2xl mb-3" />
                                 <h4 className="text-white font-bold">
@@ -725,7 +727,7 @@ function Home() {
                 </div>
             </section>
 
-            <section id="products" >
+            <section id="products" className="!mt-[60px]">
                 {/* <span className="flex w-fit mx-auto px-4 py-2 text-amber-600 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30">
                     OUR PRODUCTS
                 </span>
@@ -1110,7 +1112,7 @@ function Home() {
 
                                 <img
                                     src="../../src/assets/Images/machines/featured.webp"
-                                    alt=""
+                                    alt="shopnow"
                                     className="w-full h-full object-cover"
                                 />
 
@@ -1137,49 +1139,6 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                </div>
-            </section>
-            <section id="brand" className="py-8 md:py-12 lg:py-14 overflow-hidden bg-[#0b1b3a]"
-            >
-                <div className="relative">
-
-                    {/* Left Fade */}
-                    <div className="absolute left-0 top-0 h-full w-10 md:w-20 bg-gradient-to-r from-[#0b1b3a] to-transparent z-10" />
-
-                    {/* Right Fade */}
-                    <div className="absolute right-0 top-0 h-full w-10 md:w-20 bg-gradient-to-l from-[#0b1b3a] to-transparent z-10" />
-
-                    <div className="flex animate-brand-scroll items-center gap-8 md:gap-14 lg:gap-20 w-max">
-
-                        {[...brands, ...brands].map((brand, index) => (
-                            <div
-                                key={index}
-                                className="group flex-shrink-0 cursor-pointer"
-                            >
-                                <h3
-                                    className="
-                                        text-white
-                                        text-sm
-                                        sm:text-base
-                                        md:text-2xl
-                                        lg:text-3xl
-                                        font-semibold
-                                        tracking-[2px]
-                                        whitespace-nowrap
-                                        opacity-70
-                                        transition-all
-                                        duration-300
-                                        group-hover:text-amber-400
-                                        group-hover:opacity-100
-                                        group-hover:scale-105
-                                    "
-                                >
-                                    {brand.name}
-                                </h3>
-                            </div>
-                        ))}
 
                     </div>
                 </div>
@@ -1679,6 +1638,49 @@ function Home() {
                                 </p>
                             </motion.div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            <section id="brand" className="py-8 md:py-12 lg:py-14 overflow-hidden bg-[#0b1b3a]" >
+                <div className="relative">
+
+                    {/* Left Fade */}
+                    <div className="absolute left-0 top-0 h-full w-10 md:w-20 bg-gradient-to-r from-[#0b1b3a] to-transparent z-10" />
+
+                    {/* Right Fade */}
+                    <div className="absolute right-0 top-0 h-full w-10 md:w-20 bg-gradient-to-l from-[#0b1b3a] to-transparent z-10" />
+
+                    <div className="flex animate-brand-scroll items-center gap-8 md:gap-14 lg:gap-20 w-max">
+
+                        {[...brands, ...brands].map((brand, index) => (
+                            <div
+                                key={index}
+                                className="group flex-shrink-0 cursor-pointer"
+                            >
+                                <h3
+                                    className="
+                                        text-white
+                                        text-sm
+                                        sm:text-base
+                                        md:text-2xl
+                                        lg:text-3xl
+                                        font-semibold
+                                        tracking-[2px]
+                                        whitespace-nowrap
+                                        opacity-70
+                                        transition-all
+                                        duration-300
+                                        group-hover:text-amber-400
+                                        group-hover:opacity-100
+                                        group-hover:scale-105
+                                    "
+                                >
+                                    {brand.name}
+                                </h3>
+                            </div>
+                        ))}
+
                     </div>
                 </div>
             </section>
