@@ -105,7 +105,7 @@ function MaintenanceKits() {
   return (
     <div className="bg-gradient-to-br from-gray-50 to-white">
       {/* Hero Section - Totally New Unique Diagonal Split */}
-      <section className="relative min-h-[95vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[70vh] sm:min-h-[80vh] md:min-h-[95vh] flex items-center overflow-hidden">
         {/* Diagonal Split Background */}
         <div className="absolute inset-0 flex">
           <motion.div
@@ -123,11 +123,151 @@ function MaintenanceKits() {
           ></motion.div>
         </div>
 
-        {/* Animated Background Elements */}
-       
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-20 py-16 sm:py-20">
+          <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-24 items-center">
+            {/* Left Content Side */}
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.7, duration: 0.8 }}
+                className="mb-6 sm:mb-8"
+              >
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <motion.div
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl sm:rounded-2xl flex items-center justify-center text-2xl sm:text-3xl text-white shadow-xl"
+                  >
+                    <FaTools />
+                  </motion.div>
+                  <div>
+                    <h4 className="text-amber-400 font-black text-base sm:text-lg md:text-xl uppercase tracking-widest">Premium Quality</h4>
+                    <p className="text-gray-400 text-sm sm:text-base md:text-lg">Trusted by industry leaders</p>
+                  </div>
+                </div>
+              </motion.div>
 
-        <div className="container mx-auto px-4 md:px-8 relative z-20">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+              <motion.h1
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 1 }}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-tight mb-6 sm:mb-8"
+              >
+                <span className="block">Maintenance</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 block mt-2">
+                  Kits That Deliver
+                </span>
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-amber-500">
+                  Excellence
+                </span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.1, duration: 0.9 }}
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 sm:mb-10 leading-relaxed"
+              >
+                Keep your machinery running at peak performance with our premium maintenance solutions designed for industrial excellence.
+              </motion.p>
+
+              {/* Feature Pills */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.3, duration: 0.8 }}
+                className="flex flex-wrap gap-3 sm:gap-4 mb-8 sm:mb-10"
+              >
+                {[
+                  { icon: <FaShieldAlt />, text: "OEM Parts" },
+                  { icon: <FaShippingFast />, text: "Fast Delivery" },
+                  { icon: <FaCheck />, text: "Quality Guaranteed" }
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    className="flex items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-3 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl"
+                  >
+                    <span className="text-amber-400 text-lg sm:text-2xl">{item.icon}</span>
+                    <span className="text-white font-bold text-sm sm:text-base md:text-lg">{item.text}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.5, duration: 0.8 }}
+                className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6"
+              >
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto px-10 py-5 sm:px-14 sm:py-7 bg-gradient-to-r from-amber-500 to-orange-500 text-[#0b1b3a] rounded-2xl sm:rounded-3xl font-black text-base sm:text-xl shadow-2xl hover:shadow-orange-500/40 flex items-center justify-center gap-3"
+                >
+                  Shop Now <FaArrowRight />
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto px-10 py-5 sm:px-14 sm:py-7 bg-transparent border-2 sm:border-4 border-white text-white rounded-2xl sm:rounded-3xl font-black text-base sm:text-xl hover:bg-white hover:text-[#0b1b3a] transition-all"
+                >
+                  Learn More
+                </motion.button>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Product Side */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.7, x: 100 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="relative mt-10 lg:mt-0"
+            >
+              <div className="relative">
+                <motion.div
+                  animate={{ y: [0, -20, 0], rotate: [0, 2, 0, -2, 0] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative z-20"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1581093618047-4eb28b4f9b6b?w=800"
+                    alt="Maintenance Kits"
+                    className="rounded-2xl sm:rounded-[3rem] shadow-2xl border-4 sm:border-8 border-white w-full"
+                  />
+                </motion.div>
+
+                {/* 3D Badge */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  transition={{ delay: 1.6, duration: 1, type: "spring" }}
+                  className="absolute -top-4 -right-4 sm:-top-8 sm:-right-8 z-40"
+                >
+                  <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center shadow-2xl">
+                    <div className="text-center text-white">
+                      <div className="text-xl sm:text-2xl md:text-3xl font-black">20%</div>
+                      <div className="text-xs sm:text-sm font-bold uppercase">OFF</div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Glow Effect */}
+                <motion.div
+                  className="absolute -z-10 -inset-8 sm:-inset-12 bg-gradient-to-br from-amber-500/30 via-orange-500/30 to-amber-500/10 rounded-[3rem] sm:rounded-[4rem] blur-3xl"
+                  animate={{ opacity: [0.6, 1, 0.6], scale: [1, 1.1, 1] }}
+                  transition={{ duration: 7, repeat: Infinity }}
+                ></motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
             {/* Left Content Side */}
             <motion.div
               initial={{ opacity: 0, x: -100 }}
@@ -225,73 +365,15 @@ function MaintenanceKits() {
               </motion.div>
             </motion.div>
 
-            {/* Right Product Side */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.7, x: 100 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              className="relative"
-            >
-              <div className="relative">
-                {/* Main Product Image with Parallax */}
-                <motion.div
-                  animate={{
-                    y: [0, -20, 0],
-                    rotate: [0, 2, 0, -2, 0]
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="relative z-20"
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1581093618047-4eb28b4f9b6b?w=800"
-                    alt="Maintenance Kits"
-                    className="rounded-[3rem] shadow-2xl border-8 border-white w-full"
-                  />
-                </motion.div>
-
-                {/* 3D Badge */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0, rotate: -180 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  transition={{ delay: 1.6, duration: 1, type: "spring" }}
-                  className="absolute -top-8 -right-8 z-40"
-                >
-                  <div className="w-32 h-32 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center shadow-2xl">
-                    <div className="text-center text-white">
-                      <div className="text-3xl font-black">20%</div>
-                      <div className="text-sm font-bold uppercase">OFF</div>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Glow Effect */}
-                <motion.div
-                  className="absolute -z-10 -inset-12 bg-gradient-to-br from-amber-500/30 via-orange-500/30 to-amber-500/10 rounded-[4rem] blur-3xl"
-                  animate={{
-                    opacity: [0.6, 1, 0.6],
-                    scale: [1, 1.1, 1]
-                  }}
-                  transition={{ duration: 7, repeat: Infinity }}
-                ></motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Categories Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-[#0b1b3a] mb-4">Maintenance Categories</h2>
-            <p className="text-gray-600 text-xl max-w-2xl mx-auto">Find the perfect maintenance solution for your equipment</p>
+      <section className="py-14 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-14 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0b1b3a] mb-3 sm:mb-4">Maintenance Categories</h2>
+            <p className="text-gray-600 text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-2">Find the perfect maintenance solution for your equipment</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5 md:gap-6">
             {categories.map((cat, index) => (
               <motion.div
                 key={index}
@@ -300,12 +382,12 @@ function MaintenanceKits() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
                 whileHover={{ y: -8, scale: 1.05 }}
-                className="group cursor-pointer bg-white rounded-3xl p-8 text-center shadow-lg border border-gray-100"
+                className="group cursor-pointer bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 text-center shadow-lg border border-gray-100"
               >
-                <div className="w-20 h-20 mx-auto bg-gradient-to-br from-amber-500 to-orange-500 rounded-3xl flex items-center justify-center text-4xl text-white mb-5 group-hover:rotate-12 transition-all shadow-xl">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl sm:rounded-3xl flex items-center justify-center text-2xl sm:text-3xl md:text-4xl text-white mb-3 sm:mb-4 md:mb-5 group-hover:rotate-12 transition-all shadow-xl">
                   {cat.icon}
                 </div>
-                <h3 className="font-bold text-lg text-[#0b1b3a]">{cat.name}</h3>
+                <h3 className="font-bold text-sm sm:text-base md:text-lg text-[#0b1b3a]">{cat.name}</h3>
               </motion.div>
             ))}
           </div>

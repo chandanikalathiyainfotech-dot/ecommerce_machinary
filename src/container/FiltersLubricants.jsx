@@ -172,50 +172,22 @@ function FiltersLubricants() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
       {/* Hero Section - Oil Drop Theme */}
-      <section className="relative pt-32 pb-48 bg-gradient-to-br from-[#0b1b3a] via-slate-900 to-[#0b1b3a] text-white overflow-hidden">
-        {/* Animated Oil Drops */}
-        {/* <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full bg-gradient-to-br from-blue-500/30 to-cyan-500/20"
-              style={{
-                width: `${20 + Math.random() * 60}px`,
-                height: `${20 + Math.random() * 60}px`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`
-              }}
-              initial={{ opacity: 0, y: -50 }}
-              animate={{
-                opacity: [0.3, 0.7, 0.3],
-                y: [0, 100, 0],
-                scale: [1, 1.3, 1]
-              }}
-              transition={{
-                duration: 5 + Math.random() * 8,
-                repeat: Infinity,
-                delay: i * 0.3,
-                ease: 'easeInOut'
-              }}
-            />
-          ))}
-        </div> */}
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section className="relative pt-20 sm:pt-24 md:pt-32 pb-32 sm:pb-40 md:pb-48 bg-gradient-to-br from-[#0b1b3a] via-slate-900 to-[#0b1b3a] text-white overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
             >
-              <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-full mb-8">
-                <FaFilter className="text-cyan-400" />
-                <span className="text-cyan-400 font-bold text-sm uppercase tracking-widest">
+              <div className="inline-flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-full mb-6 sm:mb-8">
+                <FaFilter className="text-cyan-400 text-sm sm:text-base" />
+                <span className="text-cyan-400 font-bold text-xs sm:text-sm uppercase tracking-widest">
                   Filter Experts
                 </span>
               </div>
 
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-black leading-tight mb-8">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight mb-6 sm:mb-8">
                 Filters &
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-amber-500">
                   Lubricants
@@ -223,29 +195,29 @@ function FiltersLubricants() {
                 <span className="block">For Every Need</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-lg">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 sm:mb-10 max-w-lg">
                 Premium filters and high-quality lubricants to keep your equipment running smoothly and efficiently.
               </p>
 
-              <div className="flex flex-wrap gap-6 mb-12">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 mb-8 sm:mb-12">
                 <motion.button
                   whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-12 py-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-3xl font-black text-xl shadow-2xl hover:shadow-cyan-500/40 flex items-center gap-3"
+                  className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-2xl sm:rounded-3xl font-black text-base sm:text-lg shadow-2xl hover:shadow-cyan-500/40 flex items-center justify-center gap-3"
                 >
                   Shop Now <FaArrowRight />
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-12 py-6 border-4 border-white text-white rounded-3xl font-black text-xl hover:bg-white hover:text-[#0b1b3a] transition-all"
+                  className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 border-2 sm:border-4 border-white text-white rounded-2xl sm:rounded-3xl font-black text-base sm:text-lg hover:bg-white hover:text-[#0b1b3a] transition-all"
                 >
                   Find Filter
                 </motion.button>
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-8">
+              <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8">
                 {[
                   { value: '500+', label: 'Filter Types' },
                   { value: '200+', label: 'Lubricants' },
@@ -258,8 +230,8 @@ function FiltersLubricants() {
                     transition={{ delay: 0.5 + i * 0.1 }}
                     className="text-center"
                   >
-                    <div className="text-4xl md:text-5xl font-black text-cyan-400 mb-2">{stat.value}</div>
-                    <div className="text-gray-400 font-bold">{stat.label}</div>
+                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-cyan-400 mb-1 sm:mb-2">{stat.value}</div>
+                    <div className="text-gray-400 font-bold text-xs sm:text-sm md:text-base">{stat.label}</div>
                   </motion.div>
                 ))}
               </div>
@@ -267,23 +239,20 @@ function FiltersLubricants() {
 
             {/* Right - Animated Image */}
             <motion.div
-              initial={{ opacity: 0, x: 100, rotateY: -45 }}
-              animate={{ opacity: 1, x: 0, rotateY: 0 }}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="relative"
+              className="relative mt-10 lg:mt-0"
             >
               <motion.div
-                animate={{
-                  y: [0, -25, 0],
-                  rotate: [0, 3, 0, -3, 0]
-                }}
+                animate={{ y: [0, -20, 0], rotate: [0, 3, 0, -3, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-                className="relative z-20"
+                className="relative z-20 mx-4 sm:mx-8 lg:mx-0"
               >
                 <img
                   src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800"
                   alt="Filters & Lubricants"
-                  className="rounded-[3rem] shadow-2xl border-8 border-slate-800"
+                  className="rounded-[2rem] sm:rounded-[3rem] shadow-2xl border-4 sm:border-8 border-slate-800 w-full"
                 />
               </motion.div>
 
@@ -292,16 +261,12 @@ function FiltersLubricants() {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8, type: 'spring' }}
-                // animate={{
-                //   y: [0, -20, 0]
-                // }}
-                // transition={{ duration: 4, repeat: Infinity, delay: 0.8 }}
-                className="absolute -top-10 -left-10 z-30"
+                className="absolute top-0 left-0 sm:-top-8 sm:-left-4 lg:-top-10 lg:-left-10 z-30"
               >
-                <div className="bg-slate-800/90 backdrop-blur border border-slate-700 rounded-3xl p-6 shadow-2xl">
-                  <FaTint className="text-cyan-400 text-3xl mb-2" />
-                  <div className="font-black text-2xl">200+</div>
-                  <div className="text-gray-400">Lubes</div>
+                <div className="bg-slate-800/90 backdrop-blur border border-slate-700 rounded-2xl sm:rounded-3xl p-3 sm:p-5 shadow-2xl">
+                  <FaTint className="text-cyan-400 text-xl sm:text-3xl mb-1 sm:mb-2" />
+                  <div className="font-black text-lg sm:text-2xl">200+</div>
+                  <div className="text-gray-400 text-xs sm:text-sm">Lubes</div>
                 </div>
               </motion.div>
 
@@ -309,16 +274,12 @@ function FiltersLubricants() {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1, type: 'spring' }}
-                // animate={{
-                //   y: [0, 20, 0]
-                // }}
-                // transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-                className="absolute -bottom-10 -right-10 z-30"
+                className="absolute bottom-0 right-0 sm:-bottom-8 sm:-right-4 lg:-bottom-10 lg:-right-10 z-30"
               >
-                <div className="bg-gradient-to-br from-cyan-500 to-blue-500 rounded-3xl p-6 shadow-2xl">
-                  <FaFilter className="text-white text-3xl mb-2" />
-                  <div className="font-black text-2xl text-white">500+</div>
-                  <div className="text-white/90">Filters</div>
+                <div className="bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl sm:rounded-3xl p-3 sm:p-5 shadow-2xl">
+                  <FaFilter className="text-white text-xl sm:text-3xl mb-1 sm:mb-2" />
+                  <div className="font-black text-lg sm:text-2xl text-white">500+</div>
+                  <div className="text-white/90 text-xs sm:text-sm">Filters</div>
                 </div>
               </motion.div>
             </motion.div>
@@ -327,9 +288,9 @@ function FiltersLubricants() {
 
         {/* Wave Divider */}
         <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <path
-              d="M0 192L48 208C96 224 192 256 288 245.3C384 235 480 181 576 170.7C672 160 768 192 864 202.7C960 213 1056 203 1152 197.3C1248 192 1344 192 1392 192H1440V320H1392C1344 320 1248 320 1152 320C1056 320 960 320 864 320C768 320 672 320 576 320C480 320 384 320 288 320C192 320 96 320 48 320H0V192Z"
+              d="M0 72L48 78C96 84 192 96 288 92C384 88 480 68 576 64C672 60 768 72 864 76C960 80 1056 76 1152 74C1248 72 1344 72 1392 72H1440V120H0V72Z"
               fill="#f0f9ff"
             />
           </svg>
@@ -337,16 +298,16 @@ function FiltersLubricants() {
       </section>
 
       {/* Filter Finder Section */}
-      <section className="py-24 bg-gradient-to-br from-blue-50 to-cyan-50 text-[#0b1b3a]">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black mb-6">Find Your Perfect Filter</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+      <section className="py-14 sm:py-20 md:py-24 bg-gradient-to-br from-blue-50 to-cyan-50 text-[#0b1b3a]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6">Find Your Perfect Filter</h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-2">
               Use our quick filter finder to locate the exact filter for your vehicle or equipment
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
             {filterFinderSteps.map((step, i) => (
               <motion.div
                 key={i}
@@ -354,29 +315,27 @@ function FiltersLubricants() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
-                whileHover={{ y: -12, scale: 1.05 }}
-                className="bg-white rounded-3xl shadow-xl p-10 border border-blue-100 text-center"
+                whileHover={{ y: -10, scale: 1.03 }}
+                className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-7 sm:p-8 md:p-10 border border-blue-100 text-center"
               >
                 <motion.div
-                  animate={{
-                    y: [0, -10, 0]
-                  }}
+                  animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 3, repeat: Infinity, delay: i * 0.2 }}
-                  className="w-24 h-24 mx-auto bg-gradient-to-br from-cyan-500 to-blue-500 rounded-[2rem] flex items-center justify-center text-4xl text-white mb-8 shadow-2xl"
+                  className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl sm:rounded-[2rem] flex items-center justify-center text-white mb-6 sm:mb-8 shadow-2xl"
                 >
-                  <div className="text-3xl font-black">{step.number}</div>
+                  <div className="text-2xl sm:text-3xl font-black">{step.number}</div>
                 </motion.div>
-                <h3 className="font-black text-2xl mb-4">{step.title}</h3>
-                <p className="text-gray-600 text-lg">{step.description}</p>
+                <h3 className="font-black text-xl sm:text-2xl mb-3 sm:mb-4">{step.title}</h3>
+                <p className="text-gray-600 text-sm sm:text-base md:text-lg">{step.description}</p>
               </motion.div>
             ))}
           </div>
 
-          <div className="text-center mt-16">
+          <div className="text-center mt-10 sm:mt-14 md:mt-16">
             <motion.button
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="px-14 py-7 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-3xl font-black text-xl shadow-2xl hover:shadow-cyan-500/40"
+              className="px-10 py-5 sm:px-14 sm:py-7 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-2xl sm:rounded-3xl font-black text-base sm:text-xl shadow-2xl hover:shadow-cyan-500/40"
             >
               Start Filter Finder
             </motion.button>
@@ -385,16 +344,16 @@ function FiltersLubricants() {
       </section>
 
       {/* Categories Section */}
-      <section className="py-24 bg-white text-[#0b1b3a]">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black mb-6">Shop by Category</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+      <section className="py-14 sm:py-20 md:py-24 bg-white text-[#0b1b3a]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6">Shop by Category</h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-2">
               Browse our comprehensive range of filters and lubricants
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {categories.map((cat, i) => (
               <motion.div
                 key={i}
@@ -402,17 +361,17 @@ function FiltersLubricants() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -15, scale: 1.05 }}
+                whileHover={{ y: -10, scale: 1.03 }}
                 className="group cursor-pointer"
               >
-                <div className="bg-gradient-to-br from-slate-50 to-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
-                  <div className={`h-44 bg-gradient-to-br ${cat.color} flex items-center justify-center text-7xl text-white`}>
+                <div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden border border-slate-100">
+                  <div className={`h-36 sm:h-40 md:h-44 bg-gradient-to-br ${cat.color} flex items-center justify-center text-5xl sm:text-6xl md:text-7xl text-white`}>
                     {cat.icon}
                   </div>
-                  <div className="p-10">
-                    <h3 className="font-black text-3xl mb-3">{cat.name}</h3>
-                    <p className="text-gray-600 text-xl mb-6">{cat.count} Products Available</p>
-                    <button className="w-full py-5 rounded-2xl font-bold text-white bg-gradient-to-r from-[#0b1b3a] to-slate-800 hover:from-cyan-500 hover:to-blue-500 transition-all">
+                  <div className="p-6 sm:p-8 md:p-10">
+                    <h3 className="font-black text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-3">{cat.name}</h3>
+                    <p className="text-gray-600 text-base sm:text-lg md:text-xl mb-4 sm:mb-6">{cat.count} Products Available</p>
+                    <button className="w-full py-3 sm:py-4 md:py-5 rounded-xl sm:rounded-2xl font-bold text-white bg-gradient-to-r from-[#0b1b3a] to-slate-800 hover:from-cyan-500 hover:to-blue-500 transition-all text-sm sm:text-base">
                       Browse {cat.name}
                     </button>
                   </div>
@@ -424,24 +383,24 @@ function FiltersLubricants() {
       </section>
 
       {/* Products Section */}
-      <section className="py-24 bg-gradient-to-br from-slate-50 to-blue-50 text-[#0b1b3a]">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black mb-6">Featured Products</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+      <section className="py-14 sm:py-20 md:py-24 bg-gradient-to-br from-slate-50 to-blue-50 text-[#0b1b3a]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6">Featured Products</h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-2">
               Top-rated filters and lubricants trusted by professionals
             </p>
           </div>
 
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap justify-center gap-4 mb-16">
+          {/* Filter Tabs - scrollable on mobile */}
+          <div className="flex overflow-x-auto gap-3 sm:gap-4 mb-10 sm:mb-14 md:mb-16 pb-2 sm:pb-0 sm:flex-wrap sm:justify-center scrollbar-hide">
             {['all', 'Oil Filters', 'Air Filters', 'Fuel Filters', 'Engine Oils'].map((tab, i) => (
               <motion.button
                 key={i}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveTab(tab)}
-                className={`px-8 py-4 rounded-2xl font-bold text-lg transition-all ${
+                className={`flex-shrink-0 px-5 py-3 sm:px-7 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base whitespace-nowrap transition-all ${
                   activeTab === tab
                     ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-xl'
                     : 'bg-white text-gray-700 border border-gray-200 hover:border-cyan-500'
@@ -453,7 +412,7 @@ function FiltersLubricants() {
           </div>
 
           {/* Product Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
             {products
               .filter(p => activeTab === 'all' || p.category === activeTab)
               .map((product, i) => (
@@ -463,48 +422,48 @@ function FiltersLubricants() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  whileHover={{ y: -12 }}
-                  className="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100"
+                  whileHover={{ y: -8 }}
+                  className="bg-white rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden border border-slate-100"
                 >
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
+                      className="w-full h-full object-cover hover:scale-110 transition-all duration-700"
                     />
                     {product.badge && (
-                      <span className="absolute top-4 left-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-2 rounded-full font-bold">
+                      <span className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-bold text-xs sm:text-sm">
                         {product.badge}
                       </span>
                     )}
                   </div>
 
-                  <div className="p-8">
-                    <div className="text-cyan-600 font-bold text-sm uppercase tracking-widest mb-2">{product.category}</div>
-                    <h3 className="font-black text-2xl mb-4 line-clamp-2">{product.name}</h3>
+                  <div className="p-5 sm:p-7 md:p-8">
+                    <div className="text-cyan-600 font-bold text-xs sm:text-sm uppercase tracking-widest mb-2">{product.category}</div>
+                    <h3 className="font-black text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 line-clamp-2">{product.name}</h3>
 
-                    <div className="flex items-center gap-2 mb-6">
+                    <div className="flex items-center gap-1.5 sm:gap-2 mb-4 sm:mb-6 flex-wrap">
                       {[...Array(5)].map((_, i) => (
                         <FaStar
                           key={i}
                           className={i < Math.floor(product.rating) ? 'text-amber-500' : 'text-gray-300'}
-                          size={18}
+                          size={15}
                         />
                       ))}
-                      <span className="text-gray-600 ml-2">({product.reviews})</span>
+                      <span className="text-gray-600 ml-1 text-sm">({product.reviews})</span>
                     </div>
 
-                    <div className="flex items-center gap-4 mb-6">
+                    <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
                       {product.originalPrice && (
-                        <span className="text-xl text-gray-400 line-through">${product.originalPrice}</span>
+                        <span className="text-base sm:text-xl text-gray-400 line-through">${product.originalPrice}</span>
                       )}
-                      <span className="text-4xl font-black text-cyan-600">${product.price}</span>
+                      <span className="text-2xl sm:text-3xl md:text-4xl font-black text-cyan-600">${product.price}</span>
                     </div>
 
                     <motion.button
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.04 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-full py-5 bg-gradient-to-r from-[#0b1b3a] to-slate-800 text-white rounded-2xl font-black text-lg hover:from-cyan-500 hover:to-blue-500 transition-all"
+                      className="w-full py-3 sm:py-4 md:py-5 bg-gradient-to-r from-[#0b1b3a] to-slate-800 text-white rounded-xl sm:rounded-2xl font-black text-sm sm:text-base md:text-lg hover:from-cyan-500 hover:to-blue-500 transition-all"
                     >
                       Add to Cart
                     </motion.button>
@@ -516,18 +475,18 @@ function FiltersLubricants() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-gradient-to-br from-[#0b1b3a] via-slate-900 to-[#0b1b3a] text-white">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-14 sm:py-20 md:py-24 bg-gradient-to-br from-[#0b1b3a] via-slate-900 to-[#0b1b3a] text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -80 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-5xl md:text-6xl font-black mb-10">Why Choose Our Products?</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-7 sm:mb-10">Why Choose Our Products?</h2>
 
-              <div className="space-y-8">
+              <div className="space-y-5 sm:space-y-7 md:space-y-8">
                 {features.map((feature, i) => (
                   <motion.div
                     key={i}
@@ -535,15 +494,15 @@ function FiltersLubricants() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    whileHover={{ x: 15 }}
-                    className="flex items-start gap-6"
+                    whileHover={{ x: 10 }}
+                    className="flex items-start gap-4 sm:gap-6"
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl sm:rounded-2xl flex items-center justify-center text-xl sm:text-2xl md:text-3xl flex-shrink-0">
                       {feature.icon}
                     </div>
                     <div>
-                      <h3 className="font-black text-2xl mb-2">{feature.title}</h3>
-                      <p className="text-gray-300 text-lg">{feature.description}</p>
+                      <h3 className="font-black text-lg sm:text-xl md:text-2xl mb-1 sm:mb-2">{feature.title}</h3>
+                      <p className="text-gray-300 text-sm sm:text-base md:text-lg">{feature.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -555,14 +514,14 @@ function FiltersLubricants() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              className="relative mt-10 lg:mt-0"
             >
-              <div className="relative">
-                <div className="absolute -top-8 -left-8 w-full h-full border-4 border-cyan-500/30 rounded-[3rem]" />
+              <div className="relative mx-4 sm:mx-8 lg:mx-0">
+                <div className="absolute -top-4 -left-4 sm:-top-8 sm:-left-8 w-full h-full border-2 sm:border-4 border-cyan-500/30 rounded-2xl sm:rounded-[3rem]" />
                 <img
                   src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800"
                   alt="Filters & Lubricants"
-                  className="rounded-[3rem] shadow-2xl relative z-10"
+                  className="rounded-2xl sm:rounded-[3rem] shadow-2xl relative z-10 w-full"
                 />
               </div>
             </motion.div>
@@ -571,31 +530,31 @@ function FiltersLubricants() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500">
-        <div className="container mx-auto px-4 text-center text-white">
+      <section className="py-14 sm:py-20 md:py-24 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-6xl font-black mb-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8">
               Need Help Choosing?
             </h2>
-            <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-12 max-w-3xl mx-auto px-2">
               Our filter and lubricant experts are here to help you find exactly what you need.
             </p>
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-14 py-7 bg-white text-cyan-600 rounded-3xl font-black text-xl shadow-2xl"
+                className="w-full sm:w-auto px-10 py-5 sm:px-14 sm:py-7 bg-white text-cyan-600 rounded-2xl sm:rounded-3xl font-black text-base sm:text-xl shadow-2xl"
               >
                 Get Expert Advice
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-14 py-7 border-4 border-white text-white rounded-3xl font-black text-xl hover:bg-white hover:text-cyan-600 transition-all"
+                className="w-full sm:w-auto px-10 py-5 sm:px-14 sm:py-7 border-2 sm:border-4 border-white text-white rounded-2xl sm:rounded-3xl font-black text-base sm:text-xl hover:bg-white hover:text-cyan-600 transition-all"
               >
                 Browse All Products
               </motion.button>
