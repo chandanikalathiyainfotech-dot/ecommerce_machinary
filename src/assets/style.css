@@ -282,9 +282,12 @@ body {
 
 /* Hover effects applied simultaneously */
 .herocard:hover {
-  border-color: #f59e0b !important; /* Forces amber accent color */
-  box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.3); /* Smooth amber glow */
-  transform: translateY(-4px); /* Subtle lift effect */
+  border-color: #f59e0b !important;
+  /* Forces amber accent color */
+  box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.3);
+  /* Smooth amber glow */
+  transform: translateY(-4px);
+  /* Subtle lift effect */
 }
 
 /* Auto-highlights the title text on hover */
@@ -293,6 +296,42 @@ body {
   transition: color 0.3s ease;
 }
 
+@keyframes flyToCart {
+  0% {
+    position: fixed;
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    position: fixed;
+    transform: scale(0.05);
+    opacity: 0;
+    left: var(--target-x) !important;
+    top: var(--target-y) !important;
+  }
+}
+
+.animate-fly {
+  position: fixed !important;
+  z-index: 999999 !important;
+  pointer-events: none !important;
+  transform-origin: center center !important;
+  transition: none !important;
+  animation: flyToCart 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+}
+
+.zoom-lens {
+  position: absolute;
+  background-color: rgba(245, 158, 11, 0.15);
+  border: 1px solid #f59e0b;
+  pointer-events: none;
+  display: none;
+}
+
+.product-image-frame:hover .zoom-lens {
+  display: block;
+}
 
 @media (max-width: 576px) {
   .title {
@@ -413,8 +452,6 @@ body {
   .footer-content {
     grid-template-columns: 1.2fr 1fr 1fr 1fr;
   }
-
-
 }
 
 /* Extra large devices (≥1200px) */

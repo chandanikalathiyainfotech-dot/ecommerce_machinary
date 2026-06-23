@@ -17,7 +17,7 @@ function CartDrawer({ open, onClose, product }) {
         if (mediaQuery.matches) {
             timer = setTimeout(() => {
                 onClose();
-            }, 3000);
+            }, 2000);
         }
 
         return () => {

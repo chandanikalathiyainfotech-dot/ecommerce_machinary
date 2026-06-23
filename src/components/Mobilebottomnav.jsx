@@ -3,6 +3,7 @@ console.log(React);
 
 import { FaHeart, FaShoppingCart, FaUser } from "react-icons/fa";
 import { GoHomeFill } from "react-icons/go";
+import { NavLink } from "react-router-dom";
 
 function Mobilebottomnav() {
     return (
@@ -12,22 +13,22 @@ function Mobilebottomnav() {
                 <div className="grid grid-cols-4 h-14">
 
                     {/* Home / Compare */}
-                    <button className="flex flex-col items-center justify-center text-gray-600 border-r-1 border-r-[#eeebeb]">
+                    <NavLink to={'/'} className="flex flex-col items-center justify-center text-gray-600 border-r-1 border-r-[#eeebeb]">
                         <div className="relative">
                             <GoHomeFill className="text-[20px] text-[#BDBDBD]" />
                         </div>
 
-                        <span className="text-xs mt-1">Compare</span>
-                    </button>
+                        <span className="text-xs mt-1">Home</span>
+                    </NavLink>
 
                     {/* Account */}
-                    <button className="flex flex-col items-center justify-center text-gray-600 border-r-1 border-r-[#eeebeb]">
+                    <NavLink to={'/authendication'} className="flex flex-col items-center justify-center text-gray-600 border-r-1 border-r-[#eeebeb]">
                         <FaUser className="text-lg text-[#BDBDBD]" />
                         <span className="text-xs mt-1">Account</span>
-                    </button>
+                    </NavLink>
 
                     {/* Cart */}
-                    <button className="flex flex-col items-center justify-center text-gray-600 border-r-1 border-r-[#eeebeb]">
+                    <NavLink to={'/cart'} className="flex flex-col items-center justify-center text-gray-600 border-r-1 border-r-[#eeebeb]">
                         <div className="relative">
                             <FaShoppingCart className="text-[20px] text-[#BDBDBD]" />
 
@@ -37,10 +38,10 @@ function Mobilebottomnav() {
                         </div>
 
                         <span className="text-xs mt-1">Cart</span>
-                    </button>
+                    </NavLink>
 
                     {/* Wishlist */}
-                    <button className="flex flex-col items-center justify-center text-gray-600 border-r-1 border-r-[#eeebeb]">
+                    <NavLink to={'/wishlist'} className="flex flex-col items-center justify-center text-gray-600 border-r-1 border-r-[#eeebeb]">
                         <div className="relative">
                             <FaHeart className="text-[20px] text-[#BDBDBD]" />
 
@@ -50,7 +51,7 @@ function Mobilebottomnav() {
                         </div>
 
                         <span className="text-xs mt-1">Wishlist</span>
-                    </button>
+                    </NavLink>
 
                 </div>
 

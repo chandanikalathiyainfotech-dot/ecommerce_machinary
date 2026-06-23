@@ -46,14 +46,14 @@ function Contact() {
       <section className="relative bg-gradient-to-br from-[#f5f5f5] to-[#e2e8f0] py-8 sm:py-12 lg:py-20 !mt-0">
         <div className="relative container mx-auto px-3 sm:px-4 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <div className="text-center mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-500/20 border border-amber-500/30 rounded-full mb-3">
               <span className="text-amber-600 text-xs font-semibold tracking-wide">Get In Touch</span>
             </div>
             {/* <span className="inline-block px-4 py-2 text-sm font-bold uppercase tracking-widest rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-600">
                 Get In Touch
               </span> */}
-            <h2 className="text-xl sm:text-2xl lg:text-5xl font-black text-[#0b1b3a] mb-3">Contact Us</h2>
+            <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-[#0b1b3a] mb-3">Contact Us</h2>
             <p className="text-gray-600 text-xs sm:text-sm lg:text-lg max-w-2xl mx-auto">
               Have questions or need assistance? Reach out to us and we'll get back to you as soon as possible.
             </p>
@@ -132,7 +132,7 @@ function Contact() {
                       href="#"
                       className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-[#0b1b3a]/10 flex items-center justify-center text-[#0b1b3a] hover:bg-amber-500 hover:text-[#0b1b3a] transition-all"
                     >
-                      <Icon size={14} className="sm:text-lg" />
+                      <Icon className="sm:text-[18px]" />
                     </a>
                   ))}
                 </div>
@@ -215,12 +215,16 @@ function Contact() {
                   />
                   {errors.message && touched.message && <span className="text-red-500 text-sm">{errors.message}</span>}
                 </div>
+                
                 <button
                   type="submit"
-                  className="w-full py-3 sm:py-4 bg-[#0b1b3a] hover:bg-[#1e293b] text-white font-bold sm:font-black rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#0b1b3a]/20 text-xs sm:text-sm"
+                  className="group relative block w-full px-6 py-3 font-semibold text-[14px] text-center bg-[var(--secondary-color)] border border-[var(--secondary-color)]
+                            rounded overflow-hidden transition-colors duration-300 ease-in-out text-white hover:border-amber-400"
                 >
-                  Send Message
+                  <span className="absolute bottom-0 left-0 w-full h-full bg-amber-400 scale-y-0 origin-bottom transition-transform duration-300 ease-out group-hover:scale-y-100" />
+                  <span className="relative z-10">Send Message</span>
                 </button>
+
               </form>
             </div>
           </div>

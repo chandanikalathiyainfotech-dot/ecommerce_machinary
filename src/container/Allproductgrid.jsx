@@ -218,6 +218,45 @@ function Allproductgrid() {
     ); //9 / 9 = 1
 
 
+    const handleAddToCartWithFly = (e, productItem) => {
+        const buttonElement = e.currentTarget;
+        const cardElement = buttonElement.closest('.group');
+        const targetImage = cardElement?.querySelector('.product-img-element');
+        const destinationCart = document.getElementById('floating-cart');
+
+        if (targetImage && destinationCart) {
+            const imageRect = targetImage.getBoundingClientRect();
+            const cartRect = destinationCart.getBoundingClientRect();
+
+            const imageClone = targetImage.cloneNode(true);
+
+            imageClone.className = "w-full h-full object-contain";
+            imageClone.style.position = 'fixed';
+            imageClone.style.width = `${imageRect.width}px`;
+            imageClone.style.height = `${imageRect.height}px`;
+            imageClone.style.left = `${imageRect.left}px`;
+            imageClone.style.top = `${imageRect.top}px`;
+
+            const targetX = cartRect.left + (cartRect.width / 2) - (imageRect.width / 2);
+            const targetY = cartRect.top + (cartRect.height / 2) - (imageRect.height / 2);
+
+            imageClone.style.setProperty('--target-x', `${targetX}px`);
+            imageClone.style.setProperty('--target-y', `${targetY}px`);
+
+            imageClone.classList.add('animate-fly');
+            document.body.appendChild(imageClone);
+
+            setTimeout(() => {
+                imageClone.remove();
+                setSelectedProduct(productItem);
+                setCartOpen(true);
+            }, 1500);
+        } else {
+            setSelectedProduct(productItem);
+            setCartOpen(true);
+        }
+    };
+
     return (
         <main>
             {/* top header breadcrumps*/}
@@ -601,7 +640,7 @@ function Allproductgrid() {
                                                         <img
                                                             src={v.image}
                                                             alt="Product"
-                                                            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                                                            className="product-img-element w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                                                         />
                                                     </div>
 
@@ -660,7 +699,6 @@ function Allproductgrid() {
                                                             </>
                                                         }
 
-
                                                         <div
                                                             className="
                                                                 overflow-hidden
@@ -675,9 +713,8 @@ function Allproductgrid() {
                                                                 mt-5 py-2 text-gray-800 font-semibold rounded
                                                                 bg-gray-100 hover:bg-amber-500 hover:text-white
                                                                 transition flex items-center justify-center gap-2`}
-                                                                onClick={() => {
-                                                                    setCartOpen(true);
-                                                                    setSelectedProduct(v);
+                                                                onClick={(e) => {
+                                                                    handleAddToCartWithFly(e, v)
                                                                 }}
                                                             >
                                                                 <TiShoppingCart className="text-lg hidden min-[576px]:block" />
@@ -749,7 +786,7 @@ function Allproductgrid() {
             {wishlistOpen && (
                 <WishlistDrawer
                     product={selectedProduct}
-                    onClose={() => setWishlisOpen(false)} 
+                    onClose={() => setWishlisOpen(false)}
                     onAddToCart={(productWithQty) => {
                         setSelectedProduct(productWithQty);
                         setWishlisOpen(false);
