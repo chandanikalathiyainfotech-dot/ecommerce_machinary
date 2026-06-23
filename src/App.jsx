@@ -12,7 +12,6 @@ import Blogdetails from "./container/Blogdetails";
 import Detailproduct from "./container/Detailproduct";
 import Allproductgrid from "./container/Allproductgrid";
 import Cart from "./container/Cart";
-import Demo from "./container/demo";
 import Mobilebottomnav from "./components/Mobilebottomnav";
 import Wishlist from "./container/Wishlist";
 import Parts from "./container/Parts";
@@ -27,6 +26,7 @@ import WishlistDrawer from "./container/WishlistDrawer";
 import Checkout from "./container/Checkout";
 import UserProfile from "./container/UserProfile";
 import ForgotPassword from "./container/ForgotPassword";
+import NewsletterPopup from "./components/NewsletterPopup";
 
 function App() {
 
@@ -50,17 +50,15 @@ function App() {
         <Route path="/maintenance-kits" element={<MaintenanceKits />} />
         <Route path="/engine-components" element={<EngineComponents />} />
         <Route path="/filters-lubricants" element={<FiltersLubricants />} />
-        <Route path="/demo" element={<Demo />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/wishlistdrawer" element={<WishlistDrawer />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/profile/*" element={<UserProfile />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        {/* <Route path="/cartdrawer" element={<CaretPosition />} /> */}
-        {/* <Route path="/parts/spare-parts" element={<SparParts />} /> */}
       </Routes>
       <Footer />
       <Mobilebottomnav />
+      <NewsletterPopup />
     </>
   )
 }

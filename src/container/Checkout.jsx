@@ -100,7 +100,7 @@ function Checkout() {
             </section>
 
 
-            <section>
+            <section id="checkout" className="my-10">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
 
                     {/* Coupon Alert Toggle */}

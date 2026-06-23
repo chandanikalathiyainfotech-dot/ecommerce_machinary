@@ -69,9 +69,9 @@ function Footer() {
                 <a
                   key={idx}
                   href="#"
-                  className="social-icon-sm w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-amber-500 hover:text-[#0b1b3a] transition-all"
+                  className="social-icon-sm w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-amber-500 hover:text-[#0b1b3a] transition-all"
                 >
-                  <Icon size={18} className="sm:text-[18px]" />
+                  <Icon className="sm:text-[18px]" />
                 </a>
               ))}
             </div>

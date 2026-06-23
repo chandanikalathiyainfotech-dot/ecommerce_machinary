@@ -399,6 +399,45 @@ function Home() {
 
     console.log(fproduct)
 
+    const handleAddToCartWithFly = (e, productItem) => {
+        const buttonElement = e.currentTarget;
+        const cardElement = buttonElement.closest('.group');
+        const targetImage = cardElement?.querySelector('.product-img-element');
+        const destinationCart = document.getElementById('floating-cart');
+
+        if (targetImage && destinationCart) {
+            const imageRect = targetImage.getBoundingClientRect();
+            const cartRect = destinationCart.getBoundingClientRect();
+
+            const imageClone = targetImage.cloneNode(true);
+
+            imageClone.className = "w-full h-full object-contain";
+            imageClone.style.position = 'fixed';
+            imageClone.style.width = `${imageRect.width}px`;
+            imageClone.style.height = `${imageRect.height}px`;
+            imageClone.style.left = `${imageRect.left}px`;
+            imageClone.style.top = `${imageRect.top}px`;
+
+            const targetX = cartRect.left + (cartRect.width / 2) - (imageRect.width / 2);
+            const targetY = cartRect.top + (cartRect.height / 2) - (imageRect.height / 2);
+
+            imageClone.style.setProperty('--target-x', `${targetX}px`);
+            imageClone.style.setProperty('--target-y', `${targetY}px`);
+
+            imageClone.classList.add('animate-fly');
+            document.body.appendChild(imageClone);
+
+            setTimeout(() => {
+                imageClone.remove();
+                setSelectedProduct(productItem);
+                setCartOpen(true);
+            }, 1500);
+        } else {
+            setSelectedProduct(productItem);
+            setCartOpen(true);
+        }
+    };
+
     return (
         <main>
 
@@ -540,14 +579,14 @@ function Home() {
                                     </NavLink>
                                 </motion.div>
 
-                                <motion.button
+                                {/* <motion.button
                                     whileHover={{ scale: 1.05, borderColor: "#f59e0b" }}
                                     whileTap={{ scale: 0.95 }}
                                     className=" px-12 min-[425px]:px-5 min-[576px]:px-8 py-4 border border-white/20 backdrop-blur-md bg-white/5 text-white rounded-xl flex items-center justify-center gap-3"
                                 >
                                     <FaPlay />
                                     Watch Video
-                                </motion.button>
+                                </motion.button> */}
 
                             </motion.div>
 
@@ -870,7 +909,7 @@ function Home() {
                                                             onClick={() => navigate('/product-detail')}
                                                             src={v.image}
                                                             alt={v.name}
-                                                            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                                                            className="product-img-element w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                                                         />
                                                     </div>
                                                     <div class="px-2 sm:px-5 pb-3 sm:pb-5 border-t border-gray-100">
@@ -906,9 +945,8 @@ function Home() {
                                                                 transition-all duration-500"
                                                         >
                                                             <button
-                                                                onClick={() => {
-                                                                    setCartOpen(true);
-                                                                    setSelectedProduct(v);
+                                                                onClick={(e) => {
+                                                                    handleAddToCartWithFly(e, v)
                                                                 }}
                                                                 className="w-full mt-5 py-2 text-[14px] bg-gray-100 text-gray-800 font-semibold rounded
                                                                 hover:bg-amber-500 hover:text-white transition
@@ -1051,7 +1089,7 @@ function Home() {
                                                         onClick={() => navigate('/product-detail')}
                                                         src={v.image}
                                                         alt={v.name}
-                                                        className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                                                        className="product-img-element w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                                                     />
                                                 </div>
                                                 <div class="px-2 sm:px-5 pb-3 sm:pb-5 border-t border-gray-100">
@@ -1087,9 +1125,8 @@ function Home() {
                                                         transition-all duration-500"
                                                     >
                                                         <button
-                                                            onClick={() => {
-                                                                setCartOpen(true);
-                                                                setSelectedProduct(v);
+                                                            onClick={(e) => {
+                                                                handleAddToCartWithFly(e, v)
                                                             }}
                                                             className="w-full mt-5 py-2 text-[14px] bg-gray-100 text-gray-800 font-semibold rounded
                                                         hover:bg-amber-500 hover:text-white transition

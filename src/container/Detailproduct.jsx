@@ -23,6 +23,7 @@ function Detailproduct() {
     const [showQuickView, setShowQuickView] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
     const [wishlistOpen, setWishlisOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openQuickView = (product) => {
         setSelectedProduct(product);
@@ -211,15 +212,59 @@ function Detailproduct() {
 
     ];
 
+    const handleAddToCartWithFly = (e, productItem) => {
+        const buttonElement = e.currentTarget;
+
+        // 🎯 THE INTEGRATED FIX: Looks for a grid card wrapper first (.group), 
+        // and falls back to the product details page section (#detailproduct) if it is missing
+        const cardElement = buttonElement.closest('.group') || buttonElement.closest('#detailproduct');
+        const targetImage = cardElement?.querySelector('.product-img-element');
+        const destinationCart = document.getElementById('floating-cart');
+
+        if (targetImage && destinationCart) {
+            const imageRect = targetImage.getBoundingClientRect();
+            const cartRect = destinationCart.getBoundingClientRect();
+
+            const imageClone = targetImage.cloneNode(true);
+
+            imageClone.className = "w-full h-full object-contain";
+            imageClone.style.position = 'fixed';
+            imageClone.style.width = `${imageRect.width}px`;
+            imageClone.style.height = `${imageRect.height}px`;
+            imageClone.style.left = `${imageRect.left}px`;
+            imageClone.style.top = `${imageRect.top}px`;
+            imageClone.style.zIndex = '999999';
+
+            const targetX = cartRect.left + (cartRect.width / 2) - (imageRect.width / 2);
+            const targetY = cartRect.top + (cartRect.height / 2) - (imageRect.height / 2);
+
+            imageClone.style.setProperty('--target-x', `${targetX}px`);
+            imageClone.style.setProperty('--target-y', `${targetY}px`);
+
+            imageClone.classList.add('animate-fly');
+            document.body.appendChild(imageClone);
+
+            setTimeout(() => {
+                imageClone.remove();
+                setSelectedProduct(productItem);
+                setCartOpen(true);
+            }, 1500); // 1.5s slow-motion duration speed track
+        } else {
+            // Direct execution fallback if selectors return null
+            setSelectedProduct(productItem);
+            setCartOpen(true);
+        }
+    };
+
+
     return (
         <main>
-
             {/* detail of product */}
-            <section id="detailproduct" className="mb-10">
+            <section id="detailproduct" className="mt-20 mb-10">
                 <div className="container px-4 sm:px-6 lg:px-8  mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
 
                     {/* LEFT SIDE - IMAGE GALLERY */}
-                    <div className="md:col-span-6 flex gap-4 flex-col xl:flex-row w-full">
+                    <div className="md:col-span-6 flex gap-4 flex-col xl:flex-row w-full ">
 
                         {/* Thumbnails */}
                         <div className="flex flex-row xl:flex-col gap-3 order-2 xl:order-1">
@@ -235,15 +280,13 @@ function Detailproduct() {
                             ))}
                         </div>
 
-                        {/* Main Image */}
-                        <div className="
-                        w-full border rounded-lg p-4 flex items-center justify-center bg-white 
-                        order-1 xl:order-2
-                        h-[300px] min-[576px]:h-[450px] sm:h-[400px] lg:h-[500px] xl:h-[600px]
-                    ">
+                        <div
+                            onClick={() => setIsModalOpen(true)}
+                            className="w-full border rounded-lg p-4 flex items-center justify-center bg-white order-1 xl:order-2 h-[300px] min-[576px]:h-[450px] sm:h-[400px] lg:h-[500px] xl:h-[600px] relative select-none cursor-pointer"
+                        >
                             <img
                                 src={activeImage}
-                                className="w-full h-full object-contain"
+                                className="product-img-element w-full h-full object-contain pointer-events-none"
                                 alt=""
                             />
                         </div>
@@ -251,8 +294,7 @@ function Detailproduct() {
                     </div>
 
                     {/* RIGHT SIDE - DETAILS */}
-                    <div className="md:col-span-6">
-
+                    <div className="md:col-span-6 relative">
 
                         <h1 className="text-xl min-[576px]:text-2xl lg:text-3xl font-bold text-gray-800">
                             Brandix Screwdriver SCREW1500ACC
@@ -344,9 +386,18 @@ function Detailproduct() {
                                 </div>
 
                                 <button
+                                    onClick={(e) => {
+                                        const currentProductDetails = {
+                                            id: activeVariant.id,
+                                            name: `Brandix Screwdriver SCREW1500ACC (${activeVariant.name})`,
+                                            image: activeImage,
+                                            price: "28",
+                                            qty: qty
+                                        };
+                                        handleAddToCartWithFly(e, currentProductDetails);
+                                    }}
                                     type="button"
-                                    className="text-[14px]  xl:text-[16px] h-12 px-4 2xl:px-8 bg-amber-500 text-white rounded font-semibold border border-transparent hover:bg-white order-1
-                                     hover:text-amber-500 hover:border-amber-500 transition"
+                                    className="text-[14px] xl:text-[16px] h-12 px-4 2xl:px-8 bg-amber-500 text-white rounded font-semibold border border-transparent hover:bg-white order-1 hover:text-amber-500 hover:border-amber-500 transition"
                                 >
                                     ADD TO CART
                                 </button>
@@ -410,6 +461,68 @@ function Detailproduct() {
 
                     </div>
                 </div>
+
+                {/* ================= FULL SCREEN QUICK-VIEW MODAL OVERLAY ================= */}
+                {isModalOpen && (
+                    <div className="fixed inset-0 bg-black/80 z-[99999] flex items-center justify-center p-4 md:p-10">
+
+                        <div
+                            className="absolute inset-0 cursor-zoom-out"
+                            onClick={() => setIsModalOpen(false)}
+                        />
+
+                        <button
+                            onClick={() => setIsModalOpen(false)}
+                            className="absolute top-4 right-4 md:top-8 md:right-8 text-white/70 hover:text-white transition-colors duration-200 text-3xl md:text-4xl p-2 z-[100001]"
+                        >
+                            ✕
+                        </button>
+
+                        <div className="bg-white w-full max-w-[95vw] md:max-w-[85vw] lg:max-w-[1000px] h-[70vh] sm:h-[80vh] md:h-[85vh] max-h-[800px] rounded-md p-4 sm:p-8 flex items-center justify-center relative shadow-2xl z-[100000]">
+
+                            <div className="w-full h-full flex items-center justify-center relative select-none">
+
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        const currentIndex = thumbnails.indexOf(activeImage);
+                                        const prevIndex = currentIndex === 0 ? thumbnails.length - 1 : currentIndex - 1;
+                                        setActiveImage(thumbnails[prevIndex]);
+                                    }}
+                                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-10 h-10 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-2xl sm:text-3xl transition-all z-[100002] font-mono shadow-md"
+                                >
+                                    ‹
+                                </button>
+
+                                <img
+                                    src={activeImage}
+                                    alt="Enlarged Product View"
+                                    className="w-full h-full max-w-full max-h-full object-contain pointer-events-none"
+                                />
+
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        const currentIndex = thumbnails.indexOf(activeImage);
+                                        const nextIndex = currentIndex === thumbnails.length - 1 ? 0 : currentIndex + 1;
+                                        setActiveImage(thumbnails[nextIndex]);
+                                    }}
+                                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-10 h-10 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-2xl sm:text-3xl transition-all z-[100002] font-mono shadow-md"
+                                >
+                                    ›
+                                </button>
+
+                                <div className="absolute bottom-[-10px] text-xs sm:text-sm font-semibold text-gray-500 bg-gray-100 px-4 py-1.5 rounded-full shadow-sm">
+                                    {thumbnails.indexOf(activeImage) + 1} / {thumbnails.length}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                )}
+
             </section>
 
             {/* product detail,review */}
@@ -806,7 +919,7 @@ function Detailproduct() {
                                                             onClick={() => navigate('/product-detail')}
                                                             src={v.image}
                                                             alt={v.name}
-                                                            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                                                            className="product-img-element w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                                                         />
                                                     </div>
                                                     <div class="px-2 sm:px-5 pb-3 sm:pb-5 border-t border-gray-100">
@@ -842,9 +955,8 @@ function Detailproduct() {
                                                                 transition-all duration-500"
                                                         >
                                                             <button
-                                                                onClick={() => {
-                                                                    setCartOpen(true);
-                                                                    setSelectedProduct(v);
+                                                                onClick={(e) => {
+                                                                    handleAddToCartWithFly(e, v)
                                                                 }}
                                                                 className="w-full mt-5 py-2 text-[14px] bg-gray-100 text-gray-800 font-semibold rounded
                                                                     hover:bg-amber-500 hover:text-white transition
@@ -894,7 +1006,7 @@ function Detailproduct() {
 
             {cartOpen && (
                 <CartDrawer
-                    open={cartOpen} 
+                    open={cartOpen}
                     product={selectedProduct}
                     onClose={() => setCartOpen(false)}
                 />

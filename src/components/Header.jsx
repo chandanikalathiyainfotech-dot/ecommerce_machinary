@@ -1,10 +1,11 @@
 
 import React, { useState, useEffect, useRef } from "react";
+import { BsCart4 } from "react-icons/bs";
 console.log(React);
 
 import { FaSearch, FaShoppingCart, FaBars, FaTimes, FaCogs, FaUser, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { RiArrowUpDoubleLine } from "react-icons/ri";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,6 +15,11 @@ function Header() {
   const [isMobilePartsOpen, setIsMobilePartsOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(false);
   const dropdownTimeoutRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -45,16 +51,16 @@ function Header() {
   }, [isMenuOpen]);
 
   const productCategories = [
-        { name: "Heavy Machinery", id: "heavyMachinery" },
-        { name: "Spare Parts", id: "spareParts" },
-        { name: "Tools & Equipment", path: "/tools-equipment" },
-        { name: "Truck Parts", path: "/truck-parts" },
-        { name: "Hydraulic Systems", path: "/hydraulic-systems" },
-        { name: "Electrical Parts", path: "/electrical-parts" },
-        { name: "Maintenance Kits", path: "/maintenance-kits" },
-        { name: "Engine Components", path: "/engine-components" },
-        { name: "Filters & Lubricants", path: "/filters-lubricants" },
-      ];
+    { name: "Heavy Machinery", id: "heavyMachinery" },
+    { name: "Spare Parts", id: "spareParts" },
+    { name: "Tools & Equipment", path: "/tools-equipment" },
+    { name: "Truck Parts", path: "/truck-parts" },
+    { name: "Hydraulic Systems", path: "/hydraulic-systems" },
+    { name: "Electrical Parts", path: "/electrical-parts" },
+    { name: "Maintenance Kits", path: "/maintenance-kits" },
+    { name: "Engine Components", path: "/engine-components" },
+    { name: "Filters & Lubricants", path: "/filters-lubricants" },
+  ];
 
   const handleMouseEnter = () => {
     if (dropdownTimeoutRef.current) {
@@ -366,6 +372,24 @@ function Header() {
       >
         <RiArrowUpDoubleLine />
       </a>
+
+      <a
+        href="#"
+        id="floating-cart"
+        className={`text-black shadow-[0_20px_50px_rgba(0,_0,_0,_0.3)] rounded-full bg-white w-9 h-9 md:w-12 md:h-12 flex justify-center items-center text-[22px] fixed left-7 bottom-18 min-[992px]:bottom-7 z-50 hover:bg-amber-500 ease-in-out duration-400 hover:-translate-y-2 transition-all
+        `}
+        onClick={(e) => {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }}
+      >
+        <BsCart4 />
+        <span className="absolute -top-1 -right-1 w-5 h-5 bg-[var(--secondary-color)] text-white text-[11px] font-black flex items-center justify-center rounded-full">4</span>
+      </a>
+
     </>
   );
 }
