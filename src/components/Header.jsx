@@ -389,7 +389,6 @@ function Header() {
         <BsCart4 />
         <span className="absolute -top-1 -right-1 w-5 h-5 bg-[var(--secondary-color)] text-white text-[11px] font-black flex items-center justify-center rounded-full">4</span>
       </a>
-
     </>
   );
 }

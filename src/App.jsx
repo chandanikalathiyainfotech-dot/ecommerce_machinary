@@ -27,6 +27,9 @@ import Checkout from "./container/Checkout";
 import UserProfile from "./container/UserProfile";
 import ForgotPassword from "./container/ForgotPassword";
 import NewsletterPopup from "./components/NewsletterPopup";
+import PrivacyPolicy from "./container/PrivacyPolicy";
+import TermsOfService from "./container/TermsOfService";
+import Sitemap from "./container/Sitemap";
 
 function App() {
 
@@ -55,6 +58,9 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/profile/*" element={<UserProfile />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/sitemap" element={<Sitemap />} />
       </Routes>
       <Footer />
       <Mobilebottomnav />

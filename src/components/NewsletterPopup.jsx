@@ -4,7 +4,7 @@ import { object, string } from "yup";
 import { FaTimes, FaCheckCircle } from "react-icons/fa";
 
 const STORAGE_KEY = "mz_nl_v3";
-const DELAY_MS    = 2000;
+const DELAY_MS = 2000;
 
 const schema = object({
   email: string()
@@ -13,8 +13,8 @@ const schema = object({
 });
 
 export default function NewsletterPopup() {
-  const [open, setOpen]           = useState(false);
-  const [visible, setVisible]     = useState(false);
+  const [open, setOpen] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -53,71 +53,47 @@ export default function NewsletterPopup() {
 
   return (
     <>
-      {/* ── Backdrop ── */}
+      {/* Backdrop overlay */}
       <div
         onClick={close}
-        className="fixed inset-0 z-[998]"
-        style={{
-          background: "rgba(0,0,0,0.45)",
-          backdropFilter: "blur(2px)",
-          opacity: visible ? 1 : 0,
-          transition: "opacity 0.38s ease",
-        }}
+        className={`fixed inset-0 z-[998] bg-black/45 backdrop-blur-[2px] transition-opacity duration-[380ms] ease-out ${visible ? "opacity-100" : "opacity-0"
+          }`}
       />
 
       {/* ── Centered Modal ── */}
-      <div
-        className="fixed inset-0 z-[999] flex items-center justify-center px-4"
-        style={{ pointerEvents: "none" }}
-      >
+      <div className="fixed inset-0 z-[999] flex items-center justify-center px-4 pointer-events-none">
+        {/* Modal Wrapper Container */}
         <div
-          style={{
-            pointerEvents: "all",
-            transform: visible ? "scale(1) translateY(0)" : "scale(0.9) translateY(24px)",
-            opacity: visible ? 1 : 0,
-            transition: "transform 0.42s cubic-bezier(.34,1.45,.64,1), opacity 0.35s ease",
-          }}
-          className="relative w-full max-w-[520px]"
+          className={`relative w-full max-w-[520px] pointer-events-auto transition-[transform,opacity] duration-[420ms] ease-[cubic-bezier(.34,1.45,.64,1)] ${visible
+            ? "scale-100 translate-y-0 opacity-100"
+            : "scale-90 translate-y-6 opacity-0"
+            }`}
         >
-          {/* ── Outer striped/dashed border frame ── */}
+          {/* ── Outer striped/dashed border frame (FIXED WITH STYLE FOR MAXIMUM COMPATIBILITY) ── */}
           <div
-            className="absolute inset-0 rounded-sm"
+            className="absolute inset-0 rounded-[4px] p-2.5"
             style={{
-              background: `repeating-linear-gradient(
-                -45deg,
-                #c8c8c8 0px,
-                #c8c8c8 6px,
-                #ffffff 6px,
-                #ffffff 14px
-              )`,
-              padding: "10px",
-              borderRadius: "4px",
+              background: "repeating-linear-gradient(-45deg,#1e3663 0px, #1e3663 6px, #ffffff 6px, #ffffff 14px)"
             }}
           />
 
           {/* ── White inner card ── */}
-          <div className="relative m-[10px] bg-white px-8 py-10 rounded-sm">
-
-            {/* Close ── */}
+          <div className="relative m-2.5 bg-white px-8 py-10 rounded-sm"> 
             <button
               onClick={close}
               aria-label="Close"
               className="absolute -top-[42px] right-0 w-7 h-7 bg-white rounded-sm
-                flex items-center justify-center text-gray-600 hover:text-red-500
-                font-black text-base transition-colors z-10 shadow-sm"
+            flex items-center justify-center text-gray-600 hover:text-red-500
+            font-black text-base transition-colors z-10 shadow-sm"
             >
               <FaTimes size={13} />
             </button>
 
             {!submitted ? (
               <div className="flex flex-col items-center text-center gap-5">
-
                 {/* Heading */}
                 <div>
-                  <h2
-                    className="text-2xl sm:text-3xl font-black uppercase tracking-wide nl-heading"
-                    style={{ color: "#c8960a" }}
-                  >
+                  <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-wide text-amber-500 animate-[nlFadeDown_0.5s_ease_both_0.2s]">
                     Get In Touch
                   </h2>
                   <p className="text-gray-500 text-sm mt-2 leading-relaxed">
@@ -126,11 +102,7 @@ export default function NewsletterPopup() {
                 </div>
 
                 {/* Form */}
-                <form
-                  onSubmit={handleSubmit}
-                  noValidate
-                  className="w-full space-y-3"
-                >
+                <form onSubmit={handleSubmit} noValidate className="w-full space-y-3">
                   {/* Email input */}
                   <div className="relative">
                     <input
@@ -143,9 +115,9 @@ export default function NewsletterPopup() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       className={`w-full px-5 py-3.5 rounded-full border text-sm text-gray-700
-                        bg-white focus:outline-none transition-all duration-200 text-center
-                        placeholder:text-gray-400
-                        ${hasError
+                    bg-white focus:outline-none transition-all duration-200 text-center
+                    placeholder:text-gray-400
+                    ${hasError
                           ? "border-red-400 focus:border-red-400"
                           : touched.email && !errors.email && values.email
                             ? "border-green-400 focus:border-green-400"
@@ -163,7 +135,9 @@ export default function NewsletterPopup() {
                   {/* Validation error */}
                   {hasError && (
                     <p className="flex items-center justify-center gap-1.5 text-red-500 text-xs font-semibold">
-                      <span className="w-3.5 h-3.5 rounded-full bg-red-100 flex items-center justify-center text-[8px] font-black flex-shrink-0">!</span>
+                      <span className="w-3.5 h-3.5 rounded-full bg-red-100 flex items-center justify-center text-[8px] font-black flex-shrink-0">
+                        !
+                      </span>
                       {errors.email}
                     </p>
                   )}
@@ -173,37 +147,42 @@ export default function NewsletterPopup() {
                     type="submit"
                     disabled={isSubmitting}
                     className="px-10 py-3 font-black text-sm uppercase tracking-widest
-                      text-white rounded-sm transition-all duration-200
-                      hover:opacity-90 hover:-translate-y-0.5 hover:shadow-lg
-                      disabled:opacity-60 disabled:cursor-not-allowed
-                      flex items-center justify-center gap-2 mx-auto"
-                    style={{ background: "#0f1f45", minWidth: "160px" }}
+                  text-white rounded-sm transition-all duration-200
+                  hover:opacity-90 hover:-translate-y-0.5 hover:shadow-lg
+                  disabled:opacity-60 disabled:cursor-not-allowed
+                  flex items-center justify-center gap-2 mx-auto
+                  bg-[#0f1f45] min-w-[160px]"
                   >
                     {isSubmitting ? (
                       <>
                         <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                         Sending…
                       </>
-                    ) : "Subscribe"}
+                    ) : (
+                      "Subscribe"
+                    )}
                   </button>
                 </form>
-
               </div>
             ) : (
               /* ── Success state ── */
-              <div className="flex flex-col items-center gap-4 py-4 nl-success">
+              <div className="flex flex-col items-center gap-4 py-4 animate-[nlFadeUp_0.4s_ease_both]">
                 <div className="relative w-16 h-16">
                   <svg viewBox="0 0 64 64" className="w-full h-full">
                     <circle
-                      cx="32" cy="32" r="28"
-                      fill="none" stroke="#c8960a" strokeWidth="3"
-                      strokeDasharray="175" strokeDashoffset="175"
-                      style={{ animation: "nlRingDraw 0.7s ease forwards 0.1s" }}
+                      cx="32"
+                      cy="32"
+                      r="28"
+                      fill="none"
+                      stroke="#c8960a"
+                      strokeWidth="3"
+                      strokeDasharray="175"
+                      strokeDashoffset="175"
+                      className="animate-[nlRingDraw_0.7s_ease_forwards_0.1s]"
                     />
                   </svg>
                   <FaCheckCircle
-                    className="absolute inset-0 m-auto text-[#c8960a] text-2xl"
-                    style={{ animation: "nlCheckPop 0.4s cubic-bezier(.36,.07,.19,.97) both 0.55s" }}
+                    className="absolute inset-0 m-auto text-[#c8960a] text-2xl animate-[nlCheckPop_0.4s_cubic-bezier(.36,.07,.19,.97)_both_0.55s]"
                   />
                 </div>
                 <h3 className="font-black text-[#0f1f45] text-xl uppercase tracking-wide">
@@ -218,30 +197,6 @@ export default function NewsletterPopup() {
         </div>
       </div>
 
-      <style>{`
-        .nl-heading {
-          animation: nlFadeDown 0.5s ease both 0.2s;
-        }
-        @keyframes nlFadeDown {
-          from { opacity: 0; transform: translateY(-10px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        .nl-success {
-          animation: nlFadeUp 0.4s ease both;
-        }
-        @keyframes nlFadeUp {
-          from { opacity: 0; transform: translateY(12px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes nlRingDraw {
-          to { stroke-dashoffset: 0; }
-        }
-        @keyframes nlCheckPop {
-          0%  { transform: scale(0); opacity: 0; }
-          70% { transform: scale(1.25); opacity: 1; }
-          100%{ transform: scale(1); opacity: 1; }
-        }
-      `}</style>
     </>
   );
 }
