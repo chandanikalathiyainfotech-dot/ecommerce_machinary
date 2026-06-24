@@ -1516,9 +1516,13 @@ function Home() {
                                 slidesPerView: 2,
                                 spaceBetween: 25,
                             },
+                            1200: {
+                                slidesPerView: 3,
+                                spaceBetween:20,
+                            },
                             1280: {
                                 slidesPerView: 3,
-                                spaceBetween: 30,
+                                spaceBetween: 25,
                             },
                         }}
                         className="testimonialSwiper !pb-14 md:!pb-16 !pt-4"
