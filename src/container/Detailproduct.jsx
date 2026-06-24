@@ -255,7 +255,7 @@ function Detailproduct() {
             setCartOpen(true);
         }
     };
-
+    
 
     return (
         <main>
