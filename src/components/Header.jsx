@@ -45,15 +45,15 @@ function Header() {
   }, [isMenuOpen]);
 
   const productCategories = [
-    { name: "Heavy Machinery",      cat: "heavy" },
-    { name: "Spare Parts",          cat: "spare" },
-    { name: "Tools & Equipment",    cat: "tools" },
-    { name: "Truck Parts",          cat: "truck" },
-    { name: "Hydraulic Systems",    cat: "hydraulic" },
-    { name: "Electrical Parts",     cat: "electrical" },
-    { name: "Maintenance Kits",     cat: "maintenance" },
-    { name: "Engine Components",    cat: "engine" },
-    { name: "Filters & Lubricants", cat: "filters" },
+    { name: "Hammer Tool",      cat: "hammer-tool" },
+    { name: "Drill Tool",       cat: "drill-tool" },
+    { name: "Circular Saw",     cat: "circular-saw" },
+    { name: "Wrench Tool",      cat: "wrench-tool" },
+    { name: "Decker Tool",      cat: "decker-tool" },
+    { name: "Power Saw",        cat: "power-saw" },
+    { name: "California Air",   cat: "california-air" },
+    { name: "Jackhammer Tool",  cat: "jackhammer-tool" },
+    { name: "Planet Power",     cat: "planet-power" },
   ];
 
   const handleMouseEnter = () => {
