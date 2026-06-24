@@ -15,13 +15,6 @@ import Cart from "./container/Cart";
 import Mobilebottomnav from "./components/Mobilebottomnav";
 import Wishlist from "./container/Wishlist";
 import Parts from "./container/Parts";
-import ToolsEquipment from "./container/ToolsEquipment";
-import TruckParts from "./container/TruckParts";
-import HydraulicSystems from "./container/HydraulicSystems";
-import ElectricalParts from "./container/ElectricalParts";
-import MaintenanceKits from "./container/MaintenanceKits";
-import EngineComponents from "./container/EngineComponents";
-import FiltersLubricants from "./container/FiltersLubricants";
 import WishlistDrawer from "./container/WishlistDrawer";
 import Checkout from "./container/Checkout";
 import UserProfile from "./container/UserProfile";
@@ -46,13 +39,6 @@ function App() {
         <Route path="/allproduct" element={<Allproductgrid />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/Parts" element={<Parts />} />
-        <Route path="/tools-equipment" element={<ToolsEquipment />} />
-        <Route path="/truck-parts" element={<TruckParts />} />
-        <Route path="/hydraulic-systems" element={<HydraulicSystems />} />
-        <Route path="/electrical-parts" element={<ElectricalParts />} />
-        <Route path="/maintenance-kits" element={<MaintenanceKits />} />
-        <Route path="/engine-components" element={<EngineComponents />} />
-        <Route path="/filters-lubricants" element={<FiltersLubricants />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/wishlistdrawer" element={<WishlistDrawer />} />
         <Route path="/checkout" element={<Checkout />} />

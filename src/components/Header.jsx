@@ -1,5 +1,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
+console.log(React);
+
 import { BsCart4 } from "react-icons/bs";
 console.log(React);
 
@@ -21,14 +23,6 @@ function Header() {
     setIsMenuOpen(false);
   }, [location]);
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsPartsDropdownOpen(false);
-      setIsMobilePartsOpen(false);
-    }
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,15 +45,15 @@ function Header() {
   }, [isMenuOpen]);
 
   const productCategories = [
-    { name: "Heavy Machinery", id: "heavyMachinery" },
-    { name: "Spare Parts", id: "spareParts" },
-    { name: "Tools & Equipment", path: "/tools-equipment" },
-    { name: "Truck Parts", path: "/truck-parts" },
-    { name: "Hydraulic Systems", path: "/hydraulic-systems" },
-    { name: "Electrical Parts", path: "/electrical-parts" },
-    { name: "Maintenance Kits", path: "/maintenance-kits" },
-    { name: "Engine Components", path: "/engine-components" },
-    { name: "Filters & Lubricants", path: "/filters-lubricants" },
+    { name: "Heavy Machinery",      cat: "heavy" },
+    { name: "Spare Parts",          cat: "spare" },
+    { name: "Tools & Equipment",    cat: "tools" },
+    { name: "Truck Parts",          cat: "truck" },
+    { name: "Hydraulic Systems",    cat: "hydraulic" },
+    { name: "Electrical Parts",     cat: "electrical" },
+    { name: "Maintenance Kits",     cat: "maintenance" },
+    { name: "Engine Components",    cat: "engine" },
+    { name: "Filters & Lubricants", cat: "filters" },
   ];
 
   const handleMouseEnter = () => {
@@ -140,46 +134,16 @@ function Header() {
                     className="absolute top-full left-0 mt-2 w-56 bg-[#0b1b3a] border border-gray-700 rounded-lg shadow-lg z-50 overflow-hidden animate-slideDown"
                   >
                     <div className="p-2">
-                      {productCategories.map((cat, idx) => {
-                        if (cat.path) {
-                          return (
-                            <NavLink
-                              key={idx}
-                              to={cat.path}
-                              onClick={() => setIsPartsDropdownOpen(false)}
-                              className="block px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all"
-                            >
-                              {cat.name}
-                            </NavLink>
-                          );
-                        } else if (cat.id) {
-                          return (
-                            <button
-                              key={idx}
-                              onClick={() => {
-                                if (window.location.pathname !== '/Parts') {
-                                  window.location.href = '/Parts#' + cat.id;
-                                } else {
-                                  scrollToSection(cat.id);
-                                }
-                              }}
-                              className="block w-full text-left px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all"
-                            >
-                              {cat.name}
-                            </button>
-                          );
-                        } else {
-                          return (
-                            <a
-                              key={idx}
-                              href="#"
-                              className="block px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all"
-                            >
-                              {cat.name}
-                            </a>
-                          );
-                        }
-                      })}
+                      {productCategories.map((cat, idx) => (
+                        <NavLink
+                          key={idx}
+                          to={`/Parts?cat=${cat.cat}`}
+                          onClick={() => setIsPartsDropdownOpen(false)}
+                          className="block px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all rounded-lg"
+                        >
+                          {cat.name}
+                        </NavLink>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -282,47 +246,19 @@ function Header() {
                 </button>
                 {isMobilePartsOpen && (
                   <div className="mx-4 my-2 bg-[#0b1b3a] border border-gray-700 rounded-lg p-2 animate-slideDown">
-                    {productCategories.map((cat, idx) => {
-                      if (cat.path) {
-                        return (
-                          <NavLink
-                            key={idx}
-                            to={cat.path}
-                            onClick={() => setIsMobilePartsOpen(false)}
-                            className="block px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all"
-                          >
-                            {cat.name}
-                          </NavLink>
-                        );
-                      } else if (cat.id) {
-                        return (
-                          <button
-                            key={idx}
-                            onClick={() => {
-                              setIsMobilePartsOpen(false);
-                              if (window.location.pathname !== '/Parts') {
-                                window.location.href = '/Parts#' + cat.id;
-                              } else {
-                                scrollToSection(cat.id);
-                              }
-                            }}
-                            className="block w-full text-left px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all"
-                          >
-                            {cat.name}
-                          </button>
-                        );
-                      } else {
-                        return (
-                          <a
-                            key={idx}
-                            href="#"
-                            className="block px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all"
-                          >
-                            {cat.name}
-                          </a>
-                        );
-                      }
-                    })}
+                    {productCategories.map((cat, idx) => (
+                      <NavLink
+                        key={idx}
+                        to={`/Parts?cat=${cat.cat}`}
+                        onClick={() => {
+                          setIsMobilePartsOpen(false);
+                          setIsMenuOpen(false);
+                        }}
+                        className="block px-4 py-2.5 text-gray-300 hover:text-amber-500 hover:bg-gray-800 font-medium transition-all rounded-lg"
+                      >
+                        {cat.name}
+                      </NavLink>
+                    ))}
                   </div>
                 )}
               </div>
